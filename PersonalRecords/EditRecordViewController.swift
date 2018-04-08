@@ -72,15 +72,19 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        currentRecord = currentRecord ?? NSEntityDescription.insertNewObject(
-            forEntityName: RecordModel.entityName,
-            into: context) as! RecordModel
-        
+        if currentRecord == nil {
+            currentRecord = NSEntityDescription.insertNewObject(
+                forEntityName: RecordModel.entityName,
+                into: context) as? RecordModel
+            currentRecord?.id = UUID();
+            currentRecord?.type = recordType!
+        }
         //Todo get record type from the current record
-        recordType = recordType ?? .Distance
+        //recordType = recordType ?? .Distance
+        if let type = recordType {
+            valueLabel.text = type.name
+        }
         
-        valueLabel.text = String(describing: recordType!)
         title = currentRecord?.title
         
         recordValue.delegate = self
@@ -89,7 +93,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let currRecord = currentRecord {
             recordTitle.text = currRecord.title
-            recordValue.text = String(currRecord.distance)
+            recordValue.text = String(currRecord.value)
             recordDescription.text = currRecord.recordDescription
         }
         // Do any additional setup after loading the view.
@@ -102,10 +106,9 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     override func viewWillDisappear(_ animated: Bool) {
         currentRecord?.title = recordTitle.text!
-        currentRecord?.distance = Int32(recordValue.text!) ?? 0
+        currentRecord?.value = Double(recordValue.text!) ?? 0.0
         currentRecord?.recordDescription = recordDescription.text
         //currentRecord?.sport =
-        currentRecord?.time = 1500
         do {
             try context.save()
         } catch {

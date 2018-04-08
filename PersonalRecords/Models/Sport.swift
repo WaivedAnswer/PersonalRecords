@@ -12,4 +12,5 @@ import CoreData
 class Sport: NSManagedObject {
     static let entityName = "Sport"
     @NSManaged var name: String
+    @NSManaged var id: UUID
 }

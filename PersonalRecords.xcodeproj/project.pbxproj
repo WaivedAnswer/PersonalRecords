@@ -19,6 +19,8 @@
 		D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1CE20773760002950A8 /* RecordModel.swift */; };
 		D45DA1D120798106002950A8 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D020798106002950A8 /* Sport.swift */; };
 		D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D22079BFB4002950A8 /* CreateViewController.swift */; };
+		D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D4207AB9D5002950A8 /* RecordType.swift */; };
+		D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D6207AC28D002950A8 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		D45DA1CE20773760002950A8 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
 		D45DA1D020798106002950A8 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		D45DA1D22079BFB4002950A8 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		D45DA1D4207AB9D5002950A8 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		D45DA1D6207AC28D002950A8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				D44A4CB920703B2200581047 /* EditRecordViewController.swift */,
 				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
 				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
+				D45DA1D6207AC28D002950A8 /* DataService.swift */,
 			);
 			path = PersonalRecords;
 			sourceTree = "<group>";
@@ -89,6 +94,7 @@
 				D45DA1C920747C13002950A8 /* Record.xcdatamodeld */,
 				D45DA1CE20773760002950A8 /* RecordModel.swift */,
 				D45DA1D020798106002950A8 /* Sport.swift */,
+				D45DA1D4207AB9D5002950A8 /* RecordType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,7 +177,9 @@
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
+				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
+				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D44A4CB5206F5C8B00581047 /* Record.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
 				D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */,

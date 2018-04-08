@@ -20,6 +20,7 @@ func createMainContext () -> NSManagedObjectContext {
     //Add NSPersistenStore to coordinator
     let storeURL = URL.mainDocumentsPath.appendingPathComponent("Record.sqlite")
     
+    //try! FileManager.default.removeItem(at: storeURL)
     let pscOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
                       NSInferMappingModelAutomaticallyOption: true]
     do {

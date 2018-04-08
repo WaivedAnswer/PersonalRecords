@@ -12,8 +12,9 @@ import CoreData
 class RecordModel : NSManagedObject {
     static let entityName: String = "RecordModel"
     @NSManaged var title: String
-    @NSManaged var distance: Int32
+    @NSManaged var value: Double
     @NSManaged var recordDescription: String?
-    @NSManaged var sport: Sport
-    @NSManaged var time: TimeInterval
+    @NSManaged var sport: Sport?
+    @NSManaged var id: UUID
+    @NSManaged var type: RecordType
 }

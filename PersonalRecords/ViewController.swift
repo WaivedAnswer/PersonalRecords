@@ -14,14 +14,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var controller: NSFetchedResultsController<RecordModel>!
     var context: NSManagedObjectContext!
     
-
-    var records: [Recordable] = [
-        DistanceRecord( title: "Swim Distance", distance: 1500, description: "The longest front-crawl I have ever done"),
-        DistanceRecord( title: "Run Distance", distance: 25000, description: "The longest run I have ever done"),
-        DistanceRecord( title: "Bike Distance", distance: 108000, description: "The longest bike I have ever done")
-        
-    ]
-    
     @IBAction func test(_ sender: Any) {
     }
     var lastSelectedIndex : Int?
@@ -50,7 +42,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell = tableView.dequeueReusableCell(withIdentifier: "Testing")
         
         let record = controller.object(at: indexPath)
-        cell.detailTextLabel?.text = "\(record.recordDescription ?? "") : \(record.distance)m"
+        cell.detailTextLabel?.text = "\(record.recordDescription ?? "") : \(record.value)m"
         cell.textLabel?.text = "\(record.title)"
         return cell
     }
@@ -99,7 +91,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         case .update:
             let cell = tableView.cellForRow(at: indexPath!)
             let record = controller.object(at: indexPath!) as! RecordModel
-            cell?.detailTextLabel?.text = "\(record.recordDescription ?? "") : \(record.distance)m"
+            cell?.detailTextLabel?.text = "\(record.recordDescription ?? "") : \(record.value)m"
             cell?.textLabel?.text = "\(record.title)"
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .fade)

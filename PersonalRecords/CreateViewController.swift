@@ -12,40 +12,55 @@ import CoreData
 class CreateViewController: UIViewController {
 
     var context: NSManagedObjectContext!
-    var recordType : RecordType = .Distance
+    var recordType : RecordType?
     
     @IBAction func createNew(_ sender: Any) {
         let actions = UIAlertController(title: "Create Custom", message: "Choose a record type", preferredStyle: .actionSheet)
         
-        let distanceAction = UIAlertAction(title: NSLocalizedString("Distance", comment: "Distance action"), style: .default) {
-            _ in
-            self.recordType = .Distance
-            self.performSegue(withIdentifier: "EditNew", sender: nil)
-            //NSLog("The \"sOK\" alert occured.")
-        }
-        let repetitionAction = UIAlertAction(title: NSLocalizedString("Repetition", comment: "Repetition action"), style: .default) {
-            _ in
-            self.recordType = .Repetition
-            self.performSegue(withIdentifier: "EditNew", sender: nil)
-            //NSLog("The \"OK\" alert occured.")
-        }
-        let timeAction = UIAlertAction(title: NSLocalizedString("Time", comment: "Time action"), style: .default) {
-            _ in
-            self.recordType = .Time
-            self.performSegue(withIdentifier: "EditNew", sender: nil)
-            //NSLog("The \"OK\" alert occured.")
-        }
-        let weightAction = UIAlertAction(title: NSLocalizedString("Weight", comment: "Weight action"), style: .default) {
-            _ in
-            self.recordType = .Weight
-            self.performSegue(withIdentifier: "EditNew", sender: nil)
-            //NSLog("The \"OK\" alert occured.")
+        let typeFetchRequest = NSFetchRequest<RecordType>(entityName: RecordType.entityName)
+        let alphabeticalSort = NSSortDescriptor(key: #keyPath(RecordType.name), ascending: true)
+        typeFetchRequest.sortDescriptors = [alphabeticalSort]
+        
+        let types = try! context.fetch(typeFetchRequest)
+        for type in types {
+            let action = UIAlertAction(title: NSLocalizedString(type.name, comment: "\(type.name) action"), style: .default) {
+                _ in
+                self.recordType = type
+                self.performSegue(withIdentifier: "EditNew", sender: nil)
+                //NSLog("The \"sOK\" alert occured.")
+            }
+            actions.addAction(action)
         }
         
-        actions.addAction(distanceAction)
-        actions.addAction(repetitionAction)
-        actions.addAction(timeAction)
-        actions.addAction(weightAction)
+//        let distanceAction = UIAlertAction(title: NSLocalizedString("Distance", comment: "Distance action"), style: .default) {
+//            _ in
+//            //self.recordType = .Distance
+//            self.performSegue(withIdentifier: "EditNew", sender: nil)
+//            //NSLog("The \"sOK\" alert occured.")
+//        }
+//        let repetitionAction = UIAlertAction(title: NSLocalizedString("Repetition", comment: "Repetition action"), style: .default) {
+//            _ in
+//            //self.recordType = .Repetition
+//            self.performSegue(withIdentifier: "EditNew", sender: nil)
+//            //NSLog("The \"OK\" alert occured.")
+//        }
+//        let timeAction = UIAlertAction(title: NSLocalizedString("Time", comment: "Time action"), style: .default) {
+//            _ in
+//            //self.recordType = .Time
+//            self.performSegue(withIdentifier: "EditNew", sender: nil)
+//            //NSLog("The \"OK\" alert occured.")
+//        }
+//        let weightAction = UIAlertAction(title: NSLocalizedString("Weight", comment: "Weight action"), style: .default) {
+//            _ in
+//            //self.recordType = .Weight
+//            self.performSegue(withIdentifier: "EditNew", sender: nil)
+//            //NSLog("The \"OK\" alert occured.")
+//        }
+        
+//        actions.addAction(distanceAction)
+//        actions.addAction(repetitionAction)
+//        actions.addAction(timeAction)
+//        actions.addAction(weightAction)
         
         
         self.present(actions, animated: true, completion: nil)
