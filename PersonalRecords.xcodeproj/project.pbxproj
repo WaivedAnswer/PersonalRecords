@@ -12,6 +12,13 @@
 		D44A4CA8206F58F400581047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44A4CA6206F58F400581047 /* Main.storyboard */; };
 		D44A4CAA206F58F400581047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44A4CA9206F58F400581047 /* Assets.xcassets */; };
 		D44A4CAD206F58F400581047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44A4CAB206F58F400581047 /* LaunchScreen.storyboard */; };
+		D44A4CB5206F5C8B00581047 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CB4206F5C8B00581047 /* Record.swift */; };
+		D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CB920703B2200581047 /* EditRecordViewController.swift */; };
+		D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1C920747C13002950A8 /* Record.xcdatamodeld */; };
+		D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1CC20747C46002950A8 /* CoreDataStack.swift */; };
+		D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1CE20773760002950A8 /* RecordModel.swift */; };
+		D45DA1D120798106002950A8 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D020798106002950A8 /* Sport.swift */; };
+		D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D22079BFB4002950A8 /* CreateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		D44A4CA9206F58F400581047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D44A4CAC206F58F400581047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D44A4CAE206F58F400581047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D44A4CB4206F5C8B00581047 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		D44A4CB920703B2200581047 /* EditRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordViewController.swift; sourceTree = "<group>"; };
+		D45DA1CA20747C13002950A8 /* Record.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Record.xcdatamodel; sourceTree = "<group>"; };
+		D45DA1CC20747C46002950A8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		D45DA1CE20773760002950A8 /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
+		D45DA1D020798106002950A8 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		D45DA1D22079BFB4002950A8 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +68,29 @@
 		D44A4CA1206F58F400581047 /* PersonalRecords */ = {
 			isa = PBXGroup;
 			children = (
+				D45DA1C820747BF3002950A8 /* Models */,
 				D44A4CA2206F58F400581047 /* AppDelegate.swift */,
 				D44A4CA4206F58F400581047 /* ViewController.swift */,
 				D44A4CA6206F58F400581047 /* Main.storyboard */,
 				D44A4CA9206F58F400581047 /* Assets.xcassets */,
 				D44A4CAB206F58F400581047 /* LaunchScreen.storyboard */,
 				D44A4CAE206F58F400581047 /* Info.plist */,
+				D44A4CB4206F5C8B00581047 /* Record.swift */,
+				D44A4CB920703B2200581047 /* EditRecordViewController.swift */,
+				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
+				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
 			);
 			path = PersonalRecords;
+			sourceTree = "<group>";
+		};
+		D45DA1C820747BF3002950A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D45DA1C920747C13002950A8 /* Record.xcdatamodeld */,
+				D45DA1CE20773760002950A8 /* RecordModel.swift */,
+				D45DA1D020798106002950A8 /* Sport.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +125,7 @@
 				TargetAttributes = {
 					D44A4C9E206F58F400581047 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -137,7 +167,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44A4CA5206F58F400581047 /* ViewController.swift in Sources */,
+				D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */,
+				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
+				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
+				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
+				D44A4CB5206F5C8B00581047 /* Record.swift in Sources */,
+				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
+				D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,12 +311,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6EX5494DXV;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PersonalRecords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Quinnter.PersonalRecords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,12 +330,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6EX5494DXV;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PersonalRecords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Quinnter.PersonalRecords;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -322,6 +366,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D45DA1C920747C13002950A8 /* Record.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D45DA1CA20747C13002950A8 /* Record.xcdatamodel */,
+			);
+			currentVersion = D45DA1CA20747C13002950A8 /* Record.xcdatamodel */;
+			path = Record.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D44A4C97206F58F400581047 /* Project object */;
 }
