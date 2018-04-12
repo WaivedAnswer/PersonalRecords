@@ -9,11 +9,35 @@
 import UIKit
 import CoreData
 
-class CreateViewController: UIViewController {
-
-    var context: NSManagedObjectContext!
-    var recordType : RecordType?
+class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDelegate {
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return templates.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return templates[row].title
+    }
+    
+    var templates : [RecordModel]!
+    
+    @IBOutlet weak var TemplatePicker: UIPickerView!
+    
+    var context: NSManagedObjectContext!
+    var controller: NSFetchedResultsController<RecordModel>!
+    
+    var recordType : RecordType?
+    var recordTemplate: RecordModel?
+    
+    @IBAction func createFromTemplate(_ sender: Any) {
+        self.recordTemplate = templates[TemplatePicker.selectedRow(inComponent: 0)]
+        self.recordType = recordTemplate?.type
+        self.performSegue(withIdentifier: "EditNew", sender: nil)
+    }
     @IBAction func createNew(_ sender: Any) {
         let actions = UIAlertController(title: "Create Custom", message: "Choose a record type", preferredStyle: .actionSheet)
         
@@ -32,36 +56,6 @@ class CreateViewController: UIViewController {
             actions.addAction(action)
         }
         
-//        let distanceAction = UIAlertAction(title: NSLocalizedString("Distance", comment: "Distance action"), style: .default) {
-//            _ in
-//            //self.recordType = .Distance
-//            self.performSegue(withIdentifier: "EditNew", sender: nil)
-//            //NSLog("The \"sOK\" alert occured.")
-//        }
-//        let repetitionAction = UIAlertAction(title: NSLocalizedString("Repetition", comment: "Repetition action"), style: .default) {
-//            _ in
-//            //self.recordType = .Repetition
-//            self.performSegue(withIdentifier: "EditNew", sender: nil)
-//            //NSLog("The \"OK\" alert occured.")
-//        }
-//        let timeAction = UIAlertAction(title: NSLocalizedString("Time", comment: "Time action"), style: .default) {
-//            _ in
-//            //self.recordType = .Time
-//            self.performSegue(withIdentifier: "EditNew", sender: nil)
-//            //NSLog("The \"OK\" alert occured.")
-//        }
-//        let weightAction = UIAlertAction(title: NSLocalizedString("Weight", comment: "Weight action"), style: .default) {
-//            _ in
-//            //self.recordType = .Weight
-//            self.performSegue(withIdentifier: "EditNew", sender: nil)
-//            //NSLog("The \"OK\" alert occured.")
-//        }
-        
-//        actions.addAction(distanceAction)
-//        actions.addAction(repetitionAction)
-//        actions.addAction(timeAction)
-//        actions.addAction(weightAction)
-        
         
         self.present(actions, animated: true, completion: nil)
     }
@@ -70,6 +64,7 @@ class CreateViewController: UIViewController {
         if(segue.identifier=="EditNew")
         {
             let editVC = segue.destination as! EditRecordViewController
+            editVC.currentRecord = self.recordTemplate
             editVC.recordType = self.recordType
             editVC.context = self.context
         }
@@ -77,8 +72,23 @@ class CreateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchTemplates()
         // Do any additional setup after loading the view.
+    }
+    
+    func fetchTemplates() {
+        let titleSort = NSSortDescriptor(key: #keyPath(RecordModel.title), ascending: true)
+        let filter = NSPredicate(format: "isTemplate == TRUE")
+        let fetchRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
+        fetchRequest.predicate = filter
+        fetchRequest.sortDescriptors = [titleSort]
+        do {
+            templates = try context.fetch(fetchRequest)
+        } catch {
+            templates = []
+            print("Something went wrong")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {

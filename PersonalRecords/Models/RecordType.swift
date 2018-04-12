@@ -13,4 +13,5 @@ class RecordType : NSManagedObject {
     static let entityName = "RecordType"
     @NSManaged var id: UUID
     @NSManaged var name: String
+    @NSManaged var displayUnit: String
 }

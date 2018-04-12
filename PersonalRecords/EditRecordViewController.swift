@@ -9,20 +9,15 @@
 import UIKit
 import CoreData
 
-class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, UIPickerViewDelegate, UIPickerViewDataSource {
+class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, UIPickerViewDelegate{
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return availableSports.count
-    }
+    var saveChanges = true
     
     let availableSports: [Sport] = []
     var context: NSManagedObjectContext!
     
     var currentRecord : RecordModel?
+    var picker: CustomTimePicker?
     
     var recordType : RecordType?
     
@@ -37,14 +32,23 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var recordDescription: UITextView!
     
     @IBAction func saveRecord(_ sender: Any) {
-        _ = navigationController?.popViewController(animated: true)
+        saveChanges = true
+        navigationController?.popToRootViewController(animated: true)
+       
+    }
+    @IBAction func cancelEdit(_ sender: Any) {
+        saveChanges = false
+        navigationController?.popToRootViewController(animated: true)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         if (textField != recordValue) {
             return true
+        } else if recordType?.name == "Time" {
+            return false
         }
+        
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
         return allowedCharacters.isSuperset(of: characterSet)
@@ -70,8 +74,23 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     func displaySportsPicker() {
     }
     
+    //Mark: Picker Delegates
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return picker?.pickerView(picker!, titleForRow: row, forComponent: component)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        recordValue.text = picker?.timeInterval.timeString
+    }
+    
+    @objc func handleDatePicker(sender: UIDatePicker) {
+        recordValue.text = picker?.timeInterval.timeString
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        
         if currentRecord == nil {
             currentRecord = NSEntityDescription.insertNewObject(
                 forEntityName: RecordModel.entityName,
@@ -79,11 +98,26 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             currentRecord?.id = UUID();
             currentRecord?.type = recordType!
         }
+        currentRecord?.isTemplate = false
         //Todo get record type from the current record
-        //recordType = recordType ?? .Distance
+        recordType = recordType ?? currentRecord?.type
+        
         if let type = recordType {
             valueLabel.text = type.name
+            if(type.name == "Time") {
+                //TODO replace with custom picker
+                picker = CustomTimePicker()
+                if let value = currentRecord?.value {
+                    picker?.setTimeInterval(value)
+                }
+                picker?.delegate = self
+                recordValue.inputView = picker
+                
+            }
         }
+        
+        
+
         
         title = currentRecord?.title
         
@@ -93,8 +127,16 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let currRecord = currentRecord {
             recordTitle.text = currRecord.title
-            recordValue.text = String(currRecord.value)
+            if (recordType!.name == "Time") {
+                recordValue.text = currRecord.value.timeString
+            } else {
+                recordValue.text = String(currRecord.value)
+            }
             recordDescription.text = currRecord.recordDescription
+            sportTextField.isEnabled = false
+            if let sport = currRecord.sport {
+            sportTextField.text = sport.name
+            }
         }
         // Do any additional setup after loading the view.
     }
@@ -105,16 +147,28 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        currentRecord?.title = recordTitle.text!
-        currentRecord?.value = Double(recordValue.text!) ?? 0.0
-        currentRecord?.recordDescription = recordDescription.text
-        //currentRecord?.sport =
-        do {
-            try context.save()
-        } catch {
-            print (error)
-            print("Something went wrong with saving")
+        if(saveChanges) {
+            currentRecord?.title = recordTitle.text!
+            if(recordType?.name == "Time") {
+                currentRecord?.value = picker?.timeInterval ?? 0.0
+            } else {
+                currentRecord?.value = Double(recordValue.text!) ?? 0.0
+            }
+            
+            currentRecord?.recordDescription = recordDescription.text
+            //currentRecord?.sport =
+            do {
+                try context.save()
+            } catch {
+                context.rollback()
+                print (error)
+                print("Something went wrong with saving")
+            }
+        } else {
+            context.rollback()
         }
+        
+        
     }
     
 

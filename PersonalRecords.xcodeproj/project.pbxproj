@@ -21,6 +21,8 @@
 		D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D22079BFB4002950A8 /* CreateViewController.swift */; };
 		D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D4207AB9D5002950A8 /* RecordType.swift */; };
 		D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D6207AC28D002950A8 /* DataService.swift */; };
+		D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D8207C6EEC002950A8 /* Extensions.swift */; };
+		D4B7BE61207D9BCB00D45F0C /* CustomTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,9 @@
 		D45DA1D22079BFB4002950A8 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		D45DA1D4207AB9D5002950A8 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		D45DA1D6207AC28D002950A8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		D45DA1D8207C6EEC002950A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
+		D4B7BE60207D9BCB00D45F0C /* CustomTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,8 @@
 				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
 				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
 				D45DA1D6207AC28D002950A8 /* DataService.swift */,
+				D45DA1D8207C6EEC002950A8 /* Extensions.swift */,
+				D4B7BE60207D9BCB00D45F0C /* CustomTimePickerView.swift */,
 			);
 			path = PersonalRecords;
 			sourceTree = "<group>";
@@ -177,8 +184,10 @@
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
+				D4B7BE61207D9BCB00D45F0C /* CustomTimePickerView.swift in Sources */,
 				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
+				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D44A4CB5206F5C8B00581047 /* Record.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
@@ -379,9 +388,10 @@
 		D45DA1C920747C13002950A8 /* Record.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */,
 				D45DA1CA20747C13002950A8 /* Record.xcdatamodel */,
 			);
-			currentVersion = D45DA1CA20747C13002950A8 /* Record.xcdatamodel */;
+			currentVersion = D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */;
 			path = Record.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

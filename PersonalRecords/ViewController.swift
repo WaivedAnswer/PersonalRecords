@@ -11,6 +11,7 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSManagedObjectContextDependent, NSFetchedResultsControllerDelegate {
     
+    
     var controller: NSFetchedResultsController<RecordModel>!
     var context: NSManagedObjectContext!
     
@@ -42,9 +43,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell = tableView.dequeueReusableCell(withIdentifier: "Testing")
         
         let record = controller.object(at: indexPath)
-        cell.detailTextLabel?.text = "\(record.recordDescription ?? "") : \(record.value)m"
-        cell.textLabel?.text = "\(record.title)"
+        
+        setCellValues(record: record, cell: cell)
+        
         return cell
+    }
+    
+    func setCellValues (record: RecordModel, cell: UITableViewCell ) {
+        let valueString = record.type.name == "Time" ? record.value.timeString : String(record.value)
+        cell.detailTextLabel?.text = "\(valueString) \(record.type.displayUnit)"
+        cell.textLabel?.text = "\(record.title)"
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -91,8 +99,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         case .update:
             let cell = tableView.cellForRow(at: indexPath!)
             let record = controller.object(at: indexPath!) as! RecordModel
-            cell?.detailTextLabel?.text = "\(record.recordDescription ?? "") : \(record.value)m"
-            cell?.textLabel?.text = "\(record.title)"
+            setCellValues(record: record, cell: cell!)
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
@@ -129,8 +136,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setupController() {
         let titleSort = NSSortDescriptor(key: #keyPath(RecordModel.title), ascending: true)
-        
+        let filter = NSPredicate(format: "isTemplate == FALSE")
         let fetchRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
+        fetchRequest.predicate = filter
         fetchRequest.sortDescriptors = [titleSort]
         controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                 managedObjectContext: context,
