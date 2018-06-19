@@ -11,17 +11,17 @@ import CoreData
 
 class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, UIPickerViewDelegate{
     
-    var saveChanges = true
+    private var saveChanges = true
     
-    let availableSports: [Sport] = []
-    var context: NSManagedObjectContext!
+    private let availableSports: [Sport] = []
+    public var context: NSManagedObjectContext!
     
-    var currentRecord : RecordModel?
-    var picker: CustomTimePicker?
+    public var currentRecord : Recordable?
+    private var picker: CustomTimePicker?
     
-    var recordType : RecordType?
+    public var recordType : RecordType?
     
-    var sportPickerView = UIPickerView()
+    private var sportPickerView = UIPickerView()
     @IBOutlet weak var sportTextField: UITextField!
     @IBOutlet weak var recordTitle: UITextField!
     
@@ -87,10 +87,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         recordValue.text = picker?.timeInterval.timeString
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.hidesBackButton = true
-        
+    func setupCurrentRecord() {
         if currentRecord == nil {
             currentRecord = NSEntityDescription.insertNewObject(
                 forEntityName: RecordModel.entityName,
@@ -99,15 +96,21 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             currentRecord?.type = recordType!
         }
         currentRecord?.isTemplate = false
-        //Todo get record type from the current record
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        
+        setupCurrentRecord()
+        
         recordType = recordType ?? currentRecord?.type
         
         if let type = recordType {
             valueLabel.text = type.name
             if(type.name == "Time") {
-                //TODO replace with custom picker
                 picker = CustomTimePicker()
-                if let value = currentRecord?.value {
+                if let value = currentRecord?.time {
                     picker?.setTimeInterval(value)
                 }
                 picker?.delegate = self
@@ -127,10 +130,22 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let currRecord = currentRecord {
             recordTitle.text = currRecord.title
+            switch recordType!.name {
+            case "Time":
+                recordValue.text = currRecord.time.timeString
+            case "Distance":
+                recordValue.text = String(currRecord.distance)
+            case "Repetition":
+                recordValue.text = String(currRecord.reps)
+            case "Weight":
+                recordValue.text = String(currRecord.weight)
+            default:
+                break
+            }
             if (recordType!.name == "Time") {
-                recordValue.text = currRecord.value.timeString
+                
             } else {
-                recordValue.text = String(currRecord.value)
+                
             }
             recordDescription.text = currRecord.recordDescription
             sportTextField.isEnabled = false
@@ -149,10 +164,17 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     override func viewWillDisappear(_ animated: Bool) {
         if(saveChanges) {
             currentRecord?.title = recordTitle.text!
-            if(recordType?.name == "Time") {
-                currentRecord?.value = picker?.timeInterval ?? 0.0
-            } else {
-                currentRecord?.value = Double(recordValue.text!) ?? 0.0
+            switch(recordType?.name) {
+            case "Time":
+                currentRecord?.time = picker?.timeInterval ?? 0.0
+            case "Distance":
+                currentRecord?.distance = Double(recordValue.text!) ?? 0.0
+            case "Repetition":
+                currentRecord?.reps = Int32(recordValue.text!) ?? 0
+            case "Weight":
+                currentRecord?.weight = Double(recordValue.text!) ?? 0.0
+            default:
+                break
             }
             
             currentRecord?.recordDescription = recordDescription.text

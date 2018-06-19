@@ -9,11 +9,27 @@
 import Foundation
 import CoreData
 
-class RecordModel : NSManagedObject {
+protocol Recordable {
+    var title: String {get set}
+var time: Double {get set}
+var distance: Double {get set}
+var weight: Double {get set}
+var reps: Int32 {get set}
+var recordDescription: String? {get set}
+var sport: Sport? {get set}
+var id: UUID {get set}
+var type: RecordType {get set}
+var isTemplate: Bool {get set}
+}
+
+
+class RecordModel : NSManagedObject, Recordable {
     static let entityName: String = "RecordModel"
+    
     @NSManaged var title: String
     @NSManaged var time: Double
     @NSManaged var distance: Double
+    @NSManaged var weight: Double
     @NSManaged var reps: Int32
     @NSManaged var recordDescription: String?
     @NSManaged var sport: Sport?

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-func createMainContext () -> NSManagedObjectContext {
+func createMainContext (inMemory: Bool = false) -> NSManagedObjectContext {
     //initialize NSManagedObjecTModel
     let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd")
     guard let model = NSManagedObjectModel(contentsOf: modelURL!) else {fatalError("model cannot be created")}
@@ -21,12 +21,20 @@ func createMainContext () -> NSManagedObjectContext {
     let storeURL = URL.mainDocumentsPath.appendingPathComponent("Record.sqlite")
     
     //try! FileManager.default.removeItem(at: storeURL)
-    let pscOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
-                      NSInferMappingModelAutomaticallyOption: true]
-    do {
-        try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: pscOptions)
-    } catch {
-        fatalError("Cannot create persistent store")
+    if(!inMemory) {
+        let pscOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
+                          NSInferMappingModelAutomaticallyOption: true]
+        do {
+            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: pscOptions)
+        } catch {
+            fatalError("Cannot create persistent store")
+        }
+    } else {
+        do {
+            try psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+        } catch {
+            print("Adding in-memory persistent store failed")
+        }
     }
     
     

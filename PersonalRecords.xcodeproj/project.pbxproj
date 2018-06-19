@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4201D2A20D1FBB20091FA60 /* PersonalRecordsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4201D2920D1FBB20091FA60 /* PersonalRecordsTests.swift */; };
+		D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F4C9A20D341D100470C71 /* RecordModelManager.swift */; };
 		D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CA2206F58F400581047 /* AppDelegate.swift */; };
 		D44A4CA5206F58F400581047 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CA4206F58F400581047 /* ViewController.swift */; };
 		D44A4CA8206F58F400581047 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44A4CA6206F58F400581047 /* Main.storyboard */; };
 		D44A4CAA206F58F400581047 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44A4CA9206F58F400581047 /* Assets.xcassets */; };
 		D44A4CAD206F58F400581047 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44A4CAB206F58F400581047 /* LaunchScreen.storyboard */; };
-		D44A4CB5206F5C8B00581047 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CB4206F5C8B00581047 /* Record.swift */; };
 		D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CB920703B2200581047 /* EditRecordViewController.swift */; };
 		D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1C920747C13002950A8 /* Record.xcdatamodeld */; };
 		D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1CC20747C46002950A8 /* CoreDataStack.swift */; };
@@ -22,10 +23,24 @@
 		D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D4207AB9D5002950A8 /* RecordType.swift */; };
 		D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D6207AC28D002950A8 /* DataService.swift */; };
 		D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D8207C6EEC002950A8 /* Extensions.swift */; };
-		D4B7BE61207D9BCB00D45F0C /* CustomTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePickerView.swift */; };
+		D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D4201D2C20D1FBB20091FA60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44A4C97206F58F400581047 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D44A4C9E206F58F400581047;
+			remoteInfo = PersonalRecords;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalRecordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4201D2920D1FBB20091FA60 /* PersonalRecordsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecordsTests.swift; sourceTree = "<group>"; };
+		D4201D2B20D1FBB20091FA60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D43F4C9A20D341D100470C71 /* RecordModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManager.swift; sourceTree = "<group>"; };
 		D44A4C9F206F58F400581047 /* PersonalRecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalRecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44A4CA2206F58F400581047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D44A4CA4206F58F400581047 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,7 +48,6 @@
 		D44A4CA9206F58F400581047 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D44A4CAC206F58F400581047 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D44A4CAE206F58F400581047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D44A4CB4206F5C8B00581047 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		D44A4CB920703B2200581047 /* EditRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordViewController.swift; sourceTree = "<group>"; };
 		D45DA1CA20747C13002950A8 /* Record.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Record.xcdatamodel; sourceTree = "<group>"; };
 		D45DA1CC20747C46002950A8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -44,10 +58,17 @@
 		D45DA1D6207AC28D002950A8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D45DA1D8207C6EEC002950A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
-		D4B7BE60207D9BCB00D45F0C /* CustomTimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickerView.swift; sourceTree = "<group>"; };
+		D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D4201D2420D1FBB20091FA60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D44A4C9C206F58F400581047 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,10 +79,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4201D2820D1FBB20091FA60 /* PersonalRecordsTests */ = {
+			isa = PBXGroup;
+			children = (
+				D4201D2920D1FBB20091FA60 /* PersonalRecordsTests.swift */,
+				D4201D2B20D1FBB20091FA60 /* Info.plist */,
+			);
+			path = PersonalRecordsTests;
+			sourceTree = "<group>";
+		};
 		D44A4C96206F58F400581047 = {
 			isa = PBXGroup;
 			children = (
 				D44A4CA1206F58F400581047 /* PersonalRecords */,
+				D4201D2820D1FBB20091FA60 /* PersonalRecordsTests */,
 				D44A4CA0206F58F400581047 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				D44A4C9F206F58F400581047 /* PersonalRecords.app */,
+				D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,13 +116,13 @@
 				D44A4CA9206F58F400581047 /* Assets.xcassets */,
 				D44A4CAB206F58F400581047 /* LaunchScreen.storyboard */,
 				D44A4CAE206F58F400581047 /* Info.plist */,
-				D44A4CB4206F5C8B00581047 /* Record.swift */,
 				D44A4CB920703B2200581047 /* EditRecordViewController.swift */,
 				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
 				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
 				D45DA1D6207AC28D002950A8 /* DataService.swift */,
 				D45DA1D8207C6EEC002950A8 /* Extensions.swift */,
-				D4B7BE60207D9BCB00D45F0C /* CustomTimePickerView.swift */,
+				D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */,
+				D43F4C9A20D341D100470C71 /* RecordModelManager.swift */,
 			);
 			path = PersonalRecords;
 			sourceTree = "<group>";
@@ -109,6 +141,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D4201D2620D1FBB20091FA60 /* PersonalRecordsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4201D3020D1FBB20091FA60 /* Build configuration list for PBXNativeTarget "PersonalRecordsTests" */;
+			buildPhases = (
+				D4201D2320D1FBB20091FA60 /* Sources */,
+				D4201D2420D1FBB20091FA60 /* Frameworks */,
+				D4201D2520D1FBB20091FA60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4201D2D20D1FBB20091FA60 /* PBXTargetDependency */,
+			);
+			name = PersonalRecordsTests;
+			productName = PersonalRecordsTests;
+			productReference = D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D44A4C9E206F58F400581047 /* PersonalRecords */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D44A4CB1206F58F400581047 /* Build configuration list for PBXNativeTarget "PersonalRecords" */;
@@ -132,10 +182,15 @@
 		D44A4C97206F58F400581047 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Quinnter;
 				TargetAttributes = {
+					D4201D2620D1FBB20091FA60 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D44A4C9E206F58F400581047;
+					};
 					D44A4C9E206F58F400581047 = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
@@ -157,11 +212,19 @@
 			projectRoot = "";
 			targets = (
 				D44A4C9E206F58F400581047 /* PersonalRecords */,
+				D4201D2620D1FBB20091FA60 /* PersonalRecordsTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D4201D2520D1FBB20091FA60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D44A4C9D206F58F400581047 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,6 +238,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D4201D2320D1FBB20091FA60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4201D2A20D1FBB20091FA60 /* PersonalRecordsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D44A4C9B206F58F400581047 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -184,18 +255,26 @@
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
-				D4B7BE61207D9BCB00D45F0C /* CustomTimePickerView.swift in Sources */,
+				D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */,
 				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
 				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,
+				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
-				D44A4CB5206F5C8B00581047 /* Record.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
 				D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4201D2D20D1FBB20091FA60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D44A4C9E206F58F400581047 /* PersonalRecords */;
+			targetProxy = D4201D2C20D1FBB20091FA60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D44A4CA6206F58F400581047 /* Main.storyboard */ = {
@@ -217,6 +296,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D4201D2E20D1FBB20091FA60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6EX5494DXV;
+				INFOPLIST_FILE = PersonalRecordsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Quinnter.PersonalRecordsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalRecords.app/PersonalRecords";
+			};
+			name = Debug;
+		};
+		D4201D2F20D1FBB20091FA60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6EX5494DXV;
+				INFOPLIST_FILE = PersonalRecordsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Quinnter.PersonalRecordsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalRecords.app/PersonalRecords";
+			};
+			name = Release;
+		};
 		D44A4CAF206F58F400581047 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -368,6 +483,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D4201D3020D1FBB20091FA60 /* Build configuration list for PBXNativeTarget "PersonalRecordsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4201D2E20D1FBB20091FA60 /* Debug */,
+				D4201D2F20D1FBB20091FA60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D44A4C9A206F58F400581047 /* Build configuration list for PBXProject "PersonalRecords" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

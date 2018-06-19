@@ -8,6 +8,7 @@
         <attribute name="reps" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" usesScalarValueType="YES" elementID="value" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="sport" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Sport" syncable="YES"/>
         <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="RecordType" syncable="YES"/>
     </entity>
@@ -21,7 +22,7 @@
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RecordModel" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="RecordModel" positionX="-63" positionY="-18" width="128" height="195"/>
         <element name="RecordType" positionX="-45" positionY="54" width="128" height="90"/>
         <element name="Sport" positionX="-54" positionY="27" width="128" height="75"/>
     </elements>

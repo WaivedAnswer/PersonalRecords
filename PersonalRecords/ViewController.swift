@@ -50,7 +50,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setCellValues (record: RecordModel, cell: UITableViewCell ) {
-        let valueString = record.type.name == "Time" ? record.value.timeString : String(record.value)
+        var valueString: String = ""
+        switch(record.type.name) {
+        case "Time":
+            valueString = record.time.timeString
+        case "Distance":
+            valueString = String(record.distance)
+        case "Repetition":
+            valueString = String(record.reps)
+        case "Weight":
+            valueString = String(record.weight)
+        default:
+            break
+        }
+        
         cell.detailTextLabel?.text = "\(valueString) \(record.type.displayUnit)"
         cell.textLabel?.text = "\(record.title)"
     }
