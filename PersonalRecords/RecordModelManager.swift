@@ -56,7 +56,7 @@ class RecordModelManager : NSManagedObjectContextDependent {
         }
     }
     
-    func createRecordWith(type: RecordType, isTemplate: Bool) -> RecordModel? {
+    func createRecordWith(type: RecordType, isTemplate: Bool) -> Recordable? {
 
         do {
             let record = initRecord(type: type, isTemplate: isTemplate)
@@ -72,7 +72,7 @@ class RecordModelManager : NSManagedObjectContextDependent {
         }
     }
     
-    func getRecordBy( id: UUID) -> RecordModel? {
+    func getRecordBy( id: UUID) -> Recordable? {
         do {
             let request = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
             request.predicate = NSPredicate(format: "%K == %@", "id", id as CVarArg)
@@ -85,7 +85,7 @@ class RecordModelManager : NSManagedObjectContextDependent {
         }
     }
     
-    func getRecordsWith( predicate: NSPredicate) -> [RecordModel] {
+    func getRecordsWith( predicate: NSPredicate) -> [Recordable] {
         do {
             let request = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
             request.predicate = predicate

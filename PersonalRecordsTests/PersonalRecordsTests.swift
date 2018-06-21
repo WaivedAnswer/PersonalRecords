@@ -66,7 +66,7 @@ class PersonalRecordsTests: XCTestCase {
         let record = subject.createRecordWith(type: expectedType!, isTemplate: false)
 
         let result = subject.getRecordBy(id: record!.id)
-        XCTAssertEqual(record, result)
+        XCTAssertEqual(record?.id, result?.id)
     }
     
     func testRecordModelManagerGetRecordWhenManyRecords() {
@@ -80,7 +80,7 @@ class PersonalRecordsTests: XCTestCase {
         _ = subject.createRecordWith(type: expectedType!, isTemplate: false)
         
         let result = subject.getRecordBy(id: record!.id)
-        XCTAssertEqual(record, result)
+        XCTAssertEqual(record?.id, result?.id)
     }
     
     func testRecordModelManagerGetRecordsByTypePredicate() {
@@ -97,9 +97,7 @@ class PersonalRecordsTests: XCTestCase {
         
         let records = subject.getRecordsWith(predicate: typePredicate)
         XCTAssertEqual(5, records.count)
-        XCTAssertEqual(records, records.filter({ (rm) -> Bool in
-            rm.type == expectedType
-        }))
+        XCTAssertEqual(5, records.filter { $0.type == expectedType }.count)
     }
     
 }

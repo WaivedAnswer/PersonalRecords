@@ -64,7 +64,7 @@ class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
         if(segue.identifier=="EditNew")
         {
             let editVC = segue.destination as! EditRecordViewController
-            editVC.currentRecord = self.recordTemplate
+            editVC.currentRecordID = self.recordTemplate?.id
             editVC.recordType = self.recordType
             editVC.context = self.context
         }

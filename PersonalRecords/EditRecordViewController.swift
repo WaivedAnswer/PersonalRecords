@@ -11,12 +11,15 @@ import CoreData
 
 class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, UIPickerViewDelegate{
     
-    private var saveChanges = true
+    private var recordManager : RecordModelManager!
+    private var allowableCharacters : AllowableStringValues!
     
     private let availableSports: [Sport] = []
     public var context: NSManagedObjectContext!
     
-    public var currentRecord : Recordable?
+    public var currentRecordID : UUID?
+    private var currentRecord : Recordable!
+    
     private var picker: CustomTimePicker?
     
     public var recordType : RecordType?
@@ -28,30 +31,61 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var valueLabel: UILabel!
     
     @IBOutlet weak var recordValue: UITextField!
-
+    
     @IBOutlet weak var recordDescription: UITextView!
     
     @IBAction func saveRecord(_ sender: Any) {
-        saveChanges = true
-        navigationController?.popToRootViewController(animated: true)
-       
+        updateRecord()
+        
+        do {
+            //todo remove save or move to recordmanager
+            try context.save()
+        } catch {
+            context.rollback()
+            print (error)
+            print("Something went wrong with saving")
+        }
+        goToHomeScreen()
+        
     }
+    
+    private func updateRecord () {
+        currentRecord?.title = recordTitle.text!
+        switch(recordType?.name) {
+        case "Time":
+            currentRecord?.time = picker?.timeInterval ?? 0.0
+        case "Distance":
+            currentRecord?.distance = Double(recordValue.text!) ?? 0.0
+        case "Repetition":
+            currentRecord?.reps = Int32(recordValue.text!) ?? 0
+        case "Weight":
+            currentRecord?.weight = Double(recordValue.text!) ?? 0.0
+        default:
+            break
+        }
+        
+        currentRecord?.recordDescription = recordDescription.text
+    }
+    
     @IBAction func cancelEdit(_ sender: Any) {
-        saveChanges = false
+        //todo remove rollback or move to recordmanager
+        context.rollback()
+        goToHomeScreen()
+    }
+    
+    private func goToHomeScreen() {
         navigationController?.popToRootViewController(animated: true)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        if (textField != recordValue) {
+        if (textField != recordValue || textField.text == nil) {
             return true
         } else if recordType?.name == "Time" {
             return false
         }
         
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+        return allowableCharacters.AreStringCharactersAllowed(input: textField.text!)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -88,12 +122,12 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     func setupCurrentRecord() {
-        if currentRecord == nil {
-            currentRecord = NSEntityDescription.insertNewObject(
-                forEntityName: RecordModel.entityName,
-                into: context) as? RecordModel
-            currentRecord?.id = UUID();
-            currentRecord?.type = recordType!
+        if let recordId = currentRecordID {
+            currentRecord = recordManager.getRecordBy(id: recordId)
+            recordType = currentRecord.type
+            //todo populate template
+        } else {
+            currentRecord = recordManager.createRecordWith(type: recordType!, isTemplate: false)
         }
         currentRecord?.isTemplate = false
     }
@@ -102,9 +136,10 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        setupCurrentRecord()
+        recordManager = RecordModelManager(mainContext: context)
+        allowableCharacters = AllowableStringValues()
         
-        recordType = recordType ?? currentRecord?.type
+        setupCurrentRecord()
         
         if let type = recordType {
             valueLabel.text = type.name
@@ -118,9 +153,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
                 
             }
         }
-        
-        
-
         
         title = currentRecord?.title
         
@@ -150,58 +182,26 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             recordDescription.text = currRecord.recordDescription
             sportTextField.isEnabled = false
             if let sport = currRecord.sport {
-            sportTextField.text = sport.name
+                sportTextField.text = sport.name
             }
         }
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        if(saveChanges) {
-            currentRecord?.title = recordTitle.text!
-            switch(recordType?.name) {
-            case "Time":
-                currentRecord?.time = picker?.timeInterval ?? 0.0
-            case "Distance":
-                currentRecord?.distance = Double(recordValue.text!) ?? 0.0
-            case "Repetition":
-                currentRecord?.reps = Int32(recordValue.text!) ?? 0
-            case "Weight":
-                currentRecord?.weight = Double(recordValue.text!) ?? 0.0
-            default:
-                break
-            }
-            
-            currentRecord?.recordDescription = recordDescription.text
-            //currentRecord?.sport =
-            do {
-                try context.save()
-            } catch {
-                context.rollback()
-                print (error)
-                print("Something went wrong with saving")
-            }
-        } else {
-            context.rollback()
-        }
-        
-        
-    }
     
-
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
