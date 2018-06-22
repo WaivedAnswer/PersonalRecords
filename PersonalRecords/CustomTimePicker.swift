@@ -1,4 +1,4 @@
-//
+
 //  CustomTimePickerView.swift
 //  PersonalRecords
 //
@@ -10,20 +10,23 @@ import UIKit
 
 class CustomTimePicker : UIPickerView, UIPickerViewDataSource, UIPickerViewDelegate  {
     
-    let hourChoices: [Int] = Array(0...99)
-    let minuteChoices: [Int] = Array(0...59)
-    let secondChoices: [Int] = Array(0...59)
+    private let hourChoices: [Int] = Array(0...99)
+    private let minuteChoices: [Int] = Array(0...59)
+    private let secondChoices: [Int] = Array(0...59)
     
     var timeInterval : TimeInterval { get {
         
-        return Double(hourChoices[selectedRow(inComponent: 0)]) * 3600.0 + Double(minuteChoices[selectedRow(inComponent: 1)]) * 60.0 + Double(secondChoices[selectedRow(inComponent: 2)])
+        return TimeInterval(
+            hours: hourChoices[selectedRow(inComponent: 0)],
+            minutes: minuteChoices[selectedRow(inComponent: 1)],
+            seconds: secondChoices[selectedRow(inComponent: 2)])
         }
-    }
-    
-    func setTimeInterval(_ value: TimeInterval) {
-        selectRow(value.hours, inComponent: 0, animated: false)
-        selectRow(value.minutes, inComponent: 1, animated: false)
-        selectRow(value.seconds, inComponent: 2, animated: false)
+        
+        set {
+            selectRow(newValue.hours, inComponent: 0, animated: false)
+            selectRow(newValue.minutes, inComponent: 1, animated: false)
+            selectRow(newValue.seconds, inComponent: 2, animated: false)
+        }
     }
     
     init() {

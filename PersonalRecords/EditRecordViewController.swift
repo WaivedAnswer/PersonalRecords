@@ -145,8 +145,8 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             valueLabel.text = type.name
             if(type.name == "Time") {
                 picker = CustomTimePicker()
-                if let value = currentRecord?.time {
-                    picker?.setTimeInterval(value)
+                if let value = currentRecord?.time, let timePicker = picker {
+                    timePicker.timeInterval = value
                 }
                 picker?.delegate = self
                 recordValue.inputView = picker

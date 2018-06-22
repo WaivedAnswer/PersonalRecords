@@ -22,13 +22,13 @@ extension TimeInterval {
         }
     }
     
-    func getTimeInterval(hours: Int, mins: Int, secs: Int , ms : Int = 0) -> TimeInterval? {
-        var hrSecs = (Double)(hours) * 3600.0
-        var minSecs = (Double)(mins) * 60.0
-        var msSecs = (Double)(ms) / 1000.0
-        var dsecs = (Double)(secs)
+    init(hours: Int, minutes: Int, seconds: Int , milliseconds : Int = 0) {
+        let hrSecs = (Double)(hours) * 3600.0
+        let minSecs = (Double)(minutes) * 60.0
+        let msSecs = (Double)(milliseconds) / 1000.0
+        let dSecs = (Double)(seconds)
         
-        var seconds = hrSecs + minSecs + dsecs + msSecs
-        return TimeInterval(exactly: seconds)
+        let seconds = hrSecs + minSecs + dSecs + msSecs
+        self.init(seconds)
     }
 }
