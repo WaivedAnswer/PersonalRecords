@@ -33,6 +33,12 @@ class AllowableCharactersTests: XCTestCase {
         XCTAssertTrue(subject.AreStringCharactersAllowed(input: testInput), testInput + " doesn't pass the expected ruleset")
     }
     
+    func testEndingInDecimalPointNumbersAllowed() {
+        let testInput = "15."
+        let subject = AllowableStringValues()
+        XCTAssertTrue(subject.AreStringCharactersAllowed(input: testInput), testInput + " doesn't pass the expected ruleset")
+    }
+    
     func testNegativeNumbersNotAllowed() {
         let testInput = "-15"
         let subject = AllowableStringValues()
@@ -51,11 +57,12 @@ class AllowableCharactersTests: XCTestCase {
         XCTAssertTrue(subject.AreStringCharactersAllowed(input: testInput), testInput + " doesn't pass the expected ruleset")
     }
     
-    func testScientificAllowed() {
+    func testScientificNotAllowed() {
         let testInput = "14e10"
         let subject = AllowableStringValues()
-        XCTAssertTrue(subject.AreStringCharactersAllowed(input: testInput), testInput + " doesn't pass the expected ruleset")
+        XCTAssertFalse(subject.AreStringCharactersAllowed(input: testInput), testInput + " doesn't pass the expected ruleset")
     }
+    
     
     func testInvalidNumberNotAllowed() {
         let testInput = "14..2"

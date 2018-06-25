@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, UIPickerViewDelegate{
+class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, CustomTimeDelegate {
     
+    private var timeLabel : UILabel?
     private var recordManager : RecordModelManager!
     private var allowableCharacters : AllowableStringValues!
     
@@ -24,7 +25,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     public var recordType : RecordType?
     
-    private var sportPickerView = UIPickerView()
     @IBOutlet weak var sportTextField: UITextField!
     @IBOutlet weak var recordTitle: UITextField!
     
@@ -85,7 +85,11 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             return false
         }
         
-        return allowableCharacters.AreStringCharactersAllowed(input: textField.text!)
+        var fullText = string
+        if let text = textField.text, string == "." {
+            fullText = text + string
+        }
+        return allowableCharacters.AreStringCharactersAllowed(input: fullText)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -95,30 +99,14 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if(textField == sportTextField)
-        {
-            displaySportsPicker()
-            return
-        }
         DispatchQueue.main.async {
             textField.selectAll(nil)
         }
     }
     
-    func displaySportsPicker() {
-    }
-    
-    //Mark: Picker Delegates
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return picker?.pickerView(picker!, titleForRow: row, forComponent: component)
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func didUpdateTimeInterval(newtime: TimeInterval) {
         recordValue.text = picker?.timeInterval.timeString
-    }
-    
-    @objc func handleDatePicker(sender: UIDatePicker) {
-        recordValue.text = picker?.timeInterval.timeString
+        updateTimeLabelText()
     }
     
     func setupCurrentRecord() {
@@ -130,6 +118,10 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             currentRecord = recordManager.createRecordWith(type: recordType!, isTemplate: false)
         }
         currentRecord?.isTemplate = false
+    }
+    
+    fileprivate func updateTimeLabelText() {
+        timeLabel?.text = picker?.timeInterval.timeString
     }
     
     override func viewDidLoad() {
@@ -148,8 +140,17 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
                 if let value = currentRecord?.time, let timePicker = picker {
                     timePicker.timeInterval = value
                 }
-                picker?.delegate = self
+                picker?.timeDelegate = self
                 recordValue.inputView = picker
+                timeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80))
+                timeLabel?.textAlignment = .center
+                timeLabel?.font = UIFont.systemFont(ofSize: 28)
+                timeLabel?.textColor = .black
+                timeLabel?.backgroundColor = .lightGray
+                timeLabel?.adjustsFontSizeToFitWidth = true
+                updateTimeLabelText()
+                
+                recordValue.inputAccessoryView = timeLabel
                 
             }
         }

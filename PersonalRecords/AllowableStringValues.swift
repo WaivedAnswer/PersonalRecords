@@ -9,7 +9,22 @@
 import Foundation
 
 class AllowableStringValues {
-    func AreStringCharactersAllowed( input: String) -> Bool{
+    
+    private func areCharactersNumeric( input: String) -> Bool {
+        
+        let inputCharacters = CharacterSet.init(charactersIn: input)
+        
+        let allowableCharacterSet = CharacterSet.decimalDigits.union(CharacterSet.punctuationCharacters)
+        
+        return allowableCharacterSet.isSuperset(of: inputCharacters)
+    }
+    
+    func AreStringCharactersAllowed( input: String) -> Bool {
+        
+        if(!areCharactersNumeric(input: input)) {
+            return false
+        }
+        
         if let doubleVal = Double(input) {
             return doubleVal >= 0.0
         }
