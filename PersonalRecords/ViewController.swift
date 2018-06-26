@@ -51,20 +51,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setCellValues (record: RecordModel, cell: UITableViewCell ) {
         var valueString: String = ""
-        switch(record.type.name) {
-        case "Time":
+        if let type = RecordType(rawValue: record.type) {
+        switch(type) {
+        case .Time:
             valueString = record.time.timeString
-        case "Distance":
+        case .Distance:
             valueString = String(record.distance)
-        case "Repetition":
+        case .Repetition:
             valueString = String(record.reps)
-        case "Weight":
+        case .Weight:
             valueString = String(record.weight)
         default:
             break
         }
-        
-        cell.detailTextLabel?.text = "\(valueString) \(record.type.displayUnit)"
+        }
+        cell.detailTextLabel?.text = "\(valueString) m"
         cell.textLabel?.text = "\(record.title)"
     }
     

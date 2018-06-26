@@ -23,7 +23,7 @@ class RecordModelManager : NSManagedObjectContextDependent {
             into: context) as! RecordModel
         
         record.id = UUID()
-        record.type = type
+        record.type = type.rawValue
         record.title = ""
         record.time = 0
         record.distance = 0
@@ -32,28 +32,6 @@ class RecordModelManager : NSManagedObjectContextDependent {
         record.isTemplate = isTemplate
         
         return record
-    }
-    
-    func createRecordTypeWith(name: String, displayUnit: String) -> RecordType?
-    {
-        do {
-            let type = NSEntityDescription.insertNewObject(
-                forEntityName: RecordType.entityName,
-                into: context) as! RecordType
-
-            type.id = UUID()
-            type.name = name
-            type.displayUnit = displayUnit
-            
-            try context.save()
-            
-            return type
-        } catch {
-            context.rollback()
-            print (error)
-            print("Could not save new record type")
-            return nil
-        }
     }
     
     func createRecordWith(type: RecordType, isTemplate: Bool) -> Recordable? {

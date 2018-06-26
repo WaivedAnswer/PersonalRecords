@@ -16,9 +16,9 @@ var distance: Double {get set}
 var weight: Double {get set}
 var reps: Int32 {get set}
 var recordDescription: String? {get set}
-var sport: Sport? {get set}
+var sport: Int16 {get set}
 var id: UUID {get set}
-var type: RecordType {get set}
+var type: Int16 {get set}
 var isTemplate: Bool {get set}
 }
 
@@ -32,8 +32,8 @@ class RecordModel : NSManagedObject, Recordable {
     @NSManaged var weight: Double
     @NSManaged var reps: Int32
     @NSManaged var recordDescription: String?
-    @NSManaged var sport: Sport?
+    @NSManaged var sport: Int16
     @NSManaged var id: UUID
-    @NSManaged var type: RecordType
+    @NSManaged var type: Int16
     @NSManaged var isTemplate: Bool
 }

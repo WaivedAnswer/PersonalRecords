@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var dataService = DataService()
         dataService.context = mainContext
         
-        dataService.seedRecordTypes()
-        dataService.seedSportTypes()
         dataService.seedStandardRecordTemplates()
         
         let firstViewController = getFirstViewController()

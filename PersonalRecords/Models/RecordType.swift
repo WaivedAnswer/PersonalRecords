@@ -7,11 +7,22 @@
 //
 
 import Foundation
-import CoreData
 
-class RecordType : NSManagedObject {
-    static let entityName = "RecordType"
-    @NSManaged var id: UUID
-    @NSManaged var name: String
-    @NSManaged var displayUnit: String
+enum RecordType : Int {
+    case Distance = 0
+    case Weight = 1
+    case Time = 2
+    case Repetition = 3
+    
+    static var allTypes: [RecordType] {
+        var values: [RecordType] = []
+        var index = 0
+        while let element = self.init(rawValue: index) {
+            values.append(element)
+            index += 1
+        }
+        return values
+    }
 }
+
+

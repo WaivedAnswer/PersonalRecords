@@ -12,88 +12,18 @@ import CoreData
 struct DataService: NSManagedObjectContextDependent {
     var context: NSManagedObjectContext!
     
-    func AddRecordType(id: UUID, name: String, displayUnit: String)
-    {
-        let recordType = NSEntityDescription.insertNewObject(forEntityName: RecordType.entityName, into: context) as! RecordType
-        recordType.name = name
-        recordType.id = id
-        recordType.displayUnit = displayUnit
-    }
-    
-    func AddSportType(id: UUID, name: String)
-    {
-        let sportType = NSEntityDescription.insertNewObject(forEntityName: Sport.entityName, into: context) as! Sport
-        sportType.name = name
-        sportType.id = id
-    }
-    
     func AddRecordTemplate(id: UUID, title: String, type: RecordType, sport: Sport)
     {
         let record = NSEntityDescription.insertNewObject(forEntityName: RecordModel.entityName, into: context) as! RecordModel
         record.title = title
         record.id = id
-        record.type = type
-        record.sport = sport
+        record.type = type.rawValue
+        record.sport = sport.rawValue
         record.isTemplate = true
     }
     
-    func seedRecordTypes () {
-        let recordTypeFetchRequest = NSFetchRequest<RecordType>(entityName: RecordType.entityName)
-        do {
-            let types = try context.fetch(recordTypeFetchRequest)
-            let typesAlreadySeeded = types.count > 0
-            if(typesAlreadySeeded == false)
-            {
-                AddRecordType(id: UUID(), name: "Distance", displayUnit: "m")
-                AddRecordType(id: UUID(), name: "Weight", displayUnit: "lbs")
-                AddRecordType(id: UUID(), name: "Time", displayUnit: "")
-                AddRecordType(id: UUID(), name: "Repetition", displayUnit: "reps")
-                
-            }
-            do {
-                try context.save()
-            } catch {
-                context.rollback()
-                print(error.localizedDescription + " in seeding record types")
-            }
-        } catch {}
-        
-    }
-    
-    func seedSportTypes () {
-        let sportFetchRequest = NSFetchRequest<Sport>(entityName: Sport.entityName)
-        do {
-            let typesAlreadySeeded = try context.fetch(sportFetchRequest).count > 0
-            if(typesAlreadySeeded == false)
-            {
-                AddSportType(id: UUID(), name: "Running")
-                AddSportType(id: UUID(), name: "Swimming")
-                AddSportType(id: UUID(), name: "Road Biking")
-                AddSportType(id: UUID(), name: "Triathlon")
-                AddSportType(id: UUID(), name: "Obstacle Course Racing")
-                AddSportType(id: UUID(), name: "Weightlifting")
-                AddSportType(id: UUID(), name: "Crossfit")
-                AddSportType(id: UUID(), name: "Track & Field")
-                do {
-                    try context.save()
-                } catch {
-                    context.rollback()
-                    print(error.localizedDescription + " in seeding sport types")
-                }
-            }
-        } catch {}
-    }
-    
-    func getSport(_ name: String, sports: [Sport]) -> Sport {
-        return sports.first(where: { $0.name == name})!
-    }
-    
-    func getType(_ name: String,types: [RecordType]) -> RecordType {
-        return types.first(where: { $0.name == name})!
-    }
-    
-    func addTimeBasedTemplates(timeType: RecordType, availableSports: [Sport]) {
-        let runningSport = getSport("Running", sports: availableSports)
+    func addTimeBasedTemplates(timeType: RecordType) {
+        let runningSport = Sport.Running
         
         AddRecordTemplate(id: UUID(),
                           title: "10K Run",
@@ -112,7 +42,7 @@ struct DataService: NSManagedObjectContextDependent {
                           type: timeType,
                           sport: runningSport )
         
-        let triathlon = getSport("Triathlon", sports: availableSports)
+        let triathlon = Sport.Triathlon
         
         AddRecordTemplate(id: UUID(),
                           title: "Olympic Triathlon",
@@ -127,7 +57,7 @@ struct DataService: NSManagedObjectContextDependent {
                           type: timeType,
                           sport: triathlon )
         
-        let ocr = getSport("Obstacle Course Racing", sports: availableSports)
+        let ocr = Sport.ObstacleCourseRacing
         
         AddRecordTemplate(id: UUID(),
                           title: "Spartan Sprint",
@@ -142,7 +72,7 @@ struct DataService: NSManagedObjectContextDependent {
                           type: timeType,
                           sport: ocr )
         
-        let weightLifting = getSport("Weightlifting", sports: availableSports)
+        let weightLifting = Sport.Weightlifting
         
         AddRecordTemplate(id: UUID(),
                           title: "Dead-arm hang",
@@ -150,8 +80,8 @@ struct DataService: NSManagedObjectContextDependent {
                           sport: weightLifting )
     }
     
-    func addWeightBasedTemplates(weightType: RecordType, availableSports: [Sport]) {
-        let weightLifting = getSport("Weightlifting", sports: availableSports)
+    func addWeightBasedTemplates(weightType: RecordType) {
+        let weightLifting = Sport.Weightlifting
         
         AddRecordTemplate(id: UUID(),
                           title: "Squat",
@@ -192,8 +122,8 @@ struct DataService: NSManagedObjectContextDependent {
         
     }
     
-    func addRepetitionBasedTemplates(repType: RecordType, availableSports: [Sport]) {
-        let weightLifting = getSport("Weightlifting", sports: availableSports)
+    func addRepetitionBasedTemplates(repType: RecordType) {
+        let weightLifting = Sport.Weightlifting
         
         AddRecordTemplate(id: UUID(),
                           title: "Pull-up",
@@ -222,21 +152,16 @@ struct DataService: NSManagedObjectContextDependent {
             let templatesAlreadySeeded = try context.fetch(templateRequest).count > 0
             if(templatesAlreadySeeded == false)
             {
-                let sportFetchRequest = NSFetchRequest<Sport>(entityName: Sport.entityName)
-                let availableSports = try context.fetch(sportFetchRequest)
                 
-                let recordTypeFetchRequest = NSFetchRequest<RecordType>(entityName: RecordType.entityName)
-                let availableTypes = try context.fetch(recordTypeFetchRequest)
+                let timeType = RecordType.Time
                 
-                let timeType = availableTypes.first(where: { $0.name == "Time"})!
+                addTimeBasedTemplates(timeType: timeType)
                 
-                addTimeBasedTemplates(timeType: timeType, availableSports: availableSports)
+                let repType = RecordType.Time
+                addRepetitionBasedTemplates(repType: repType)
                 
-                let repType = availableTypes.first(where: { $0.name == "Repetition"})!
-                addRepetitionBasedTemplates(repType: repType, availableSports: availableSports)
-                
-                let weightType = availableTypes.first(where: { $0.name == "Weight"})!
-                addWeightBasedTemplates(weightType: weightType, availableSports: availableSports)
+                let weightType = RecordType.Weight
+                addWeightBasedTemplates(weightType: weightType)
                 
                 
                 do {

@@ -43,6 +43,7 @@
 		D408F1BD20DB5B5D008A0072 /* AllowableStringValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowableStringValues.swift; sourceTree = "<group>"; };
 		D408F1BF20DB5C3A008A0072 /* AllowableCharactersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllowableCharactersTests.swift; sourceTree = "<group>"; };
 		D408F1C120DC8F12008A0072 /* CustomTimePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickerTests.swift; sourceTree = "<group>"; };
+		D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 3.xcdatamodel"; sourceTree = "<group>"; };
 		D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalRecordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4201D2920D1FBB20091FA60 /* PersonalRecordsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecordsTests.swift; sourceTree = "<group>"; };
 		D4201D2B20D1FBB20091FA60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -528,10 +529,11 @@
 		D45DA1C920747C13002950A8 /* Record.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */,
 				D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */,
 				D45DA1CA20747C13002950A8 /* Record.xcdatamodel */,
 			);
-			currentVersion = D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */;
+			currentVersion = D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */;
 			path = Record.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

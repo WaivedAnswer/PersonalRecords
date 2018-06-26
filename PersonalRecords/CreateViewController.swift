@@ -35,19 +35,15 @@ class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     
     @IBAction func createFromTemplate(_ sender: Any) {
         self.recordTemplate = templates[TemplatePicker.selectedRow(inComponent: 0)]
-        self.recordType = recordTemplate?.type
+        self.recordType = RecordType(rawValue: recordTemplate!.type)
         self.performSegue(withIdentifier: "EditNew", sender: nil)
     }
     @IBAction func createNew(_ sender: Any) {
         let actions = UIAlertController(title: "Create Custom", message: "Choose a record type", preferredStyle: .actionSheet)
         
-        let typeFetchRequest = NSFetchRequest<RecordType>(entityName: RecordType.entityName)
-        let alphabeticalSort = NSSortDescriptor(key: #keyPath(RecordType.name), ascending: true)
-        typeFetchRequest.sortDescriptors = [alphabeticalSort]
-        
-        let types = try! context.fetch(typeFetchRequest)
+        let types = RecordType.allTypes
         for type in types {
-            let action = UIAlertAction(title: NSLocalizedString(type.name, comment: "\(type.name) action"), style: .default) {
+            let action = UIAlertAction(title: NSLocalizedString(String(type.rawValue), comment: "\(type.rawValue) action"), style: .default) {
                 _ in
                 self.recordType = type
                 self.performSegue(withIdentifier: "EditNew", sender: nil)
