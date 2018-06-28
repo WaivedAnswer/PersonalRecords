@@ -23,7 +23,7 @@ class RecordModelManager : NSManagedObjectContextDependent {
             into: context) as! RecordModel
         
         record.id = UUID()
-        record.type = type.rawValue
+        record.type = Int16(type.rawValue)
         record.title = ""
         record.time = 0
         record.distance = 0

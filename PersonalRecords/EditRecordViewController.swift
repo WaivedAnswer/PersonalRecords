@@ -134,7 +134,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         setupCurrentRecord()
         
         if let type = recordType {
-            valueLabel.text = String(type.rawValue)
+            valueLabel.text = type.getName()
             if(type == .Time) {
                 picker = CustomTimePicker()
                 if let value = currentRecord?.time, let timePicker = picker {
@@ -173,13 +173,11 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
                 recordValue.text = String(currRecord.reps)
             case .Weight:
                 recordValue.text = String(currRecord.weight)
-            default:
-                break
             }
             
             recordDescription.text = currRecord.recordDescription
             sportTextField.isEnabled = false
-            sportTextField.text = "Running"
+            sportTextField.text = Sport(value: currRecord.sport).getName()
         }
         // Do any additional setup after loading the view.
     }

@@ -93,7 +93,7 @@ class CustomTimePicker : UIPickerView, UIPickerViewDataSource, UIPickerViewDeleg
         self.setup()
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    private func updateFromSelected( _ row: Int, inComponent component: Int) {
         switch(component) {
         case timeValueComponentIndex:
             updateSelectedTimeValue( value: row )
@@ -106,6 +106,17 @@ class CustomTimePicker : UIPickerView, UIPickerViewDataSource, UIPickerViewDeleg
         }
         
         timeDelegate?.didUpdateTimeInterval(newtime: self.timeInterval)
+    }
+    
+    override func selectRow(_ row: Int, inComponent component: Int, animated: Bool) {
+        super.selectRow(row, inComponent: component, animated: animated)
+        
+        updateFromSelected(row, inComponent: component)
+    
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        updateFromSelected(row, inComponent: component)
     }
     
     func setup(){

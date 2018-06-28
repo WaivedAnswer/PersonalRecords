@@ -25,4 +25,37 @@ enum RecordType : Int {
     }
 }
 
+extension RecordType {
+    
+    init( value : Int16 ) {
+        self.init(rawValue: Int(value))!
+    }
+    
+    func getDisplayUnit() -> String {
+        switch(self) {
+        case .Time:
+            return "s"
+        case .Distance:
+            return "m"
+        case .Repetition:
+            return "reps"
+        case .Weight:
+            return "lbs"
+        }
+    }
+    
+    func getName() -> String {
+        switch(self) {
+        case .Time:
+            return "Time"
+        case .Distance:
+            return "Distance"
+        case .Repetition:
+            return "Repitition"
+        case .Weight:
+            return "Weight"
+        }
+    }
+}
+
 

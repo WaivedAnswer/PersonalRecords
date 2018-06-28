@@ -28,3 +28,31 @@ enum Sport : Int {
         return values
     }
 }
+
+extension Sport {
+    
+    init( value : Int16 ) {
+        self.init(rawValue: Int(value))!
+    }
+    
+    func getName() -> String {
+        switch(self) {
+        case .Running:
+            return "Running"
+        case .Swimming:
+            return "Swimming"
+        case .RoadBiking:
+            return "Road Biking"
+        case .Triathlon:
+            return "Triathlon"
+        case .ObstacleCourseRacing:
+            return "OCR"
+        case .Weightlifting:
+                return "Weightlifting"
+        case .Crossfit:
+            return "Crossfit"
+        case .TrackAndField:
+            return "Track & Field"
+        }
+    }
+}

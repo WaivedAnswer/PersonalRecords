@@ -17,14 +17,14 @@ struct DataService: NSManagedObjectContextDependent {
         let record = NSEntityDescription.insertNewObject(forEntityName: RecordModel.entityName, into: context) as! RecordModel
         record.title = title
         record.id = id
-        record.type = type.rawValue
-        record.sport = sport.rawValue
+        record.type = Int16(type.rawValue)
+        record.sport = Int16(sport.rawValue)
         record.isTemplate = true
     }
     
-    func addTimeBasedTemplates(timeType: RecordType) {
+    func addTimeBasedTemplates() {
         let runningSport = Sport.Running
-        
+        let timeType = RecordType.Time
         AddRecordTemplate(id: UUID(),
                           title: "10K Run",
                           type: timeType,
@@ -80,8 +80,9 @@ struct DataService: NSManagedObjectContextDependent {
                           sport: weightLifting )
     }
     
-    func addWeightBasedTemplates(weightType: RecordType) {
+    func addWeightBasedTemplates() {
         let weightLifting = Sport.Weightlifting
+        let weightType = RecordType.Weight
         
         AddRecordTemplate(id: UUID(),
                           title: "Squat",
@@ -122,8 +123,9 @@ struct DataService: NSManagedObjectContextDependent {
         
     }
     
-    func addRepetitionBasedTemplates(repType: RecordType) {
+    func addRepetitionBasedTemplates() {
         let weightLifting = Sport.Weightlifting
+        let repType = RecordType.Repetition
         
         AddRecordTemplate(id: UUID(),
                           title: "Pull-up",
@@ -152,17 +154,9 @@ struct DataService: NSManagedObjectContextDependent {
             let templatesAlreadySeeded = try context.fetch(templateRequest).count > 0
             if(templatesAlreadySeeded == false)
             {
-                
-                let timeType = RecordType.Time
-                
-                addTimeBasedTemplates(timeType: timeType)
-                
-                let repType = RecordType.Time
-                addRepetitionBasedTemplates(repType: repType)
-                
-                let weightType = RecordType.Weight
-                addWeightBasedTemplates(weightType: weightType)
-                
+                addTimeBasedTemplates()
+                addRepetitionBasedTemplates()
+                addWeightBasedTemplates()
                 
                 do {
                     try context.save()

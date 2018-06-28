@@ -34,17 +34,18 @@ class CustomTimePickerTests: XCTestCase {
     }
     
     func testTimePickerHasCorrectComponents() {
+        let subject2 = CustomTimePicker()
         let expectedTime = 3983.0
-        subject.timeInterval = expectedTime
+        subject2.timeInterval = expectedTime
         
-        subject.selectRow(0, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(1, subject.selectedRow(inComponent: subject.timeValueComponentIndex))
+        subject2.selectRow(0, inComponent: subject2.timeTypeComponentIndex, animated: false)
+        XCTAssertEqual(1, subject2.selectedRow(inComponent: subject2.timeValueComponentIndex))
         
-        subject.selectRow(1, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(6, subject.selectedRow(inComponent: subject.timeValueComponentIndex))
+        subject2.selectRow(1, inComponent: subject2.timeTypeComponentIndex, animated: false)
+        XCTAssertEqual(6, subject2.selectedRow(inComponent: subject2.timeValueComponentIndex))
         
-        subject.selectRow(2, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(23, subject.selectedRow(inComponent: subject.timeValueComponentIndex))
+        subject2.selectRow(2, inComponent: subject2.timeTypeComponentIndex, animated: false)
+        XCTAssertEqual(23, subject2.selectedRow(inComponent: subject2.timeValueComponentIndex))
     }
     
     func testTimePickerHasCorrectValueComponent() {

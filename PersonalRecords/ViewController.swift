@@ -51,21 +51,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setCellValues (record: RecordModel, cell: UITableViewCell ) {
         var valueString: String = ""
-        if let type = RecordType(rawValue: record.type) {
-        switch(type) {
-        case .Time:
-            valueString = record.time.timeString
-        case .Distance:
-            valueString = String(record.distance)
-        case .Repetition:
-            valueString = String(record.reps)
-        case .Weight:
-            valueString = String(record.weight)
-        default:
-            break
+        if let type = RecordType(rawValue: Int(record.type)) {
+            switch(type) {
+            case .Time:
+                valueString = record.time.timeString
+            case .Distance:
+                valueString = String(record.distance)
+            case .Repetition:
+                valueString = String(record.reps)
+            case .Weight:
+                valueString = String(record.weight)
+            }
+            valueString = "\(valueString) \(type.getDisplayUnit())"
         }
-        }
-        cell.detailTextLabel?.text = "\(valueString) m"
+        cell.detailTextLabel?.text = valueString
         cell.textLabel?.text = "\(record.title)"
     }
     
@@ -164,12 +163,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             print("Couldn't load records, try again?")
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
-
