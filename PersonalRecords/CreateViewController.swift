@@ -34,7 +34,11 @@ class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     var recordTemplate: RecordModel?
     
     @IBAction func createFromTemplate(_ sender: Any) {
-        self.recordTemplate = templates[TemplatePicker.selectedRow(inComponent: 0)]
+        let template = templates[TemplatePicker.selectedRow(inComponent: 0)]
+        let recordManager = RecordModelManager(mainContext: context)
+
+        self.recordTemplate = recordManager.copyRecord(record: template) as? RecordModel
+        
         self.recordType = RecordType(rawValue: Int(recordTemplate!.type))
         self.performSegue(withIdentifier: "EditNew", sender: nil)
     }

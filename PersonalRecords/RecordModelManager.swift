@@ -50,6 +50,29 @@ class RecordModelManager : NSManagedObjectContextDependent {
         }
     }
     
+    func copyRecord(record copied: Recordable) -> Recordable?
+    {
+        do {
+            let record = initRecord(type: RecordType(value: copied.type), isTemplate: copied.isTemplate)
+            record.distance = copied.distance
+            record.recordDescription = copied.recordDescription
+            record.title = copied.title
+            record.reps = copied.reps
+            record.sport = copied.sport
+            record.time = copied.time
+            record.weight = copied.weight
+            
+            try context.save()
+            
+            return record
+        } catch {
+            context.rollback()
+            print (error)
+            print("Could not save new record")
+            return nil
+        }
+    }
+    
     func getRecordBy( id: UUID) -> Recordable? {
         do {
             let request = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)

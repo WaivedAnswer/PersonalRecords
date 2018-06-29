@@ -148,10 +148,11 @@ struct DataService: NSManagedObjectContextDependent {
     func seedStandardRecordTemplates () {
         
         let templateRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
-        let templatePredicate = NSPredicate(format: "isTemplate = %@", "true")
+        let templatePredicate = NSPredicate(format: "isTemplate == TRUE")
         templateRequest.predicate = templatePredicate
         do {
-            let templatesAlreadySeeded = try context.fetch(templateRequest).count > 0
+            let currentTemplates = try context.fetch(templateRequest)
+            let templatesAlreadySeeded = currentTemplates.count > 0
             if(templatesAlreadySeeded == false)
             {
                 addTimeBasedTemplates()

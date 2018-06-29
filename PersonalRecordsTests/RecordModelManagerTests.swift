@@ -16,13 +16,13 @@ class PersonalRecordsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         context = createMainContext(inMemory: true)
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc: EditRecordViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! EditRecordViewController
-//
-//        let subject = vc
-//        subject.context = createMainContext(inMemory: true)
-//
-//        _ = subject.view
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let vc: EditRecordViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! EditRecordViewController
+        //
+        //        let subject = vc
+        //        subject.context = createMainContext(inMemory: true)
+        //
+        //        _ = subject.view
         
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -42,7 +42,7 @@ class PersonalRecordsTests: XCTestCase {
         XCTAssertNotNil(record)
         XCTAssertEqual(expectedType, RecordType(rawValue: Int(record!.type)))
         XCTAssertFalse(record!.isTemplate)
-
+        
     }
     
     func testRecordModelManagerGetRecord() {
@@ -50,7 +50,7 @@ class PersonalRecordsTests: XCTestCase {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Distance
         let record = subject.createRecordWith(type: expectedType, isTemplate: false)
-
+        
         let result = subject.getRecordBy(id: record!.id)
         XCTAssertEqual(record?.id, result?.id)
     }
@@ -78,12 +78,38 @@ class PersonalRecordsTests: XCTestCase {
         _ = subject.createRecordWith(type: expectedType, isTemplate: false)
         _ = subject.createRecordWith(type: expectedType, isTemplate: false)
         _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-//
-//        let typePredicate = NSPredicate(format: "%K == %@", "type", Int16(expectedType.rawValue) as CVarArg)
-//
-//        let records = subject.getRecordsWith(predicate: typePredicate)
-//        XCTAssertEqual(5, records.count)
-//        XCTAssertEqual(5, records.filter { $0.type == expectedType.rawValue }.count)
+        
+        let typePredicate = NSPredicate(format: "%K == %d", "type", Int16(expectedType.rawValue) as CVarArg)
+        
+        let records = subject.getRecordsWith(predicate: typePredicate)
+        XCTAssertEqual(5, records.count)
+        XCTAssertEqual(5, records.filter { $0.type == expectedType.rawValue }.count)
+    }
+    
+    func testRecordModelManagerCopyRecord() {
+        let subject = RecordModelManager(mainContext: context)
+        
+        let newRecord = subject.createRecordWith(type: .Distance, isTemplate: false) as! RecordModel
+        newRecord.title = "test"
+        newRecord.distance = 500
+        newRecord.recordDescription = "This is a cool descirpitoaiohg"
+        newRecord.reps = 50
+        newRecord.time = 600
+        newRecord.weight = 200
+        
+        let copiedRecord = subject.copyRecord(record: newRecord) as! RecordModel
+        
+        XCTAssertEqual(newRecord.type, copiedRecord.type)
+        XCTAssertEqual(newRecord.sport, copiedRecord.sport)
+        
+        XCTAssertEqual(newRecord.title, copiedRecord.title)
+        XCTAssertEqual(newRecord.isTemplate, copiedRecord.isTemplate)
+        XCTAssertEqual(newRecord.recordDescription, copiedRecord.recordDescription)
+        XCTAssertEqual(newRecord.time, copiedRecord.time)
+        XCTAssertEqual(newRecord.distance, copiedRecord.distance)
+        XCTAssertEqual(newRecord.reps, copiedRecord.reps)
+        XCTAssertEqual(newRecord.weight, copiedRecord.weight)
+        
     }
     
 }
