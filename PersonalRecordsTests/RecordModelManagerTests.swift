@@ -55,6 +55,23 @@ class PersonalRecordsTests: XCTestCase {
         XCTAssertEqual(record?.id, result?.id)
     }
     
+    func testRecordModelManagerGetRecordReturnsNilWhenNoRecords() {
+        
+        let subject = RecordModelManager(mainContext: context)
+        XCTAssertNil(subject.getRecordBy(id: UUID()))
+    }
+    
+    func testRecordModelManagerDeleteRecord() {
+        
+        let subject = RecordModelManager(mainContext: context)
+        let record = subject.createRecordWith(type: RecordType.Distance, isTemplate: false)
+        
+        if let recordId = record?.id {
+            XCTAssertTrue(subject.deleteRecordBy(id: recordId))
+            XCTAssertNil(subject.getRecordBy(id: recordId))
+        }
+    }
+    
     func testRecordModelManagerGetRecordWhenManyRecords() {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Repetition
@@ -84,6 +101,22 @@ class PersonalRecordsTests: XCTestCase {
         let records = subject.getRecordsWith(predicate: typePredicate)
         XCTAssertEqual(5, records.count)
         XCTAssertEqual(5, records.filter { $0.type == expectedType.rawValue }.count)
+    }
+    
+    func testRecordModelManagerGetRecordsByWhenTypeDoesntExist() {
+        let subject = RecordModelManager(mainContext: context)
+        let expectedType = RecordType.Weight
+        
+        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        
+        let typePredicate = NSPredicate(format: "%K == %d", "type", RecordType.Time.getValue() as CVarArg)
+        
+        let records = subject.getRecordsWith(predicate: typePredicate)
+        XCTAssertTrue(records.isEmpty)
     }
     
     func testRecordModelManagerCopyRecord() {

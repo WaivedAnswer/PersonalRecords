@@ -6,12 +6,26 @@
 	<dict>
 		<key>PersonalRecords.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>PersonalRecordsTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>D4201D2620D1FBB20091FA60</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D44A4C9E206F58F400581047</key>
 		<dict>
 			<key>primary</key>

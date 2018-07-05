@@ -17,6 +17,7 @@ enum Sport : Int {
     case Weightlifting = 5
     case Crossfit = 6
     case TrackAndField = 7
+    case Unknown = 500
     
     static var allSports: [Sport] {
         var values: [Sport] = []
@@ -33,6 +34,10 @@ extension Sport {
     
     init( value : Int16 ) {
         self.init(rawValue: Int(value))!
+    }
+    
+    func getValue() -> Int16 {
+        return Int16(self.rawValue)
     }
     
     func getName() -> String {
@@ -53,6 +58,8 @@ extension Sport {
             return "Crossfit"
         case .TrackAndField:
             return "Track & Field"
+        case .Unknown:
+            return ""
         }
     }
 }

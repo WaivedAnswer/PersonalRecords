@@ -42,12 +42,13 @@ class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
         self.recordType = RecordType(rawValue: Int(recordTemplate!.type))
         self.performSegue(withIdentifier: "EditNew", sender: nil)
     }
+    
     @IBAction func createNew(_ sender: Any) {
         let actions = UIAlertController(title: "Create Custom", message: "Choose a record type", preferredStyle: .actionSheet)
         
         let types = RecordType.allTypes
         for type in types {
-            let action = UIAlertAction(title: NSLocalizedString(String(type.rawValue), comment: "\(type.rawValue) action"), style: .default) {
+            let action = UIAlertAction(title: NSLocalizedString(type.getName(), comment: "\(type.getName()) action"), style: .default) {
                 _ in
                 self.recordType = type
                 self.performSegue(withIdentifier: "EditNew", sender: nil)

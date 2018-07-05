@@ -31,10 +31,14 @@ extension RecordType {
         self.init(rawValue: Int(value))!
     }
     
+    func getValue() -> Int16 {
+        return Int16(self.rawValue)
+    }
+    
     func getDisplayUnit() -> String {
         switch(self) {
         case .Time:
-            return "s"
+            return ""
         case .Distance:
             return "m"
         case .Repetition:

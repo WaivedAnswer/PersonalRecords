@@ -22,8 +22,9 @@ class RecordModelManager : NSManagedObjectContextDependent {
             forEntityName: RecordModel.entityName,
             into: context) as! RecordModel
         
+        record.sport = Sport.Unknown.getValue()
         record.id = UUID()
-        record.type = Int16(type.rawValue)
+        record.type = type.getValue()
         record.title = ""
         record.time = 0
         record.distance = 0
@@ -84,6 +85,14 @@ class RecordModelManager : NSManagedObjectContextDependent {
             print("Could not get record")
             return nil
         }
+    }
+    
+    func deleteRecordBy( id: UUID) -> Bool {
+        if let record = getRecordBy(id: id) as? RecordModel {
+            context.delete(record)
+            return true
+        }
+        return false
     }
     
     func getRecordsWith( predicate: NSPredicate) -> [Recordable] {

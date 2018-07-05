@@ -25,6 +25,8 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     public var recordType : RecordType?
     
+    private var isNewRecord : Bool = false
+    
     @IBOutlet weak var sportTextField: UITextField!
     @IBOutlet weak var recordTitle: UITextField!
     
@@ -69,7 +71,11 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     @IBAction func cancelEdit(_ sender: Any) {
         //todo remove rollback or move to recordmanager
+        
         context.rollback()
+        if(isNewRecord), let id = currentRecord?.id {
+            _ = recordManager.deleteRecordBy( id: id)
+        }
         goToHomeScreen()
     }
     
@@ -111,10 +117,12 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     func setupCurrentRecord() {
         if let recordId = currentRecordID {
+            isNewRecord = false
             currentRecord = recordManager.getRecordBy(id: recordId)
             recordType = RecordType(rawValue: Int(currentRecord.type))
             //todo populate template
         } else {
+            isNewRecord = true
             currentRecord = recordManager.createRecordWith(type: recordType!, isTemplate: false)
         }
         currentRecord?.isTemplate = false
