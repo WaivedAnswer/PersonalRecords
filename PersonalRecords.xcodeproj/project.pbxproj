@@ -11,6 +11,9 @@
 		D408F1C020DB5C3A008A0072 /* AllowableCharactersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408F1BF20DB5C3A008A0072 /* AllowableCharactersTests.swift */; };
 		D408F1C220DC8F12008A0072 /* CustomTimePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408F1C120DC8F12008A0072 /* CustomTimePickerTests.swift */; };
 		D4201D2A20D1FBB20091FA60 /* RecordModelManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */; };
+		D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433FA6220F6E08A009C3678 /* LoginViewController.swift */; };
+		D433FA6620F6E14A009C3678 /* LoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433FA6520F6E14A009C3678 /* LoginChecker.swift */; };
+		D433FA6920F70C07009C3678 /* FakeLoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433FA6820F70C07009C3678 /* FakeLoginChecker.swift */; };
 		D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F4C9A20D341D100470C71 /* RecordModelManager.swift */; };
 		D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CA2206F58F400581047 /* AppDelegate.swift */; };
 		D44A4CA5206F58F400581047 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CA4206F58F400581047 /* ViewController.swift */; };
@@ -47,6 +50,9 @@
 		D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalRecordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManagerTests.swift; sourceTree = "<group>"; };
 		D4201D2B20D1FBB20091FA60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D433FA6220F6E08A009C3678 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D433FA6520F6E14A009C3678 /* LoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginChecker.swift; sourceTree = "<group>"; };
+		D433FA6820F70C07009C3678 /* FakeLoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLoginChecker.swift; sourceTree = "<group>"; };
 		D43F4C9A20D341D100470C71 /* RecordModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManager.swift; sourceTree = "<group>"; };
 		D44A4C9F206F58F400581047 /* PersonalRecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalRecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44A4CA2206F58F400581047 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +103,22 @@
 			path = PersonalRecordsTests;
 			sourceTree = "<group>";
 		};
+		D433FA5F20F6E01D009C3678 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D433FA6220F6E08A009C3678 /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D433FA6420F6E0AC009C3678 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D433FA6520F6E14A009C3678 /* LoginChecker.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		D44A4C96206F58F400581047 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +140,8 @@
 		D44A4CA1206F58F400581047 /* PersonalRecords */ = {
 			isa = PBXGroup;
 			children = (
+				D433FA6420F6E0AC009C3678 /* Protocols */,
+				D433FA5F20F6E01D009C3678 /* ViewControllers */,
 				D45DA1C820747BF3002950A8 /* Models */,
 				D44A4CA2206F58F400581047 /* AppDelegate.swift */,
 				D44A4CA4206F58F400581047 /* ViewController.swift */,
@@ -133,6 +157,7 @@
 				D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */,
 				D43F4C9A20D341D100470C71 /* RecordModelManager.swift */,
 				D408F1BD20DB5B5D008A0072 /* AllowableStringValues.swift */,
+				D433FA6820F70C07009C3678 /* FakeLoginChecker.swift */,
 			);
 			path = PersonalRecords;
 			sourceTree = "<group>";
@@ -265,6 +290,8 @@
 				D408F1BE20DB5B5D008A0072 /* AllowableStringValues.swift in Sources */,
 				D44A4CA5206F58F400581047 /* ViewController.swift in Sources */,
 				D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */,
+				D433FA6920F70C07009C3678 /* FakeLoginChecker.swift in Sources */,
+				D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */,
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
@@ -272,6 +299,7 @@
 				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
 				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,
+				D433FA6620F6E14A009C3678 /* LoginChecker.swift in Sources */,
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
