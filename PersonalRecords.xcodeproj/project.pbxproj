@@ -30,6 +30,12 @@
 		D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D6207AC28D002950A8 /* DataService.swift */; };
 		D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D8207C6EEC002950A8 /* Extensions.swift */; };
 		D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */; };
+		D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031720FAF5E30002471B /* SessionManager.swift */; };
+		D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */; };
+		D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031D20FC50B20002471B /* SessionWriter.swift */; };
+		D4FD032020FC54300002471B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031F20FC54300002471B /* Session.swift */; };
+		D4FD032220FC56500002471B /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032120FC56500002471B /* SessionManagerTests.swift */; };
+		D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032420FC575F0002471B /* MockSessionWriter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +78,12 @@
 		D45DA1D8207C6EEC002950A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
+		D4FD031720FAF5E30002471B /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSessionWriter.swift; sourceTree = "<group>"; };
+		D4FD031D20FC50B20002471B /* SessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWriter.swift; sourceTree = "<group>"; };
+		D4FD031F20FC54300002471B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		D4FD032120FC56500002471B /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
+		D4FD032420FC575F0002471B /* MockSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionWriter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +107,12 @@
 		D4201D2820D1FBB20091FA60 /* PersonalRecordsTests */ = {
 			isa = PBXGroup;
 			children = (
+				D4FD032320FC57470002471B /* Mocks */,
 				D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */,
 				D4201D2B20D1FBB20091FA60 /* Info.plist */,
 				D408F1BF20DB5C3A008A0072 /* AllowableCharactersTests.swift */,
 				D408F1C120DC8F12008A0072 /* CustomTimePickerTests.swift */,
+				D4FD032120FC56500002471B /* SessionManagerTests.swift */,
 			);
 			path = PersonalRecordsTests;
 			sourceTree = "<group>";
@@ -115,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				D433FA6520F6E14A009C3678 /* LoginChecker.swift */,
+				D4FD031D20FC50B20002471B /* SessionWriter.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -140,6 +155,7 @@
 		D44A4CA1206F58F400581047 /* PersonalRecords */ = {
 			isa = PBXGroup;
 			children = (
+				D4FD031920FAFB280002471B /* Coordinators */,
 				D433FA6420F6E0AC009C3678 /* Protocols */,
 				D433FA5F20F6E01D009C3678 /* ViewControllers */,
 				D45DA1C820747BF3002950A8 /* Models */,
@@ -169,8 +185,26 @@
 				D45DA1CE20773760002950A8 /* RecordModel.swift */,
 				D45DA1D020798106002950A8 /* Sport.swift */,
 				D45DA1D4207AB9D5002950A8 /* RecordType.swift */,
+				D4FD031720FAF5E30002471B /* SessionManager.swift */,
+				D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */,
+				D4FD031F20FC54300002471B /* Session.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		D4FD031920FAFB280002471B /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		D4FD032320FC57470002471B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D4FD032420FC575F0002471B /* MockSessionWriter.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +313,8 @@
 			files = (
 				D4201D2A20D1FBB20091FA60 /* RecordModelManagerTests.swift in Sources */,
 				D408F1C220DC8F12008A0072 /* CustomTimePickerTests.swift in Sources */,
+				D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */,
+				D4FD032220FC56500002471B /* SessionManagerTests.swift in Sources */,
 				D408F1C020DB5C3A008A0072 /* AllowableCharactersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,16 +324,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D408F1BE20DB5B5D008A0072 /* AllowableStringValues.swift in Sources */,
+				D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */,
 				D44A4CA5206F58F400581047 /* ViewController.swift in Sources */,
+				D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */,
 				D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */,
 				D433FA6920F70C07009C3678 /* FakeLoginChecker.swift in Sources */,
 				D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */,
+				D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */,
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
 				D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */,
 				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
+				D4FD032020FC54300002471B /* Session.swift in Sources */,
 				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,
 				D433FA6620F6E14A009C3678 /* LoginChecker.swift in Sources */,
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
@@ -407,6 +447,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6EX5494DXV;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -466,6 +507,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6EX5494DXV;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -491,7 +533,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6EX5494DXV;
 				INFOPLIST_FILE = PersonalRecords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Quinnter.PersonalRecords;
@@ -510,7 +552,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6EX5494DXV;
 				INFOPLIST_FILE = PersonalRecords/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Quinnter.PersonalRecords;

@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, NSManagedObjectContextDependent {
         
     }
     
-    func onLoginError() {
+    private func onLoginError() {
         passwordField.text=""
         let alert = UIAlertController(title: "Login Failed", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
