@@ -10,9 +10,10 @@ import Foundation
 
 class SessionManager {
     let writer : SessionWriter
-    
-    init(sessionWriter: SessionWriter) {
-        writer = sessionWriter;
+    let loginChecker : LoginChecker
+    init(sessionWriter: SessionWriter, loginChecker: LoginChecker) {
+        self.writer = sessionWriter
+        self.loginChecker = loginChecker
     }
     
     func getCurrentSession() -> Session? {
@@ -23,8 +24,16 @@ class SessionManager {
         return nil
     }
     
-    func createSessionFor(id: String, data: String) -> Session {
-        let session = Session(id: id, data: data)
+    func removeCurrentSession() {
+        writer.removeCurrentSession()
+    }
+    
+    func createSessionFor(username: String, password: String) -> Session? {
+        if( !loginChecker.checkLogin(username: username, password: password)) {
+            return nil
+        }
+        
+        let session = Session(id: username, data: "EmptyData")
         writer.writeSessionFor(session: session)
         return session
     }

@@ -36,6 +36,8 @@
 		D4FD032020FC54300002471B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031F20FC54300002471B /* Session.swift */; };
 		D4FD032220FC56500002471B /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032120FC56500002471B /* SessionManagerTests.swift */; };
 		D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032420FC575F0002471B /* MockSessionWriter.swift */; };
+		D4FD032720FEF5230002471B /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032620FEF5230002471B /* MoreOptionsViewController.swift */; };
+		D4FD032920FEFD3C0002471B /* MockLoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,8 @@
 		D4FD031F20FC54300002471B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		D4FD032120FC56500002471B /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
 		D4FD032420FC575F0002471B /* MockSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionWriter.swift; sourceTree = "<group>"; };
+		D4FD032620FEF5230002471B /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
+		D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginChecker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				D433FA6220F6E08A009C3678 /* LoginViewController.swift */,
+				D4FD032620FEF5230002471B /* MoreOptionsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				D4FD032420FC575F0002471B /* MockSessionWriter.swift */,
+				D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FD032920FEFD3C0002471B /* MockLoginChecker.swift in Sources */,
 				D4201D2A20D1FBB20091FA60 /* RecordModelManagerTests.swift in Sources */,
 				D408F1C220DC8F12008A0072 /* CustomTimePickerTests.swift in Sources */,
 				D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */,
@@ -341,6 +348,7 @@
 				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,
 				D433FA6620F6E14A009C3678 /* LoginChecker.swift in Sources */,
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
+				D4FD032720FEF5230002471B /* MoreOptionsViewController.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
 				D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */,

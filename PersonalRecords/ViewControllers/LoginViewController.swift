@@ -10,9 +10,11 @@ import UIKit
 import CoreData
 
 //todo remove context dependent
-class LoginViewController: UIViewController, NSManagedObjectContextDependent {
-    var context: NSManagedObjectContext!
+class LoginViewController: UIViewController {
     
+    private var context: NSManagedObjectContext!
+    
+    var sessionManager : SessionManager!
     var loginChecker : LoginChecker!
 
     @IBOutlet weak var userNameField: UITextField!
@@ -23,12 +25,26 @@ class LoginViewController: UIViewController, NSManagedObjectContextDependent {
             return
         }
     
-        if(loginChecker.checkLogin(username: username, password: password)) {
-            performSegue(withIdentifier: "Login", sender: nil)
+        if let session = sessionManager.createSessionFor(username: username, password: password ) {
+            login(session: session)
         } else {
             onLoginError();
         }
         
+    }
+    
+    private func createAndSeedContext() {
+        context = createMainContext()
+        
+        var dataService = DataService()
+        dataService.context = context
+        
+        dataService.seedStandardRecordTemplates()
+    }
+    
+    private func login(session: Session) {
+        createAndSeedContext()
+        performSegue(withIdentifier: "Login", sender: nil)
     }
     
     private func onLoginError() {
@@ -40,8 +56,13 @@ class LoginViewController: UIViewController, NSManagedObjectContextDependent {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let current = sessionManager.getCurrentSession() {
+            login(session: current)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,8 +79,14 @@ class LoginViewController: UIViewController, NSManagedObjectContextDependent {
         // Pass the selected object to the new view controller.
         if(segue.identifier == "Login")
         {
-            let navController = segue.destination as! UINavigationController
+            let tabController = segue.destination as! UITabBarController
+
+            let navController = tabController.viewControllers?[0] as! UINavigationController
             let viewController = navController.viewControllers[0] as! ViewController
+            
+            let moreController = tabController.viewControllers?[1] as! MoreOptionsViewController
+            moreController.sessionManager = self.sessionManager
+            
             viewController.context = self.context
         }
     }

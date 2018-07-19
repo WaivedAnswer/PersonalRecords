@@ -20,4 +20,8 @@ class BasicSessionWriter : SessionWriter {
     func writeSessionFor( session: Session ) {
         preferences.set(session.sessionData, forKey: sessionKey)
     }
+    
+    func removeCurrentSession() {
+        return preferences.removeObject(forKey: sessionKey)
+    }
 }

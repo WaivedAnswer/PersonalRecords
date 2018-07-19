@@ -19,4 +19,7 @@ class MockSessionWriter : SessionWriter {
     func writeSessionFor(session: Session) {
         currentSession = session;
     }
+    func removeCurrentSession() {
+        currentSession = nil
+    }
 }

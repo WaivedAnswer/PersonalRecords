@@ -11,4 +11,5 @@ import Foundation
 protocol SessionWriter {
     func writeSessionFor( session: Session)
     func readCurrentSession() -> String?
+    func removeCurrentSession()
 }

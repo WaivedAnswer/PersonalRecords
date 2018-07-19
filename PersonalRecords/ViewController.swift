@@ -144,7 +144,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         setupController()
         // Do any additional setup after loading the view, typically from a nib.
-        title = "My Personal Records"
     }
     
     func setupController() {
