@@ -38,6 +38,7 @@
 		D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032420FC575F0002471B /* MockSessionWriter.swift */; };
 		D4FD032720FEF5230002471B /* MoreOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032620FEF5230002471B /* MoreOptionsViewController.swift */; };
 		D4FD032920FEFD3C0002471B /* MockLoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */; };
+		D4FD032E2102F4130002471B /* BasicTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032D2102F4130002471B /* BasicTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		D4FD032420FC575F0002471B /* MockSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionWriter.swift; sourceTree = "<group>"; };
 		D4FD032620FEF5230002471B /* MoreOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOptionsViewController.swift; sourceTree = "<group>"; };
 		D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginChecker.swift; sourceTree = "<group>"; };
+		D4FD032D2102F4130002471B /* BasicTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 		D44A4CA1206F58F400581047 /* PersonalRecords */ = {
 			isa = PBXGroup;
 			children = (
+				D4FD032C2102F3F90002471B /* ViewHelpers */,
 				D4FD031920FAFB280002471B /* Coordinators */,
 				D433FA6420F6E0AC009C3678 /* Protocols */,
 				D433FA5F20F6E01D009C3678 /* ViewControllers */,
@@ -211,6 +214,14 @@
 				D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		D4FD032C2102F3F90002471B /* ViewHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				D4FD032D2102F4130002471B /* BasicTextFieldDelegate.swift */,
+			);
+			path = ViewHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +354,7 @@
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
 				D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */,
 				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,
+				D4FD032E2102F4130002471B /* BasicTextFieldDelegate.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
 				D4FD032020FC54300002471B /* Session.swift in Sources */,
 				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,

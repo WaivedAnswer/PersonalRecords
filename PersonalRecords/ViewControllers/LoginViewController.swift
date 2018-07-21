@@ -12,6 +12,7 @@ import CoreData
 //todo remove context dependent
 class LoginViewController: UIViewController {
     
+    private var textFieldDelegate = BasicTextFieldDelegate()
     private var context: NSManagedObjectContext!
     
     var sessionManager : SessionManager!
@@ -56,6 +57,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNameField.delegate = textFieldDelegate
+        passwordField.delegate = textFieldDelegate
         // Do any additional setup after loading the view.
     }
     
