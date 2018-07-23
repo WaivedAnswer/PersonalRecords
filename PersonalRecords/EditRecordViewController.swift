@@ -98,9 +98,16 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         return allowableCharacters.AreStringCharactersAllowed(input: fullText)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        recordTitle.endEditing(true)
+        recordValue.endEditing(true)
+        recordDescription.endEditing(true)
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         DispatchQueue.main.async {
             textView.selectAll(nil)
+            
         }
     }
     
@@ -108,6 +115,11 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         DispatchQueue.main.async {
             textField.selectAll(nil)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func didUpdateTimeInterval(newtime: TimeInterval) {
