@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, CustomTimeDelegate {
-    
+    private let textFieldDelegate = BasicTextFieldDelegate()
     private var timeLabel : UILabel?
     private var recordManager : RecordModelManager!
     private var allowableCharacters : AllowableStringValues!

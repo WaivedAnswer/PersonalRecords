@@ -55,7 +55,7 @@ extension RecordType {
         case .Distance:
             return "Distance"
         case .Repetition:
-            return "Repitition"
+            return "Repetition"
         case .Weight:
             return "Weight"
         }
