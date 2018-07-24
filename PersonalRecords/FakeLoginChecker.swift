@@ -9,11 +9,15 @@
 import Foundation
 
 class FakeLoginChecker : LoginChecker {
-    let FakeUserName = "Test"
-    let FakePassword = "Testing"
+    let FakeUserName = "Amanda"
+    let FakePassword = "Test"
+    
+    let FakeUserName2 = "Quinn"
+    let FakePassword2 = "Test"
     
     func checkLogin(username: String, password: String) -> Bool {
-        return username == FakeUserName && password == FakePassword
+        return (username == FakeUserName && password == FakePassword) ||
+        (username == FakeUserName2 && password == FakePassword2)
     }
     
 }

@@ -14,7 +14,7 @@ class MockSessionWriter : SessionWriter {
     var currentSession : Session?
     
     func readCurrentSession() -> String? {
-        return currentSession?.sessionData
+        return currentSession?.userId
     }
     func writeSessionFor(session: Session) {
         currentSession = session;

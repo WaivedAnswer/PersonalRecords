@@ -18,8 +18,8 @@ class SessionManager {
     
     func getCurrentSession() -> Session? {
         //todo make this string value??
-        if let data = writer.readCurrentSession() {
-            return Session(id: "NotSure", data: data)
+        if let userId = writer.readCurrentSession() {
+            return Session(id: userId, data: "NotSure")
         }
         return nil
     }

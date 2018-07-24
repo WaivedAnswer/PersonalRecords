@@ -15,16 +15,7 @@ class PersonalRecordsTests: XCTestCase {
     //var subject : EditRecordViewController!
     override func setUp() {
         super.setUp()
-        context = createMainContext(inMemory: true)
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //        let vc: EditRecordViewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! EditRecordViewController
-        //
-        //        let subject = vc
-        //        subject.context = createMainContext(inMemory: true)
-        //
-        //        _ = subject.view
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        context = createMainContext(session: Session(id: "", data: ""), inMemory: true)
     }
     
     override func tearDown() {
@@ -52,7 +43,38 @@ class PersonalRecordsTests: XCTestCase {
         let record = subject.createRecordWith(type: expectedType, isTemplate: false)
         
         let result = subject.getRecordBy(id: record!.id)
+        XCTAssertNotNil(result)
         XCTAssertEqual(record?.id, result?.id)
+    }
+    
+    func testManagerOnSameUserContextsReturnsExpectedResults() {
+        
+        let subject = RecordModelManager(mainContext: context)
+        
+        let expectedType = RecordType.Distance
+        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        
+        let subject2 = RecordModelManager(mainContext: context)
+        
+        let result = subject2.getRecordBy(id: record!.id)
+        
+        XCTAssertNotNil(result)
+        XCTAssertEqual(record?.id, result?.id)
+    }
+    
+    func testManagerOnDifferentUserContextsReturnsSeparateResults() {
+        
+        let subject = RecordModelManager(mainContext: context)
+        
+        let expectedType = RecordType.Distance
+        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        
+        let context2 = createMainContext(session: Session(id: "user2", data: "blank"), inMemory: true)
+        let subject2 = RecordModelManager(mainContext: context2)
+    
+        let result = subject2.getRecordBy(id: record!.id)
+        
+        XCTAssertNil(result)
     }
     
     func testRecordModelManagerGetRecordReturnsNilWhenNoRecords() {

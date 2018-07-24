@@ -48,13 +48,14 @@ class SessionManagerTests: XCTestCase {
     
     func testCurrentSessionReadIsCorrect() {
         let mockWriter = MockSessionWriter()
+        let id = "existingSession"
         let existingData = "existingData"
-        mockWriter.currentSession = Session(id: "existingSession", data: existingData)
+        mockWriter.currentSession = Session(id: id, data: existingData)
         
         let subject2 = SessionManager(sessionWriter: mockWriter, loginChecker: MockLoginChecker(canLogin: true))
         let session = subject2.getCurrentSession()
         
-        XCTAssertEqual(existingData, session?.sessionData)
+        XCTAssertEqual(id, session?.userId)
     }
     
     func testCurrentSessionReadIsCorrectWhenNoCurrentSession() {

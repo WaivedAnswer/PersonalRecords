@@ -34,8 +34,8 @@ class LoginViewController: UIViewController {
         
     }
     
-    private func createAndSeedContext() {
-        context = createMainContext()
+    private func createAndSeedContext(session: Session) {
+        context = createMainContext(session: session)
         
         var dataService = DataService()
         dataService.context = context
@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
     }
     
     private func login(session: Session) {
-        createAndSeedContext()
+        createAndSeedContext(session: session)
         performSegue(withIdentifier: "Login", sender: nil)
     }
     

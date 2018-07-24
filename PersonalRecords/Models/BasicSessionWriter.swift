@@ -18,7 +18,7 @@ class BasicSessionWriter : SessionWriter {
     }
     
     func writeSessionFor( session: Session ) {
-        preferences.set(session.sessionData, forKey: sessionKey)
+        preferences.set(session.userId, forKey: sessionKey)
     }
     
     func removeCurrentSession() {
