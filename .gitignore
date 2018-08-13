@@ -8,3 +8,5 @@ PersonalRecords\.xcodeproj/project\.xcworkspace/xcuserdata/quinnramsay\.xcuserda
 PersonalRecords\.xcodeproj/xcuserdata/quinnramsay\.xcuserdatad/xcdebugger/Breakpoints_v2\.xcbkptlist
 
 PersonalRecords\.xcodeproj/xcuserdata/quinnramsay\.xcuserdatad/xcschemes/PersonalRecords\.xcscheme
+
+*.xcbkptlist

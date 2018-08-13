@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Unbox
 
 struct TemplateData {
     var id: UUID
@@ -17,12 +16,4 @@ struct TemplateData {
     var description: String
 }
 
-extension TemplateData: Unboxable {
-    init(unboxer: Unboxer) throws {
-        self.title = try unboxer.unbox(key: "title")
-        self.description = try unboxer.unbox(key: "description")
-        self.type = RecordType.Distance
-        self.sport = Sport.Crossfit
-        self.id = UUID()
-    }
-}
+

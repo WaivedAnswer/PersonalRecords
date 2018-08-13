@@ -38,9 +38,9 @@ class JsonTemplateReaderTests: XCTestCase {
         }
         
         XCTAssertEqual(template.title, "BestRecord")
-//        XCTAssertEqual(template.id, UUID())
-//        XCTAssertEqual(template.sport, Sport.Running)
-//        XCTAssertEqual(template.type, RecordType.Time)
+        XCTAssertEqual(template.id, UUID(uuidString: "6CBE7151-CB57-4739-9F9E-11E409AC5D7F"))
+        XCTAssertEqual(template.sport, Sport.Crossfit)
+        XCTAssertEqual(template.type, RecordType.Time)
         XCTAssertEqual(template.description, "Test template: please ignore")
         
     }
