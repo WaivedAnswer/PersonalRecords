@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -184,13 +182,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxM-gE-OQP">
-                                <rect key="frame" x="156" y="656" width="103" height="30"/>
-                                <state key="normal" title="Create Custom"/>
-                                <connections>
-                                    <action selector="createNew:" destination="X2Q-Jx-n3B" eventType="touchUpInside" id="jll-SH-pQU"/>
-                                </connections>
-                            </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bho-n4-bgq">
                                 <rect key="frame" x="0.0" y="214" width="414" height="216"/>
                                 <connections>
@@ -199,12 +190,12 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Templates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcy-tT-4Z3">
-                                <rect key="frame" x="132" y="184.66666666666666" width="151" height="21"/>
+                                <rect key="frame" x="132" y="185" width="151" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqf-MZ-dow">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqf-MZ-dow">
                                 <rect key="frame" x="132" y="618" width="152" height="30"/>
                                 <state key="normal" title="Create From Template"/>
                                 <connections>
@@ -214,15 +205,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bho-n4-bgq" firstAttribute="leading" secondItem="Rpv-Ds-Ln2" secondAttribute="leading" id="3bN-iU-PH3"/>
-                            <constraint firstAttribute="bottom" secondItem="SxM-gE-OQP" secondAttribute="bottom" constant="50" id="Bfb-vD-gWC"/>
-                            <constraint firstItem="Zcy-tT-4Z3" firstAttribute="centerX" secondItem="Rpv-Ds-Ln2" secondAttribute="centerX" id="FXF-0B-ryX"/>
-                            <constraint firstItem="SxM-gE-OQP" firstAttribute="top" secondItem="eqf-MZ-dow" secondAttribute="bottom" constant="8" id="NDI-2s-e4V"/>
-                            <constraint firstItem="bho-n4-bgq" firstAttribute="firstBaseline" secondItem="Zcy-tT-4Z3" secondAttribute="baseline" constant="12.333333333333334" symbolType="layoutAnchor" id="cv4-OE-Ykw"/>
-                            <constraint firstItem="eqf-MZ-dow" firstAttribute="centerX" secondItem="Rpv-Ds-Ln2" secondAttribute="centerX" id="ePI-Ec-1K9"/>
-                            <constraint firstItem="bho-n4-bgq" firstAttribute="top" secondItem="Rpv-Ds-Ln2" secondAttribute="top" constant="150" id="ebs-db-VgV"/>
-                            <constraint firstItem="bho-n4-bgq" firstAttribute="trailing" secondItem="Rpv-Ds-Ln2" secondAttribute="trailing" id="g0u-IY-JdD"/>
-                            <constraint firstItem="SxM-gE-OQP" firstAttribute="centerX" secondItem="wTm-Fk-m4c" secondAttribute="centerX" id="sua-BQ-F5M"/>
+                            <constraint firstItem="Zcy-tT-4Z3" firstAttribute="leading" secondItem="eqf-MZ-dow" secondAttribute="leading" id="JlY-a3-GCj"/>
+                            <constraint firstAttribute="trailing" secondItem="bho-n4-bgq" secondAttribute="trailing" id="NqN-mE-Gmr"/>
+                            <constraint firstItem="Zcy-tT-4Z3" firstAttribute="centerX" secondItem="bho-n4-bgq" secondAttribute="centerX" id="YTr-iq-h9N"/>
+                            <constraint firstItem="Rpv-Ds-Ln2" firstAttribute="bottom" secondItem="eqf-MZ-dow" secondAttribute="bottom" constant="39" id="b4H-pH-3Rc"/>
+                            <constraint firstItem="bho-n4-bgq" firstAttribute="top" secondItem="Zcy-tT-4Z3" secondAttribute="bottom" constant="8" symbolic="YES" id="eck-rF-60I"/>
+                            <constraint firstItem="bho-n4-bgq" firstAttribute="leading" secondItem="wTm-Fk-m4c" secondAttribute="leading" id="qnn-8z-dfU"/>
+                            <constraint firstItem="Zcy-tT-4Z3" firstAttribute="top" secondItem="Rpv-Ds-Ln2" secondAttribute="top" constant="121" id="sxw-Gz-7JU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rpv-Ds-Ln2"/>
                     </view>
@@ -410,9 +399,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iJ-OP-1Xu">
-                                <rect key="frame" x="159" y="629" width="97" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iJ-OP-1Xu">
+                                <rect key="frame" x="142.66666666666666" y="334" width="128.99999999999997" height="68"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="25" maxX="41" maxY="25"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -424,8 +414,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0iJ-OP-1Xu" firstAttribute="centerX" secondItem="89j-Xv-Tmv" secondAttribute="centerX" id="1Gj-Uq-UL9"/>
-                            <constraint firstItem="89j-Xv-Tmv" firstAttribute="bottom" secondItem="0iJ-OP-1Xu" secondAttribute="bottom" constant="28" id="s2B-ei-NYk"/>
+                            <constraint firstItem="0iJ-OP-1Xu" firstAttribute="centerX" secondItem="ZXz-Pe-J4L" secondAttribute="centerX" id="KbZ-DL-4NZ"/>
+                            <constraint firstItem="0iJ-OP-1Xu" firstAttribute="centerY" secondItem="ZXz-Pe-J4L" secondAttribute="centerY" id="iJz-lI-7Jw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="89j-Xv-Tmv"/>
                     </view>
@@ -436,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d9O-oy-Y2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-587" y="443"/>
+            <point key="canvasLocation" x="-588.40579710144937" y="442.66304347826093"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
