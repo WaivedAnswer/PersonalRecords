@@ -9,6 +9,13 @@
 import Foundation
 
 struct TemplateData {
+    init( id: UUID, title: String, type: RecordType, sport: Sport, description: String = "") {
+        self.id = id
+        self.title = title
+        self.type = type
+        self.sport = sport
+        self.description = description
+    }
     var id: UUID
     var title: String
     var type: RecordType

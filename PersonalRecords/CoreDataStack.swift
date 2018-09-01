@@ -14,7 +14,6 @@ func createMainContext (session: Session, inMemory: Bool = false) -> NSManagedOb
     let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd")
     guard let model = NSManagedObjectModel(contentsOf: modelURL!) else {fatalError("model cannot be created")}
     
-    
     //Configure NSPersistentStoreCoordinator
     let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
     //Add NSPersistenStore to coordinator

@@ -1,0 +1,51 @@
+//
+//  DataServiceTests.swift
+//  PersonalRecordsTests
+//
+//  Created by Quinn Ramsay on 2018-09-01.
+//  Copyright © 2018 Quinnter. All rights reserved.
+//
+
+import XCTest
+import CoreData
+@testable import PersonalRecords
+
+class DataServiceTests: XCTestCase {
+    var context : NSManagedObjectContext!
+    
+    override func setUp() {
+        super.setUp()
+        context = createMainContext(session: Session(id: "", data: ""), inMemory: true)
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+    
+    func test10KRunTemplateExists() {
+        let subject = DataService( context: context)
+        subject.seedStandardRecordTemplates()
+        
+        XCTAssertTrue(subject.templateExists(id: RecordTemplates.Run10K.id))
+    }
+    
+    func testTemplateCountIsCorrect() {
+        let subject = DataService( context: context)
+        subject.seedStandardRecordTemplates()
+        
+        var results : [RecordModel] = []
+        do {
+            let templateRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
+            templateRequest.predicate = NSPredicate(format: "isTemplate == TRUE")
+            results = try context.fetch(templateRequest)
+        } catch {
+            print(error)
+            print("Error retrieving templated record.")
+        }
+        
+        XCTAssertEqual(RecordTemplates.allTemplates.count, results.count)
+    }
+    
+    
+}

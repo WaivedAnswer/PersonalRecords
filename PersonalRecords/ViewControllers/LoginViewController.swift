@@ -37,9 +37,7 @@ class LoginViewController: UIViewController {
     private func createAndSeedContext(session: Session) {
         context = createMainContext(session: session)
         
-        var dataService = DataService()
-        dataService.context = context
-        
+        let dataService = DataService(context: context)
         dataService.seedStandardRecordTemplates()
     }
     
