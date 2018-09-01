@@ -29,13 +29,12 @@ struct DataService {
         }
     }
     
-    private func addRecordTemplates() {
-        for template in RecordTemplates.allTemplates {
-            addRecordTemplate(data: template)
-        }
+    func addRecordTemplate(data: TemplateData) {
+        addRecordTemplateNoSave(data: data)
+        saveContext()
     }
     
-    private func addRecordTemplate(data: TemplateData) {
+    private func addRecordTemplateNoSave(data: TemplateData) {
         if(templateExists(id: data.id)) {
             return
         }
@@ -48,15 +47,19 @@ struct DataService {
         record.isTemplate = true
     }
     
-    func seedStandardRecordTemplates () {
-        addRecordTemplates()
-        
+    fileprivate func saveContext() {
         do {
             try context.save()
         } catch {
             context.rollback()
             print(error.localizedDescription + " in seeding templates")
         }
-
+    }
+    
+    func seedStandardRecordTemplates () {
+        for template in RecordTemplates.allTemplates {
+            addRecordTemplateNoSave(data: template)
+        }
+        saveContext()
     }
 }

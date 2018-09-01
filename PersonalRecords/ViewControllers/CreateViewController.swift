@@ -11,19 +11,22 @@ import CoreData
 
 class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDelegate {
     
+    private var templateDataSource : TemplateDataSource!
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return templates.count
+        return templateDataSource.getCount()
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return templates[row].title
+        if let template = templateDataSource.getTemplate(row: row) {
+            return template.title
+        }
+        return ""
     }
-    
-    var templates : [RecordModel]!
     
     @IBOutlet weak var TemplatePicker: UIPickerView!
     
@@ -33,12 +36,14 @@ class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     var recordTemplate: RecordModel?
     
     @IBAction func createFromTemplate(_ sender: Any) {
-        let template = templates[TemplatePicker.selectedRow(inComponent: 0)]
-        let recordManager = RecordModelManager(mainContext: context)
-
-        self.recordTemplate = recordManager.copyRecord(record: template) as? RecordModel
+        let row = TemplatePicker.selectedRow(inComponent: 0)
         
-        self.recordType = RecordType(rawValue: Int(recordTemplate!.type))
+        guard let template = templateDataSource.getTemplate(row: row) else {
+            fatalError("SelectedTemplate doesn't exist")
+        }
+        
+        self.recordTemplate = template
+        self.recordType = RecordType(value: template.type)
         self.performSegue(withIdentifier: "EditNew", sender: nil)
     }
     
@@ -72,23 +77,8 @@ class CreateViewController: UIViewController,UIPickerViewDataSource, UIPickerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTemplates()
+        templateDataSource = TemplateDataSource(context: context)
         // Do any additional setup after loading the view.
-    }
-    
-    func fetchTemplates() {
-        let titleSort = NSSortDescriptor(key: #keyPath(RecordModel.title), ascending: true)
-        let filter = NSPredicate(format: "isTemplate == TRUE")
-        let fetchRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
-        fetchRequest.predicate = filter
-        fetchRequest.sortDescriptors = [titleSort]
-        do {
-            templates = try context.fetch(fetchRequest)
-        } catch {
-            templates = []
-            print("Something went wrong")
-        }
-        
     }
 
     override func didReceiveMemoryWarning() {
