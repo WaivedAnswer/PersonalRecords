@@ -36,7 +36,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     @IBOutlet weak var recordDescription: UITextView!
     
-    @IBAction func saveRecord(_ sender: Any) {
+    @objc func saveRecord() {
         updateRecord()
         
         do {
@@ -69,7 +69,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         currentRecord?.recordDescription = recordDescription.text
     }
     
-    @IBAction func cancelEdit(_ sender: Any) {
+    @objc func cancelEdit() {
         //todo remove rollback or move to recordmanager
         
         context.rollback()
@@ -147,6 +147,9 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.cancelEdit))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.saveRecord))
         
         recordManager = RecordModelManager(mainContext: context)
         allowableCharacters = AllowableStringValues()
