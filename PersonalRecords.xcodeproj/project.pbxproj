@@ -44,6 +44,7 @@
 		D4DB7838213B940700217819 /* SubstringFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7837213B940700217819 /* SubstringFilterTests.swift */; };
 		D4DB783A213B965100217819 /* Filterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7839213B965100217819 /* Filterable.swift */; };
 		D4DB783E213B97CA00217819 /* FilterableRecordModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */; };
+		D4DB78402140C0AD00217819 /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */; };
 		D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031720FAF5E30002471B /* SessionManager.swift */; };
 		D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */; };
 		D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031D20FC50B20002471B /* SessionWriter.swift */; };
@@ -115,6 +116,7 @@
 		D4DB7837213B940700217819 /* SubstringFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstringFilterTests.swift; sourceTree = "<group>"; };
 		D4DB7839213B965100217819 /* Filterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filterable.swift; sourceTree = "<group>"; };
 		D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableRecordModelTests.swift; sourceTree = "<group>"; };
+		D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
 		D4FD031720FAF5E30002471B /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSessionWriter.swift; sourceTree = "<group>"; };
 		D4FD031D20FC50B20002471B /* SessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWriter.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				D433FA6520F6E14A009C3678 /* LoginChecker.swift */,
 				D4FD031D20FC50B20002471B /* SessionWriter.swift */,
 				D4DB7839213B965100217819 /* Filterable.swift */,
+				D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */,
 				D4223D9F21210AE0003A8075 /* UnboxableExtensions.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
+				D4DB78402140C0AD00217819 /* TransitionDelegate.swift in Sources */,
 				D4DB7836213B924A00217819 /* SubstringFilter.swift in Sources */,
 				D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */,
 				D4223D952120F7C5003A8075 /* JsonTemplateReader.swift in Sources */,

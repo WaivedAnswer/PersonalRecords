@@ -9,8 +9,16 @@
 import UIKit
 
 class BasicTextFieldDelegate : NSObject, UITextFieldDelegate {
+    
+    private var delegate : TransitionDelegate?
+    
+    init( transition: TransitionDelegate?) {
+        self.delegate = transition;
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        delegate?.onTransition()
         return true
     }
 }

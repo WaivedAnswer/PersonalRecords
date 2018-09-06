@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 
 //todo remove context dependent
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, TransitionDelegate {
+
+    private var passwordFieldDelegate : BasicTextFieldDelegate!
     
-    private var textFieldDelegate = BasicTextFieldDelegate()
     private var context: NSManagedObjectContext!
     
     var sessionManager : SessionManager!
@@ -22,16 +23,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     
     @IBAction func onLogin(_ sender: UIButton) {
+        onLoginInternal()
+    }
+    
+    func onTransition() {
+        onLoginInternal()
+    }
+    
+    private func onLoginInternal() {
         guard let username = userNameField.text, let password = passwordField.text else {
             return
         }
-    
+        
         if let session = sessionManager.createSessionFor(username: username, password: password ) {
             login(session: session)
         } else {
             onLoginError();
         }
-        
     }
     
     private func createAndSeedContext(session: Session) {
@@ -55,8 +63,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userNameField.delegate = textFieldDelegate
-        passwordField.delegate = textFieldDelegate
+    
+        passwordFieldDelegate = BasicTextFieldDelegate(transition: self)
+        
+        userNameField.delegate = BasicTextFieldDelegate(transition: nil)
+        passwordField.delegate = passwordFieldDelegate
         // Do any additional setup after loading the view.
     }
     
