@@ -37,7 +37,6 @@ class PersonalRecordsTests: XCTestCase {
     }
     
     func testRecordModelManagerGetRecord() {
-        
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Distance
         let record = subject.createRecordWith(type: expectedType, isTemplate: false)

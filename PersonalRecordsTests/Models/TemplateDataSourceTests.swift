@@ -29,7 +29,7 @@ class TemplateDataSourceTests: XCTestCase {
         XCTAssertEqual(0, subject.getCount())
     }
     
-    func testGetCountIsCorrectWhenAllAreAdded() {
+    func testGetCountIsCorrectWhenMultipleAreAdded() {
         let subject = TemplateDataSource(context: context)
         let dataService = DataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
@@ -53,6 +53,45 @@ class TemplateDataSourceTests: XCTestCase {
         XCTAssertNotNil( template )
         XCTAssertEqual( RecordTemplates.Squat.id, template?.id )
         XCTAssertEqual( RecordTemplates.Squat.title, template?.title )
+    }
+    
+    func testGetCountIsCorrectWhenMultipleAreAddedWithFilter() {
+        let subject = TemplateDataSource(context: context)
+        let dataService = DataService(context: context)
+        dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
+        dataService.addRecordTemplate(data: RecordTemplates.PushPress)
+        dataService.addRecordTemplate(data: RecordTemplates.StrictPress)
+        dataService.addRecordTemplate(data: RecordTemplates.RunMarathon)
+        
+        subject.applyFilter(filter: SubstringFilter("Press"))
+        XCTAssertEqual(3, subject.getCount())
+    }
+    
+    func testGetCountIsCorrectWhenMultipleAreAddedWhenFiltersAreRemoved() {
+        let subject = TemplateDataSource(context: context)
+        let dataService = DataService(context: context)
+        dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
+        dataService.addRecordTemplate(data: RecordTemplates.PushPress)
+        dataService.addRecordTemplate(data: RecordTemplates.StrictPress)
+        dataService.addRecordTemplate(data: RecordTemplates.RunMarathon)
+        
+        subject.applyFilter(filter: SubstringFilter("Press"))
+        subject.clearAllFilters()
+        XCTAssertEqual(4, subject.getCount())
+    }
+    
+    func testGetCountIsCorrectWhenMultipleAreAddedWhenFilterIsReplaced() {
+        let subject = TemplateDataSource(context: context)
+        let dataService = DataService(context: context)
+        dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
+        dataService.addRecordTemplate(data: RecordTemplates.PushPress)
+        dataService.addRecordTemplate(data: RecordTemplates.StrictPress)
+        dataService.addRecordTemplate(data: RecordTemplates.RunMarathon)
+        
+        subject.applyFilter(filter: SubstringFilter("Press"))
+        subject.replaceFilter(filter: SubstringFilter("Run"))
+        
+        XCTAssertEqual(1, subject.getCount())
     }
     
 }

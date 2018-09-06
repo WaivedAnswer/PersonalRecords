@@ -37,3 +37,15 @@ class RecordModel : NSManagedObject, Recordable {
     @NSManaged var type: Int16
     @NSManaged var isTemplate: Bool
 }
+
+extension RecordModel : Filterable {
+    
+    private func titlePasses(filter: SubstringFilter) -> Bool {
+        return filter.passes(input: title)
+    }
+    
+    func passes(filter: SubstringFilter) -> Bool {
+        return titlePasses(filter: filter)
+    }
+    
+}

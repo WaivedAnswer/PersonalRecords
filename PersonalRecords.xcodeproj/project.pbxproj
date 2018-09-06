@@ -40,6 +40,10 @@
 		D4DB782C213B275D00217819 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB782B213B275D00217819 /* DataServiceTests.swift */; };
 		D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7831213B424E00217819 /* TemplateDataSource.swift */; };
 		D4DB7834213B432A00217819 /* TemplateDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7833213B432A00217819 /* TemplateDataSourceTests.swift */; };
+		D4DB7836213B924A00217819 /* SubstringFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7835213B924A00217819 /* SubstringFilter.swift */; };
+		D4DB7838213B940700217819 /* SubstringFilterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7837213B940700217819 /* SubstringFilterTests.swift */; };
+		D4DB783A213B965100217819 /* Filterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7839213B965100217819 /* Filterable.swift */; };
+		D4DB783E213B97CA00217819 /* FilterableRecordModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */; };
 		D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031720FAF5E30002471B /* SessionManager.swift */; };
 		D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */; };
 		D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031D20FC50B20002471B /* SessionWriter.swift */; };
@@ -107,6 +111,10 @@
 		D4DB782B213B275D00217819 /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		D4DB7831213B424E00217819 /* TemplateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDataSource.swift; sourceTree = "<group>"; };
 		D4DB7833213B432A00217819 /* TemplateDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDataSourceTests.swift; sourceTree = "<group>"; };
+		D4DB7835213B924A00217819 /* SubstringFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstringFilter.swift; sourceTree = "<group>"; };
+		D4DB7837213B940700217819 /* SubstringFilterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubstringFilterTests.swift; sourceTree = "<group>"; };
+		D4DB7839213B965100217819 /* Filterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filterable.swift; sourceTree = "<group>"; };
+		D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableRecordModelTests.swift; sourceTree = "<group>"; };
 		D4FD031720FAF5E30002471B /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSessionWriter.swift; sourceTree = "<group>"; };
 		D4FD031D20FC50B20002471B /* SessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWriter.swift; sourceTree = "<group>"; };
@@ -179,6 +187,8 @@
 			children = (
 				D4223D992120F844003A8075 /* JsonTemplateReaderTests.swift */,
 				D4DB7833213B432A00217819 /* TemplateDataSourceTests.swift */,
+				D4DB7837213B940700217819 /* SubstringFilterTests.swift */,
+				D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +218,7 @@
 			children = (
 				D433FA6520F6E14A009C3678 /* LoginChecker.swift */,
 				D4FD031D20FC50B20002471B /* SessionWriter.swift */,
+				D4DB7839213B965100217819 /* Filterable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -267,6 +278,7 @@
 				D4223D9E21210AE0003A8075 /* UnboxableExtensions.swift */,
 				D4DB7829213B26E500217819 /* RecordTemplates.swift */,
 				D4DB7831213B424E00217819 /* TemplateDataSource.swift */,
+				D4DB7835213B924A00217819 /* SubstringFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -479,6 +491,8 @@
 				D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */,
 				D4FD032220FC56500002471B /* SessionManagerTests.swift in Sources */,
 				D4223D9A2120F844003A8075 /* JsonTemplateReaderTests.swift in Sources */,
+				D4DB783E213B97CA00217819 /* FilterableRecordModelTests.swift in Sources */,
+				D4DB7838213B940700217819 /* SubstringFilterTests.swift in Sources */,
 				D408F1C020DB5C3A008A0072 /* AllowableCharactersTests.swift in Sources */,
 				D4DB782C213B275D00217819 /* DataServiceTests.swift in Sources */,
 			);
@@ -495,12 +509,14 @@
 				D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */,
 				D433FA6920F70C07009C3678 /* FakeLoginChecker.swift in Sources */,
 				D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */,
+				D4DB783A213B965100217819 /* Filterable.swift in Sources */,
 				D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */,
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */,
 				D4223D9F21210AE0003A8075 /* UnboxableExtensions.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
+				D4DB7836213B924A00217819 /* SubstringFilter.swift in Sources */,
 				D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */,
 				D4223D952120F7C5003A8075 /* JsonTemplateReader.swift in Sources */,
 				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,

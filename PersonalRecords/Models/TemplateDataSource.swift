@@ -11,11 +11,27 @@ import CoreData
 
 class TemplateDataSource : NSObject, NSFetchedResultsControllerDelegate {
     
+    var templates : [RecordModel] = []
+    
+    var filters : [SubstringFilter] = []
+    
     private var controller : NSFetchedResultsController<RecordModel>!
     
     fileprivate func fetchResults() {
         do {
             try controller.performFetch()
+            if let fetchedResults =  controller.fetchedObjects {
+                templates = fetchedResults.filter(
+                    { (model) -> Bool in
+                        for filter in filters {
+                            if(!model.passes(filter: filter)) {
+                                return false;
+                            }
+                        }
+                        return true;
+                }
+                )
+            }
         } catch {
             fatalError("Failed to fetch entities: \(error)")
         }
@@ -40,15 +56,27 @@ class TemplateDataSource : NSObject, NSFetchedResultsControllerDelegate {
         fetchResults()
     }
     
+    func applyFilter( filter : SubstringFilter) {
+        filters.append(filter)
+        fetchResults()
+    }
+    
+    func replaceFilter( filter : SubstringFilter) {
+        filters = []
+        applyFilter(filter: filter)
+    }
+    
+    func clearAllFilters( ) {
+        filters = []
+        fetchResults()
+    }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         fetchResults()
     }
     
     func getCount() -> Int {
-        if let fetchedTemplates = controller.fetchedObjects {
-            return fetchedTemplates.count
-        }
-        return 0
+        return templates.count
     }
     
     func getTemplate(row: Int) -> RecordModel? {
@@ -56,7 +84,7 @@ class TemplateDataSource : NSObject, NSFetchedResultsControllerDelegate {
             return nil
         }
         
-        return controller.object(at: IndexPath(row: row, section: 0))
+        return templates[row]
     }
     
 }
