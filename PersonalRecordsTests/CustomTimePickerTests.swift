@@ -30,51 +30,29 @@ class CustomTimePickerTests: XCTestCase {
     }
     
     func testTimePickerHasCorrectNumberOfComponents() {
-        XCTAssertEqual(2, subject.numberOfComponents)
+        XCTAssertEqual(3, subject.numberOfComponents)
     }
     
     func testTimePickerHasCorrectComponents() {
         let subject2 = CustomTimePicker()
         let expectedTime = 3983.0
         subject2.timeInterval = expectedTime
+    
+        XCTAssertEqual(1, subject2.selectedRow(inComponent: 0))
         
-        subject2.selectRow(0, inComponent: subject2.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(1, subject2.selectedRow(inComponent: subject2.timeValueComponentIndex))
+        XCTAssertEqual(6, subject2.selectedRow(inComponent: 1))
         
-        subject2.selectRow(1, inComponent: subject2.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(6, subject2.selectedRow(inComponent: subject2.timeValueComponentIndex))
-        
-        subject2.selectRow(2, inComponent: subject2.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(23, subject2.selectedRow(inComponent: subject2.timeValueComponentIndex))
+        XCTAssertEqual(23, subject2.selectedRow(inComponent: 2))
     }
     
-    func testTimePickerHasCorrectValueComponent() {
-        let expectedTime = 3983.0
-        subject.timeInterval = expectedTime
-        
-        subject.selectRow(0, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(0, subject.selectedRow(inComponent: subject.timeTypeComponentIndex))
-        
-        subject.selectRow(1, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(1, subject.selectedRow(inComponent: subject.timeTypeComponentIndex))
-        
-        subject.selectRow(2, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(2, subject.selectedRow(inComponent: subject.timeTypeComponentIndex))
-    }
-    
-    func testTimePickerHasCorrectNumberOfRowsInTypeComponent() {
-        XCTAssertEqual(3, subject.numberOfRows(inComponent: subject.timeTypeComponentIndex))
-    }
     
     func testTimePickerHasCorrectNumberOfRowsInValueComponent() {
-        subject.selectRow(0, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(100, subject.numberOfRows(inComponent: subject.timeValueComponentIndex))
         
-        subject.selectRow(1, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(60, subject.numberOfRows(inComponent: subject.timeValueComponentIndex))
+        XCTAssertEqual(100, subject.numberOfRows(inComponent: 0))
         
-        subject.selectRow(2, inComponent: subject.timeTypeComponentIndex, animated: false)
-        XCTAssertEqual(60, subject.numberOfRows(inComponent: subject.timeValueComponentIndex))
+        XCTAssertEqual(60, subject.numberOfRows(inComponent: 1))
+        
+        XCTAssertEqual(60, subject.numberOfRows(inComponent: 2))
     }
     
     func testPerformanceExample() {
