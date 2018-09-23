@@ -330,7 +330,7 @@
         <scene sceneID="wxt-IB-AsA">
             <objects>
                 <navigationController title="Records" automaticallyAdjustsScrollViewInsets="NO" id="lwz-jw-iCB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Record" id="sKu-EY-wHT"/>
+                    <tabBarItem key="tabBarItem" title="Record" image="trophy" id="sKu-EY-wHT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Ya-7y-J9n">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
@@ -385,14 +385,14 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0iJ-OP-1Xu" firstAttribute="centerX" secondItem="ZXz-Pe-J4L" secondAttribute="centerX" id="KbZ-DL-4NZ"/>
                             <constraint firstItem="0iJ-OP-1Xu" firstAttribute="centerY" secondItem="ZXz-Pe-J4L" secondAttribute="centerY" id="iJz-lI-7Jw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="89j-Xv-Tmv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="More" id="LKu-sB-Dgf"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="LKu-sB-Dgf"/>
                     <connections>
                         <segue destination="U0N-hT-npr" kind="show" identifier="logout" id="cDV-9C-6zP"/>
                     </connections>
@@ -402,6 +402,9 @@
             <point key="canvasLocation" x="-588.40579710144937" y="442.66304347826093"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="trophy" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ch2-6w-Sdr"/>
     </inferredMetricsTieBreakers>
