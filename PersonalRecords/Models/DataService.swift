@@ -16,17 +16,25 @@ struct DataService {
         self.context = context
     }
     
-    func templateExists(id: UUID) -> Bool {
+    func updateTemplate(data: TemplateData) -> Bool {
         do {
             let request = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
-            request.predicate = NSPredicate(format: "%K == %@", "id", id as CVarArg)
+            request.predicate = NSPredicate(format: "%K == %@", "id", data.id as CVarArg)
             let results = try context.fetch(request)
-            return !results.isEmpty
+            if(results.count != 1) {
+                return false
+            }
+            if let template = results.first {
+                updateRecordValues(template, data)
+            }
+            
         } catch {
             print(error)
             print("Error retrieving templated record.")
             return false
         }
+        
+        return true
     }
     
     func addRecordTemplate(data: TemplateData) {
@@ -34,17 +42,21 @@ struct DataService {
         saveContext()
     }
     
+    fileprivate func updateRecordValues(_ record: RecordModel, _ data: TemplateData) {
+        record.title = data.title
+        record.type = data.type.getValue()
+        record.sport = data.sport.getValue()
+    }
+    
     private func addRecordTemplateNoSave(data: TemplateData) {
-        if(templateExists(id: data.id)) {
+        if(updateTemplate(data: data)) {
             return
         }
         
         let record = NSEntityDescription.insertNewObject(forEntityName: RecordModel.entityName, into: context) as! RecordModel
-        record.title = data.title
         record.id = data.id
-        record.type = data.type.getValue()
-        record.sport = data.sport.getValue()
         record.isTemplate = true
+        updateRecordValues(record, data)
     }
     
     fileprivate func saveContext() {

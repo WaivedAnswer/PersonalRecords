@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var controller: NSFetchedResultsController<RecordModel>!
     var context: NSManagedObjectContext!
     
+    var previousSectionCount : Int = 0
+    
     @IBAction func test(_ sender: Any) {
     }
     var lastSelectedIndex : Int?
@@ -31,16 +33,46 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: UITableViewDelegates
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    private func getCurrentSectionCount() -> Int {
         if let sections = controller.sections {
-            return sections[0].numberOfObjects
+            return sections.count
         }
         return 0
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+            previousSectionCount = getCurrentSectionCount()
+            return getCurrentSectionCount()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let sections = controller.sections {
+            let currentSection =  sections[section]
+            return currentSection.numberOfObjects
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let sections = controller.sections {
+            let currentSection = sections[section]
+            if let value = Int16(currentSection.name) {
+                return Sport(value: value).getName()
+            }
+            
+        }
+        
+        return nil
+    }
+    
+    private func getCell() -> UITableViewCell? {
+        return tableView.dequeueReusableCell(withIdentifier: "Testing")
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
-        cell = tableView.dequeueReusableCell(withIdentifier: "Testing")
+        var cell: UITableViewCell
+        
+        cell = getCell()!
         
         let record = controller.object(at: indexPath)
         
@@ -104,15 +136,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
+        if previousSectionCount != getCurrentSectionCount()  {
+            tableView.insertSections(IndexSet(integer: newIndexPath!.section), with: .fade)
+            tableView.reloadData()
+            return
+        }
+        
         switch type {
         case .insert:
             tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
-            let cell = tableView.cellForRow(at: indexPath!)
-            let record = controller.object(at: indexPath!) as! RecordModel
-            setCellValues(record: record, cell: cell!)
+            if let cell = tableView.cellForRow(at: indexPath!) {
+                let record = controller.object(at: indexPath!) as! RecordModel
+                setCellValues(record: record, cell: cell)
+            }
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
@@ -147,14 +186,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setupController() {
-        let titleSort = NSSortDescriptor(key: #keyPath(RecordModel.title), ascending: true)
+        
         let filter = NSPredicate(format: "isTemplate == FALSE")
         let fetchRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
         fetchRequest.predicate = filter
-        fetchRequest.sortDescriptors = [titleSort]
+        let sportSort = NSSortDescriptor(key: #keyPath(RecordModel.sport), ascending: true)
+        let titleSort = NSSortDescriptor(key: #keyPath(RecordModel.title), ascending: true)
+        fetchRequest.sortDescriptors = [sportSort, titleSort]
         controller = NSFetchedResultsController(fetchRequest: fetchRequest,
                                                 managedObjectContext: context,
-                                                sectionNameKeyPath: nil, cacheName: nil)
+                                                sectionNameKeyPath: #keyPath(RecordModel.sport), cacheName: nil)
         controller.delegate = self
         do {
             try controller.performFetch()

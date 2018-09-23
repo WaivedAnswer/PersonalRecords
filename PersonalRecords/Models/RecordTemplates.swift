@@ -186,7 +186,7 @@ enum RecordTemplates {
                                          sport: Sport.Swimming )
     
     static let SwimFree1500 = TemplateData(id: UUID(uuidString: "89fbdb8a-3a5a-4a0e-be73-91069799e824")!,
-                                          title: "500m Swim",
+                                          title: "1500m Swim",
                                           type: RecordType.Time,
                                           sport: Sport.Swimming )
     
