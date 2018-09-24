@@ -34,6 +34,7 @@ enum RecordTemplates {
             SitUp,
             Snatch,
             Squat,
+            SquatClean,
             SquatF,
             SquatOH,
             StrictPress,
@@ -147,6 +148,11 @@ enum RecordTemplates {
     
     static let Squat = TemplateData(id: UUID(uuidString: "64a4fba1-a180-4710-9d35-c22a636b765f")!,
                                     title: "Squat",
+                                    type: RecordType.Weight,
+                                    sport: Sport.Weightlifting )
+    
+    static let SquatClean = TemplateData(id: UUID(uuidString: "ed2a4c2d-6015-4e30-93b1-3e7718d02e44")!,
+                                    title: "Squat Clean",
                                     type: RecordType.Weight,
                                     sport: Sport.Weightlifting )
     
