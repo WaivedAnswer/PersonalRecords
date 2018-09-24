@@ -83,16 +83,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setCellValues (record: RecordModel, cell: UITableViewCell ) {
         var valueString: String = ""
+        let recordValues = record.recordValues.first!
         if let type = RecordType(rawValue: Int(record.type)) {
             switch(type) {
             case .Time:
-                valueString = record.time.timeString
+                valueString = recordValues.time.timeString
             case .Distance:
-                valueString = String(record.distance)
+                valueString = String(recordValues.distance)
             case .Repetition:
-                valueString = String(record.reps)
+                valueString = String(recordValues.reps)
             case .Weight:
-                valueString = String(record.weight)
+                valueString = String(recordValues.weight)
             }
             valueString = "\(valueString) \(type.getDisplayUnit())"
         }

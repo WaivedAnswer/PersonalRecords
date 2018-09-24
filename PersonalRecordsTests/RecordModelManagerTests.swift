@@ -140,30 +140,5 @@ class PersonalRecordsTests: XCTestCase {
         XCTAssertTrue(records.isEmpty)
     }
     
-    func testRecordModelManagerCopyRecord() {
-        let subject = RecordModelManager(mainContext: context)
-        
-        let newRecord = subject.createRecordWith(type: .Distance, isTemplate: false) as! RecordModel
-        newRecord.title = "test"
-        newRecord.distance = 500
-        newRecord.recordDescription = "This is a cool descirpitoaiohg"
-        newRecord.reps = 50
-        newRecord.time = 600
-        newRecord.weight = 200
-        
-        let copiedRecord = subject.copyRecord(record: newRecord) as! RecordModel
-        
-        XCTAssertEqual(newRecord.type, copiedRecord.type)
-        XCTAssertEqual(newRecord.sport, copiedRecord.sport)
-        
-        XCTAssertEqual(newRecord.title, copiedRecord.title)
-        XCTAssertEqual(newRecord.isTemplate, copiedRecord.isTemplate)
-        XCTAssertEqual(newRecord.recordDescription, copiedRecord.recordDescription)
-        XCTAssertEqual(newRecord.time, copiedRecord.time)
-        XCTAssertEqual(newRecord.distance, copiedRecord.distance)
-        XCTAssertEqual(newRecord.reps, copiedRecord.reps)
-        XCTAssertEqual(newRecord.weight, copiedRecord.weight)
-        
-    }
     
 }

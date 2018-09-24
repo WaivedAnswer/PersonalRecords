@@ -19,7 +19,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     public var context: NSManagedObjectContext!
     
     public var currentRecordID : UUID?
-    private var currentRecord : Recordable!
+    private var currentRecord : RecordModel!
     
     private var picker: CustomTimePicker?
     
@@ -53,18 +53,22 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     private func updateRecord () {
         currentRecord?.title = recordTitle.text!
-        switch(recordType) {
-        case .Time?:
-            currentRecord?.time = picker?.timeInterval ?? 0.0
-        case .Distance?:
-            currentRecord?.distance = Double(recordValue.text!) ?? 0.0
-        case .Repetition?:
-            currentRecord?.reps = Int32(recordValue.text!) ?? 0
-        case .Weight?:
-            currentRecord?.weight = Double(recordValue.text!) ?? 0.0
-        default:
-            break
+        
+        if let recordValues = currentRecord?.recordValues.first {
+            switch(recordType) {
+            case .Time?:
+                recordValues.time = picker?.timeInterval ?? 0.0
+            case .Distance?:
+                recordValues.distance = Double(recordValue.text!) ?? 0.0
+            case .Repetition?:
+                recordValues.reps = Int32(recordValue.text!) ?? 0
+            case .Weight?:
+                recordValues.weight = Double(recordValue.text!) ?? 0.0
+            default:
+                break
+            }
         }
+        
         
         currentRecord?.recordDescription = recordDescription.text
     }
@@ -160,7 +164,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             valueLabel.text = type.getName()
             if(type == .Time) {
                 picker = CustomTimePicker()
-                if let value = currentRecord?.time, let timePicker = picker {
+                if let value = currentRecord?.recordValues.first?.time, let timePicker = picker {
                     timePicker.timeInterval = value
                 }
                 picker?.timeDelegate = self
@@ -186,16 +190,17 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let currRecord = currentRecord, let type = RecordType(rawValue: Int(currRecord.type)) {
             recordTitle.text = currRecord.title
-            
-            switch type {
-            case .Time:
-                recordValue.text = currRecord.time.timeString
-            case .Distance:
-                recordValue.text = String(currRecord.distance)
-            case .Repetition:
-                recordValue.text = String(currRecord.reps)
-            case .Weight:
-                recordValue.text = String(currRecord.weight)
+            if let recordValues = currRecord.recordValues.first {
+                switch type {
+                case .Time:
+                    recordValue.text = recordValues.time.timeString
+                case .Distance:
+                    recordValue.text = String(recordValues.distance)
+                case .Repetition:
+                    recordValue.text = String(recordValues.reps)
+                case .Weight:
+                    recordValue.text = String(recordValues.weight)
+                }
             }
             
             recordDescription.text = currRecord.recordDescription

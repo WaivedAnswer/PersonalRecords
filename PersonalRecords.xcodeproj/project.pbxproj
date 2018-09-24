@@ -35,6 +35,9 @@
 		D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D4207AB9D5002950A8 /* RecordType.swift */; };
 		D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D6207AC28D002950A8 /* DataService.swift */; };
 		D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D8207C6EEC002950A8 /* Extensions.swift */; };
+		D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EB215855AA009D0283 /* RecordValues.swift */; };
+		D46B41EF215883F9009D0283 /* RecordValueMigration3to4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */; };
+		D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */; };
 		D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */; };
 		D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7829213B26E500217819 /* RecordTemplates.swift */; };
 		D4DB782C213B275D00217819 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB782B213B275D00217819 /* DataServiceTests.swift */; };
@@ -106,6 +109,10 @@
 		D45DA1D4207AB9D5002950A8 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		D45DA1D6207AC28D002950A8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D45DA1D8207C6EEC002950A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D46B41EA21584CC9009D0283 /* Record 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 4.xcdatamodel"; sourceTree = "<group>"; };
+		D46B41EB215855AA009D0283 /* RecordValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValues.swift; sourceTree = "<group>"; };
+		D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValueMigration3to4.swift; sourceTree = "<group>"; };
+		D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = RecordMapping3to4.xcmappingmodel; sourceTree = "<group>"; };
 		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
 		D4DB7829213B26E500217819 /* RecordTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTemplates.swift; sourceTree = "<group>"; };
@@ -269,8 +276,10 @@
 				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
 				D433FA6820F70C07009C3678 /* FakeLoginChecker.swift */,
 				D45DA1C920747C13002950A8 /* Record.xcdatamodeld */,
+				D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */,
 				D43F4C9A20D341D100470C71 /* RecordModelManager.swift */,
 				D45DA1CE20773760002950A8 /* RecordModel.swift */,
+				D46B41EB215855AA009D0283 /* RecordValues.swift */,
 				D45DA1D020798106002950A8 /* Sport.swift */,
 				D45DA1D4207AB9D5002950A8 /* RecordType.swift */,
 				D4FD031720FAF5E30002471B /* SessionManager.swift */,
@@ -282,6 +291,7 @@
 				D4DB7829213B26E500217819 /* RecordTemplates.swift */,
 				D4DB7831213B424E00217819 /* TemplateDataSource.swift */,
 				D4DB7835213B924A00217819 /* SubstringFilter.swift */,
+				D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -511,6 +521,7 @@
 				D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */,
 				D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */,
 				D433FA6920F70C07009C3678 /* FakeLoginChecker.swift in Sources */,
+				D46B41EF215883F9009D0283 /* RecordValueMigration3to4.swift in Sources */,
 				D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */,
 				D4DB783A213B965100217819 /* Filterable.swift in Sources */,
 				D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */,
@@ -528,11 +539,13 @@
 				D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
 				D4FD032020FC54300002471B /* Session.swift in Sources */,
+				D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */,
 				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,
 				D433FA6620F6E14A009C3678 /* LoginChecker.swift in Sources */,
 				D4223D972120F7ED003A8075 /* TemplateData.swift in Sources */,
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
 				D4FD032720FEF5230002471B /* MoreOptionsViewController.swift in Sources */,
+				D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
 				D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */,
@@ -797,11 +810,12 @@
 		D45DA1C920747C13002950A8 /* Record.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D46B41EA21584CC9009D0283 /* Record 4.xcdatamodel */,
 				D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */,
 				D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */,
 				D45DA1CA20747C13002950A8 /* Record.xcdatamodel */,
 			);
-			currentVersion = D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */;
+			currentVersion = D46B41EA21584CC9009D0283 /* Record 4.xcdatamodel */;
 			path = Record.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

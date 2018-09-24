@@ -23,14 +23,11 @@ var isTemplate: Bool {get set}
 }
 
 
-class RecordModel : NSManagedObject, Recordable {
+class RecordModel : NSManagedObject {
     static let entityName: String = "RecordModel"
     
     @NSManaged var title: String
-    @NSManaged var time: Double
-    @NSManaged var distance: Double
-    @NSManaged var weight: Double
-    @NSManaged var reps: Int32
+    @NSManaged var recordValues: [RecordValues]
     @NSManaged var recordDescription: String?
     @NSManaged var sport: Int16
     @NSManaged var id: UUID

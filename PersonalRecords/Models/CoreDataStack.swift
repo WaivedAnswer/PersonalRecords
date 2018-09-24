@@ -22,7 +22,7 @@ func createMainContext (session: Session, inMemory: Bool = false) -> NSManagedOb
     //try! FileManager.default.removeItem(at: storeURL)
     if(!inMemory) {
         let pscOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
-                          NSInferMappingModelAutomaticallyOption: true]
+                          NSInferMappingModelAutomaticallyOption: false]
         do {
             try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: pscOptions)
         } catch {

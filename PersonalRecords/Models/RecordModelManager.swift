@@ -26,16 +26,20 @@ class RecordModelManager : NSManagedObjectContextDependent {
         record.id = UUID()
         record.type = type.getValue()
         record.title = ""
-        record.time = 0
-        record.distance = 0
-        record.weight = 0
-        record.reps = 0
+        let recordValues = NSEntityDescription.insertNewObject(
+            forEntityName: RecordValues.entityName,
+            into: context) as! RecordValues
+        recordValues.time = 0
+        recordValues.distance = 0
+        recordValues.weight = 0
+        recordValues.reps = 0
+        record.recordValues = [recordValues]
         record.isTemplate = isTemplate
         
         return record
     }
     
-    func createRecordWith(type: RecordType, isTemplate: Bool) -> Recordable? {
+    func createRecordWith(type: RecordType, isTemplate: Bool) -> RecordModel? {
 
         do {
             let record = initRecord(type: type, isTemplate: isTemplate)
@@ -51,30 +55,7 @@ class RecordModelManager : NSManagedObjectContextDependent {
         }
     }
     
-    func copyRecord(record copied: Recordable) -> Recordable?
-    {
-        do {
-            let record = initRecord(type: RecordType(value: copied.type), isTemplate: copied.isTemplate)
-            record.distance = copied.distance
-            record.recordDescription = copied.recordDescription
-            record.title = copied.title
-            record.reps = copied.reps
-            record.sport = copied.sport
-            record.time = copied.time
-            record.weight = copied.weight
-            
-            try context.save()
-            
-            return record
-        } catch {
-            context.rollback()
-            print (error)
-            print("Could not save new record")
-            return nil
-        }
-    }
-    
-    func getRecordBy( id: UUID) -> Recordable? {
+    func getRecordBy( id: UUID) -> RecordModel? {
         do {
             let request = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
             request.predicate = NSPredicate(format: "%K == %@", "id", id as CVarArg)
@@ -88,14 +69,14 @@ class RecordModelManager : NSManagedObjectContextDependent {
     }
     
     func deleteRecordBy( id: UUID) -> Bool {
-        if let record = getRecordBy(id: id) as? RecordModel {
+        if let record = getRecordBy(id: id) {
             context.delete(record)
             return true
         }
         return false
     }
     
-    func getRecordsWith( predicate: NSPredicate) -> [Recordable] {
+    func getRecordsWith( predicate: NSPredicate) -> [RecordModel] {
         do {
             let request = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
             request.predicate = predicate
