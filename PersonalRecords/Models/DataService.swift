@@ -11,9 +11,10 @@ import CoreData
 
 struct DataService {
     private var context: NSManagedObjectContext
-    
+    private var recordManager: RecordModelManager
     init( context: NSManagedObjectContext) {
         self.context = context
+        self.recordManager = RecordModelManager(mainContext: context)
     }
     
     func updateTemplate(data: TemplateData) -> Bool {
@@ -25,7 +26,7 @@ struct DataService {
                 return false
             }
             if let template = results.first {
-                updateRecordValues(template, data)
+                updateRecordInfo(template, data)
             }
             
         } catch {
@@ -42,7 +43,7 @@ struct DataService {
         saveContext()
     }
     
-    fileprivate func updateRecordValues(_ record: RecordModel, _ data: TemplateData) {
+    fileprivate func updateRecordInfo(_ record: RecordModel, _ data: TemplateData) {
         record.title = data.title
         record.type = data.type.getValue()
         record.sport = data.sport.getValue()
@@ -56,7 +57,12 @@ struct DataService {
         let record = NSEntityDescription.insertNewObject(forEntityName: RecordModel.entityName, into: context) as! RecordModel
         record.id = data.id
         record.isTemplate = true
-        updateRecordValues(record, data)
+        
+        let values = recordManager.createRecordValues(for: record)
+        
+        record.recordValues = [values]
+        
+        updateRecordInfo(record, data)
     }
     
     fileprivate func saveContext() {

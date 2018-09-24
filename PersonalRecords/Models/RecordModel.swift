@@ -9,25 +9,13 @@
 import Foundation
 import CoreData
 
-protocol Recordable {
-    var title: String {get set}
-var time: Double {get set}
-var distance: Double {get set}
-var weight: Double {get set}
-var reps: Int32 {get set}
-var recordDescription: String? {get set}
-var sport: Int16 {get set}
-var id: UUID {get set}
-var type: Int16 {get set}
-var isTemplate: Bool {get set}
-}
 
 
 class RecordModel : NSManagedObject {
     static let entityName: String = "RecordModel"
     
     @NSManaged var title: String
-    @NSManaged var recordValues: [RecordValues]
+    @NSManaged var recordValues: NSOrderedSet
     @NSManaged var recordDescription: String?
     @NSManaged var sport: Int16
     @NSManaged var id: UUID
@@ -45,4 +33,10 @@ extension RecordModel : Filterable {
         return titlePasses(filter: filter)
     }
     
+}
+
+extension RecordModel {
+    func getCurrentValues() -> RecordValues? {
+        return recordValues.firstObject as? RecordValues
+    }
 }

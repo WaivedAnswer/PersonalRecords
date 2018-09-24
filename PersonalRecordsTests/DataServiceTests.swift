@@ -23,11 +23,11 @@ class DataServiceTests: XCTestCase {
         super.tearDown()
     }
     
-    func test10KRunTemplateExists() {
+    func testCanUpdate10KRunTemplateExists() {
         let subject = DataService( context: context)
         subject.seedStandardRecordTemplates()
         
-        XCTAssertTrue(subject.templateExists(id: RecordTemplates.Run10K.id))
+        XCTAssertTrue(subject.updateTemplate(data: RecordTemplates.Run10K))
     }
     
     func testTemplateCountIsCorrect() {

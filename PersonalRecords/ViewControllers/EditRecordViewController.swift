@@ -54,7 +54,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     private func updateRecord () {
         currentRecord?.title = recordTitle.text!
         
-        if let recordValues = currentRecord?.recordValues.first {
+        if let recordValues = currentRecord?.getCurrentValues() {
             switch(recordType) {
             case .Time?:
                 recordValues.time = picker?.timeInterval ?? 0.0
@@ -164,7 +164,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             valueLabel.text = type.getName()
             if(type == .Time) {
                 picker = CustomTimePicker()
-                if let value = currentRecord?.recordValues.first?.time, let timePicker = picker {
+                if let value = currentRecord?.getCurrentValues()?.time, let timePicker = picker {
                     timePicker.timeInterval = value
                 }
                 picker?.timeDelegate = self
@@ -190,7 +190,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let currRecord = currentRecord, let type = RecordType(rawValue: Int(currRecord.type)) {
             recordTitle.text = currRecord.title
-            if let recordValues = currRecord.recordValues.first {
+            if let recordValues = currRecord.getCurrentValues() {
                 switch type {
                 case .Time:
                     recordValue.text = recordValues.time.timeString

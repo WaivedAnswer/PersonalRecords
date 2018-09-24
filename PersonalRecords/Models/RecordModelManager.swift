@@ -26,6 +26,15 @@ class RecordModelManager : NSManagedObjectContextDependent {
         record.id = UUID()
         record.type = type.getValue()
         record.title = ""
+        
+        let recordValues = createRecordValues(for: record)
+        record.recordValues = [recordValues]
+        record.isTemplate = isTemplate
+        
+        return record
+    }
+    
+    func createRecordValues(for record: RecordModel) -> RecordValues {
         let recordValues = NSEntityDescription.insertNewObject(
             forEntityName: RecordValues.entityName,
             into: context) as! RecordValues
@@ -33,12 +42,11 @@ class RecordModelManager : NSManagedObjectContextDependent {
         recordValues.distance = 0
         recordValues.weight = 0
         recordValues.reps = 0
-        record.recordValues = [recordValues]
-        record.isTemplate = isTemplate
+        recordValues.id = UUID()
+        recordValues.record = record
         
-        return record
+        return recordValues
     }
-    
     func createRecordWith(type: RecordType, isTemplate: Bool) -> RecordModel? {
 
         do {

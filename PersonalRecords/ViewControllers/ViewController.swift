@@ -83,8 +83,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func setCellValues (record: RecordModel, cell: UITableViewCell ) {
         var valueString: String = ""
-        let recordValues = record.recordValues.first!
-        if let type = RecordType(rawValue: Int(record.type)) {
+        
+        if let type = RecordType(rawValue: Int(record.type)), let recordValues = record.getCurrentValues() {
             switch(type) {
             case .Time:
                 valueString = recordValues.time.timeString
