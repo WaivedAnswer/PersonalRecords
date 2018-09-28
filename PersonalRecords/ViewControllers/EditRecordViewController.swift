@@ -22,6 +22,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     private var currentRecord : RecordModel!
     
     private var picker: CustomTimePicker?
+    private var datePicker: UIDatePicker!
     
     public var recordType : RecordType?
     
@@ -30,6 +31,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var sportTextField: UITextField!
     @IBOutlet weak var recordTitle: UITextField!
     
+    @IBOutlet weak var recordDate: UITextField!
     @IBOutlet weak var valueLabel: UILabel!
     
     @IBOutlet weak var recordValue: UITextField!
@@ -55,6 +57,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         currentRecord?.title = recordTitle.text!
         
         if let recordValues = currentRecord?.getCurrentValues() {
+            recordValues.date = datePicker.date
             switch(recordType) {
             case .Time?:
                 recordValues.time = picker?.timeInterval ?? 0.0
@@ -68,7 +71,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
                 break
             }
         }
-        
         
         currentRecord?.recordDescription = recordDescription.text
     }
@@ -148,6 +150,34 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         timeLabel?.text = picker?.timeInterval.timeString
     }
     
+    fileprivate func updateDateText(_ datePicker: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.locale = Locale.current
+        let date = datePicker.date
+        let text = formatter.string(from: date)
+        recordDate.text = text
+    }
+    
+    @objc func handleDatePicker(sender: UIDatePicker){
+        updateDateText(sender)
+    }
+    
+    fileprivate func setupDatePicker() {
+        datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        
+        datePicker.date = Date()
+        datePicker.maximumDate = Date()
+
+        datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -50, to: Date())
+        
+        datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender: )), for: UIControlEvents.valueChanged)
+        updateDateText(datePicker)
+        
+        recordDate.inputView = datePicker
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
@@ -182,6 +212,8 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             }
         }
         
+        setupDatePicker()
+        
         title = currentRecord?.title
         
         recordValue.delegate = self
@@ -191,6 +223,10 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         if let currRecord = currentRecord, let type = RecordType(rawValue: Int(currRecord.type)) {
             recordTitle.text = currRecord.title
             if let recordValues = currRecord.getCurrentValues() {
+                if let recordDate = recordValues.date {
+                    datePicker.date = recordDate
+                    updateDateText(datePicker)
+                }
                 switch type {
                 case .Time:
                     recordValue.text = recordValues.time.timeString
