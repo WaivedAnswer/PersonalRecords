@@ -167,8 +167,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let editVC = segue.destination as! EditRecordViewController
             if let index = tableView.indexPathForSelectedRow {
                 editVC.currentRecordID = controller.object(at: index).id
+                tableView.deselectRow(at: index, animated: false)
             }
-            
             editVC.context = self.context
         }
         
