@@ -9,32 +9,41 @@
 import Foundation
 
 class SessionManager {
-    let writer : SessionWriter
-    let loginChecker : LoginChecker
-    init(sessionWriter: SessionWriter, loginChecker: LoginChecker) {
+    private let writer : SessionWriter
+    private let loginService : LoginService
+    
+    init(sessionWriter: SessionWriter, loginService: LoginService) {
         self.writer = sessionWriter
-        self.loginChecker = loginChecker
+        self.loginService = loginService
     }
     
     func getCurrentSession() -> Session? {
-        //todo make this string value??
-        if let userId = writer.readCurrentSession() {
-            return Session(id: userId, data: "NotSure")
-        }
-        return nil
+        return  writer.readCurrentSession()
     }
     
     func removeCurrentSession() {
         writer.removeCurrentSession()
     }
     
-    func createSessionFor(username: String, password: String) -> Session? {
-        if( !loginChecker.checkLogin(username: username, password: password)) {
+    private func createSessionFor(user: User) -> Session {
+        let session = Session(user: user)
+        writer.writeSessionFor(session: session)
+        return session
+    }
+    
+    func createSessionForExisting(username: String, password: String) -> Session? {
+        guard let user = loginService.login(username: username, password: password) else {
             return nil
         }
         
-        let session = Session(id: username, data: "EmptyData")
-        writer.writeSessionFor(session: session)
-        return session
+        return createSessionFor(user: user)
+    }
+    
+    func createSessionForNew(username: String, password: String) -> Session? {
+        guard let user = loginService.createLogin(username: username, password: password) else {
+            return nil
+        }
+        
+        return createSessionFor(user: user)
     }
 }

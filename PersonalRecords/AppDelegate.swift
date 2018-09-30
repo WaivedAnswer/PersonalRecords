@@ -18,9 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let loginController = window?.rootViewController as! LoginViewController
-        
-        let sessionManager = SessionManager(sessionWriter: BasicSessionWriter(), loginChecker: FakeLoginChecker())
-        
+
+        let loginService = LocalLoginChecker(userManager: UserManager())
+        let sessionManager = SessionManager(sessionWriter: BasicSessionWriter(), loginService: loginService)
+
         loginController.sessionManager = sessionManager
         return true
     }

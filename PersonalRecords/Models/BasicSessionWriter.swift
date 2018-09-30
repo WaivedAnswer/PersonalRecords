@@ -8,17 +8,38 @@
 
 import Foundation
 
-class BasicSessionWriter : SessionWriter {
 
+
+class BasicSessionWriter : SessionWriter {
+    
     let sessionKey = "session"
+    let idKey = "id"
+    let usernameKey = "username"
+    
     let preferences = UserDefaults.standard
     
-    func readCurrentSession() -> String? {
-        return preferences.object(forKey: sessionKey) as? String
+    func readCurrentSession() -> Session? {
+        if let userData = preferences.object(forKey: sessionKey) as? Dictionary<String, String>,
+            let idString = userData[idKey],
+            let id = UUID(uuidString: idString),
+            let username = userData[usernameKey] {
+            
+            let user = User(id: id, userName: username)
+            return Session(user: user)
+        }
+        return nil
     }
     
     func writeSessionFor( session: Session ) {
-        preferences.set(session.userId, forKey: sessionKey)
+        let user = session.user
+        
+        var userDataDict = Dictionary<String, String> ()
+        
+        userDataDict[idKey] = user.userId.uuidString
+        userDataDict[usernameKey] = user.userName
+        
+        
+        preferences.set(userDataDict, forKey: sessionKey)
     }
     
     func removeCurrentSession() {

@@ -17,13 +17,15 @@ class LoginViewController: UIViewController, TransitionDelegate {
     private var context: NSManagedObjectContext!
     
     var sessionManager : SessionManager!
-    var loginChecker : LoginChecker!
-
+    
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     @IBAction func onLogin(_ sender: UIButton) {
         onLoginInternal()
+    }
+    @IBAction func onCreate(_ sender: UIButton) {
+        onCreateLogin()
     }
     
     func onTransition() {
@@ -31,15 +33,25 @@ class LoginViewController: UIViewController, TransitionDelegate {
     }
     
     private func onLoginInternal() {
-        guard let username = userNameField.text, let password = passwordField.text else {
-            return
+        guard let username = userNameField.text,
+            let password = passwordField.text,
+            let session = sessionManager.createSessionForExisting(username: username, password: password ) else {
+                onLoginError(errorTitle: "Login Failed", errorMessage: "Please try again.")
+                return;
         }
         
-        if let session = sessionManager.createSessionFor(username: username, password: password ) {
-            login(session: session)
-        } else {
-            onLoginError();
+        login(session: session)
+    }
+    
+    func onCreateLogin() {
+        guard let username = userNameField.text,
+            let password = passwordField.text,
+            let session = sessionManager.createSessionForNew(username: username, password: password ) else {
+                onLoginError(errorTitle: "Create Login Failed", errorMessage: "Please try again.")
+                return;
         }
+    
+        login(session: session)
     }
     
     private func createAndSeedContext(session: Session) {
@@ -54,9 +66,9 @@ class LoginViewController: UIViewController, TransitionDelegate {
         performSegue(withIdentifier: "Login", sender: nil)
     }
     
-    private func onLoginError() {
+    private func onLoginError(errorTitle: String, errorMessage: String) {
         passwordField.text=""
-        let alert = UIAlertController(title: "Login Failed", message: "Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

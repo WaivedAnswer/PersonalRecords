@@ -11,13 +11,29 @@ import CoreData
 
 func createMainContext (session: Session, inMemory: Bool = false) -> NSManagedObjectContext {
     //initialize NSManagedObjecTModel
-    let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd")
-    guard let model = NSManagedObjectModel(contentsOf: modelURL!) else {fatalError("model cannot be created")}
+    guard let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd") else {
+        fatalError("Cannot get record model url")
+    }
+    let storeURL = URL.mainDocumentsPath.appendingPathComponent(session.user.userName + "_Record.sqlite")
+    return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
+    //Initialize and return
+}
+
+//func createUserContext(inMemory: Bool = false) -> NSManagedObjectContext {
+//    guard let modelURL = Bundle.main.url(forResource: "Users", withExtension: "momd") else {
+//        fatalError("Cannot get user model url")
+//    }
+//    let storeURL = URL.mainDocumentsPath.appendingPathComponent("LocalUsers.sqlite")
+//
+//    return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
+//}
+
+private func createContext(modelURL: URL, storeURL: URL, inMemory: Bool) -> NSManagedObjectContext {
+    guard let model = NSManagedObjectModel(contentsOf: modelURL) else {fatalError("model cannot be created")}
     
     //Configure NSPersistentStoreCoordinator
     let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
     //Add NSPersistenStore to coordinator
-    let storeURL = URL.mainDocumentsPath.appendingPathComponent(session.userId + "_Record.sqlite")
     
     //try! FileManager.default.removeItem(at: storeURL)
     if(!inMemory) {
@@ -40,7 +56,6 @@ func createMainContext (session: Session, inMemory: Bool = false) -> NSManagedOb
     let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     context.persistentStoreCoordinator = psc
     return context
-    //Initialize and return
 }
 
 extension URL {

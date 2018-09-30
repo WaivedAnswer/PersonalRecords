@@ -9,11 +9,9 @@
 import Foundation
 
 class Session {
-    let userId : String
-    let sessionData : String
+    let user : User
     
-    init (id: String, data: String){
-        userId = id
-        sessionData = data
+    init(user: User) {
+        self.user = user
     }
 }

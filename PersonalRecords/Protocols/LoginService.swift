@@ -8,6 +8,8 @@
 
 import Foundation
 
-protocol LoginChecker {
+protocol LoginService {
     func checkLogin ( username: String, password: String) -> Bool
+    func createLogin( username: String, password: String) -> User?
+    func login (username: String, password: String ) -> User?
 }

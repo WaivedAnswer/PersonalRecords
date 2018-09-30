@@ -16,7 +16,7 @@ class FilterableTemplateTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        context = createMainContext(session: Session(id: "", data: ""), inMemory: true)
+        context = createMainContext(session: Session(user: User(id: UUID(), userName: "test")), inMemory: true)
     }
     
     func testTemplateWithBlankSubstringFilter() {
