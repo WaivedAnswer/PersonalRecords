@@ -11,6 +11,7 @@ import Foundation
 class LocalLoginChecker : LoginService {
     
     let userManager: UserManager
+    let superSecretAdminPassword = "Test"
     
     init(userManager: UserManager) {
         self.userManager = userManager
@@ -22,18 +23,18 @@ class LocalLoginChecker : LoginService {
     
     func createLogin(username: String, password: String) -> User? {
         //todo store password
+        if(password != superSecretAdminPassword ) {
+            return nil
+        }
         return userManager.addUserWith(username: username)
     }
     
     func login(username: String, password: String) -> User? {
         //todo password verification
-        guard let user = userManager.getUserWith(username: username) else {
+        guard let user = userManager.getUserWith(username: username), password == superSecretAdminPassword else {
             return nil
         }
-        
-        return password == "Test" ? user : nil
-        
-        
+        return user
     }
     
     
