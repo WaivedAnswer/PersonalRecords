@@ -42,6 +42,8 @@
 		D4905FC6216019EA00F49653 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC5216019EA00F49653 /* UserManagerTests.swift */; };
 		D4905FC82160445300F49653 /* LocalLoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC72160445300F49653 /* LocalLoginChecker.swift */; };
 		D4905FCA2160523B00F49653 /* LocalLoginCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC92160523B00F49653 /* LocalLoginCheckerTests.swift */; };
+		D4905FCF21607E8200F49653 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4905FCD21607E8200F49653 /* User.xcdatamodeld */; };
+		D4905FD121607EEB00F49653 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FD021607EEB00F49653 /* UserModel.swift */; };
 		D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */; };
 		D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7829213B26E500217819 /* RecordTemplates.swift */; };
 		D4DB782C213B275D00217819 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB782B213B275D00217819 /* DataServiceTests.swift */; };
@@ -121,6 +123,8 @@
 		D4905FC5216019EA00F49653 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
 		D4905FC72160445300F49653 /* LocalLoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoginChecker.swift; sourceTree = "<group>"; };
 		D4905FC92160523B00F49653 /* LocalLoginCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoginCheckerTests.swift; sourceTree = "<group>"; };
+		D4905FCE21607E8200F49653 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		D4905FD021607EEB00F49653 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
 		D4DB7829213B26E500217819 /* RecordTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTemplates.swift; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 				D4905FC1215F060200F49653 /* User.swift */,
 				D4905FC3215F249200F49653 /* UserManager.swift */,
 				D4905FC72160445300F49653 /* LocalLoginChecker.swift */,
+				D4905FCD21607E8200F49653 /* User.xcdatamodeld */,
+				D4905FD021607EEB00F49653 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -539,6 +545,7 @@
 				D4DB783A213B965100217819 /* Filterable.swift in Sources */,
 				D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */,
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
+				D4905FCF21607E8200F49653 /* User.xcdatamodeld in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D4905FC82160445300F49653 /* LocalLoginChecker.swift in Sources */,
 				D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */,
@@ -562,6 +569,7 @@
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
 				D4FD032720FEF5230002471B /* MoreOptionsViewController.swift in Sources */,
 				D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */,
+				D4905FD121607EEB00F49653 /* UserModel.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
 				D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */,
@@ -833,6 +841,16 @@
 			);
 			currentVersion = D46B41EA21584CC9009D0283 /* Record 4.xcdatamodel */;
 			path = Record.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		D4905FCD21607E8200F49653 /* User.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D4905FCE21607E8200F49653 /* User.xcdatamodel */,
+			);
+			currentVersion = D4905FCE21607E8200F49653 /* User.xcdatamodel */;
+			path = User.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

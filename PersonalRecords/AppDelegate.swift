@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let loginController = window?.rootViewController as! LoginViewController
 
-        let loginService = LocalLoginChecker(userManager: UserManager())
+        let userManager = UserManager(userContext: createUserContext())
+        
+        let loginService = LocalLoginChecker(userManager: userManager)
         let sessionManager = SessionManager(sessionWriter: BasicSessionWriter(), loginService: loginService)
 
         loginController.sessionManager = sessionManager

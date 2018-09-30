@@ -19,14 +19,14 @@ func createMainContext (session: Session, inMemory: Bool = false) -> NSManagedOb
     //Initialize and return
 }
 
-//func createUserContext(inMemory: Bool = false) -> NSManagedObjectContext {
-//    guard let modelURL = Bundle.main.url(forResource: "Users", withExtension: "momd") else {
-//        fatalError("Cannot get user model url")
-//    }
-//    let storeURL = URL.mainDocumentsPath.appendingPathComponent("LocalUsers.sqlite")
-//
-//    return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
-//}
+func createUserContext(inMemory: Bool = false) -> NSManagedObjectContext {
+    guard let modelURL = Bundle.main.url(forResource: "User", withExtension: "momd") else {
+        fatalError("Cannot get user model url")
+    }
+    let storeURL = URL.mainDocumentsPath.appendingPathComponent("LocalUsers.sqlite")
+
+    return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
+}
 
 private func createContext(modelURL: URL, storeURL: URL, inMemory: Bool) -> NSManagedObjectContext {
     guard let model = NSManagedObjectModel(contentsOf: modelURL) else {fatalError("model cannot be created")}

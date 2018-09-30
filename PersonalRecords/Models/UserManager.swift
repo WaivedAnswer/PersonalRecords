@@ -10,12 +10,31 @@ import Foundation
 import CoreData
 
 class UserManager {
-    //private let context : NSManagedObjectContext
-    var users : [User]
-    init(/*userContext: NSManagedObjectContext */) {
-        //context = userContext
-        self.users = [];
-        seedDefaultUsers();
+    private let context : NSManagedObjectContext
+    
+    init(userContext: NSManagedObjectContext ) {
+        self.context = userContext
+        seedDefaultUsers()
+    }
+    
+    private func add( _ user: User ) -> Bool {
+        do {
+            let newUser = NSEntityDescription.insertNewObject(
+                forEntityName: UserModel.entityName,
+                into: context) as! UserModel
+        
+            newUser.id = user.userId
+            newUser.username = user.userName
+            
+            try context.save()
+            
+            return true
+        } catch {
+            context.rollback()
+            print (error)
+            print("Could not save new record")
+            return false
+        }
     }
     
     private func seedDefaultUsers() {
@@ -24,16 +43,39 @@ class UserManager {
             User(id: UUID(), userName: "Quinn"),
             User(id: UUID(), userName: "MamaBear"),
             User(id: UUID(), userName: "Dr.Jayyy") ]
-        // add passwords to keychain?
-        users.append(contentsOf: adminUserNames)
         
+        for user in adminUserNames {
+            if let _ = getUserWith(username: user.userName) {
+                continue
+            }
+            if(!add(user)) {
+                assertionFailure("Could not initialize users")
+            }
+        }
+    }
+    
+    private func translate(userModel : UserModel) -> User {
+        return User(id: userModel.id, userName: userModel.username)
     }
     
     func getUserWith(username: String ) -> User? {
+        do {
+            let request = NSFetchRequest<UserModel>(entityName: UserModel.entityName)
+            request.predicate = NSPredicate(format: "%K == %@", "username", username as CVarArg)
+            
+            let results = try context.fetch(request)
+            
+            if let userModel = results.first {
+                return translate(userModel: userModel)
+            }
+            
+        } catch {
+            print(error)
+            print("Could not get user")
+        }
         
-        return users.first(where: { (user) -> Bool in
-            user.userName == username
-        })
+        return nil
+        
     }
     
     func addUserWith(username: String) -> User? {
@@ -41,8 +83,11 @@ class UserManager {
             //user already exists
             return nil
         }
+        
         let newUser = User(id: UUID(), userName: username)
-        users.append(newUser)
+        if(!add( newUser )) {
+            return nil
+        }
         
         return newUser
     }

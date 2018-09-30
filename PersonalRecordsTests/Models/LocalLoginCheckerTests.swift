@@ -14,7 +14,8 @@ class LocalLoginCheckerTests: XCTestCase {
     var userManager: UserManager!
     override func setUp() {
         super.setUp()
-        userManager = UserManager()
+        let userContext = createUserContext(inMemory: true)
+        userManager = UserManager(userContext: userContext)
         
         subject = LocalLoginChecker(userManager: userManager )
         // Put setup code here. This method is called before the invocation of each test method in the class.
