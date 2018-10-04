@@ -14,7 +14,8 @@ func createMainContext (session: Session, inMemory: Bool = false) -> NSManagedOb
     guard let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd") else {
         fatalError("Cannot get record model url")
     }
-    let storeURL = URL.mainDocumentsPath.appendingPathComponent(session.user.userName + "_Record.sqlite")
+    
+    let storeURL = URL.mainDocumentsPath.appendingPathComponent(session.user.userId.uuidString + "_Record.sqlite")
     return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
     //Initialize and return
 }
@@ -35,16 +36,21 @@ private func createContext(modelURL: URL, storeURL: URL, inMemory: Bool) -> NSMa
     let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
     //Add NSPersistenStore to coordinator
     
+    
     //try! FileManager.default.removeItem(at: storeURL)
     if(!inMemory) {
         let pscOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
                           NSInferMappingModelAutomaticallyOption: false]
+
         do {
             try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: pscOptions)
+
         } catch {
+            print(error)
             fatalError("Cannot create persistent store")
         }
-    } else {
+    }
+    else {
         do {
             try psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
         } catch {

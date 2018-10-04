@@ -39,10 +39,10 @@ class UserManager {
     
     private func seedDefaultUsers() {
         let adminUserNames = [
-            User(id: UUID(), userName: "Amanda"),
-            User(id: UUID(), userName: "Quinn"),
-            User(id: UUID(), userName: "MamaBear"),
-            User(id: UUID(), userName: "Dr.Jayyy") ]
+            User(id: UUID(uuidString: "6A073C34-66F1-4E9D-8196-AFC25445D382")!, userName: "Amanda"),
+            User(id: UUID(uuidString: "C5D04F8D-704E-4391-9E17-11EFDC9C78DF")!, userName: "Quinn"),
+            User(id: UUID(uuidString: "2D4978F4-270B-4393-ADE5-8E42BB959ECF")!, userName: "MamaBear"),
+            User(id: UUID(uuidString: "04B02CF3-F0B2-47B0-B1AD-163F348BD778")!, userName: "Dr.Jayyy")]
         
         for user in adminUserNames {
             if let _ = getUserWith(username: user.userName) {
@@ -58,7 +58,7 @@ class UserManager {
         return User(id: userModel.id, userName: userModel.username)
     }
     
-    func getUserWith(username: String ) -> User? {
+    private func getUserModel(username: String ) -> UserModel? {
         do {
             let request = NSFetchRequest<UserModel>(entityName: UserModel.entityName)
             request.predicate = NSPredicate(format: "%K == %@", "username", username as CVarArg)
@@ -66,7 +66,7 @@ class UserManager {
             let results = try context.fetch(request)
             
             if let userModel = results.first {
-                return translate(userModel: userModel)
+                return userModel
             }
             
         } catch {
@@ -75,7 +75,39 @@ class UserManager {
         }
         
         return nil
-        
+    }
+    
+//    private func getAllUsers() -> [UserModel] {
+//        do {
+//            let request = NSFetchRequest<UserModel>(entityName: UserModel.entityName)
+//
+//            let results = try context.fetch(request)
+//
+//            return results
+//        } catch {
+//            print(error)
+//            print("Could not get users")
+//            return []
+//        }
+//    }
+//
+//    private func removeAllUsers() {
+//        for user in getAllUsers() {
+//            context.delete(user)
+//        }
+//        do {
+//            try context.save()
+//        } catch {
+//            print(error)
+//            print("Could not remove all users")
+//        }
+//    }
+    
+    func getUserWith(username: String ) -> User? {
+        if let userModel = getUserModel(username: username ) {
+            return translate(userModel: userModel)
+        }
+        return nil
     }
     
     func addUserWith(username: String) -> User? {
