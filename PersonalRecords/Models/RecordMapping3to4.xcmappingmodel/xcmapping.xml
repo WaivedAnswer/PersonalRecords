@@ -102,11 +102,11 @@ cBIAAYagrxEBywAHAAgAFwAzADQANQA/AEAAQQBcAF0AXgBkAGUAcQCHAIgAiQCKAIsAjACNAI4AjwCQ
         <attribute name="migrationpolicyclassname" type="string">PersonalRecords.RecordValueMigration3to4</attribute>
         <attribute name="sourcename" type="string">RecordModel</attribute>
         <attribute name="mappingtypename" type="string">Undefined</attribute>
-        <attribute name="mappingnumber" type="int16">2</attribute>
+        <attribute name="mappingnumber" type="int16">1</attribute>
         <attribute name="destinationname" type="string">RecordModel</attribute>
         <attribute name="autogenerateexpression" type="bool">1</attribute>
         <relationship name="mappingmodel" type="1/1" destination="XDDEVMAPPINGMODEL" idrefs="z107"></relationship>
-        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z105 z114 z111 z117 z118 z106"></relationship>
+        <relationship name="attributemappings" type="0/0" destination="XDDEVATTRIBUTEMAPPING" idrefs="z117 z105 z111 z106 z114 z118"></relationship>
         <relationship name="relationshipmappings" type="0/0" destination="XDDEVRELATIONSHIPMAPPING" idrefs="z104"></relationship>
     </object>
     <object type="XDDEVATTRIBUTEMAPPING" id="z113">
