@@ -138,7 +138,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         if previousSectionCount != getCurrentSectionCount()  {
-            tableView.insertSections(IndexSet(integer: newIndexPath!.section), with: .fade)
+            if let insertPath = newIndexPath {
+                tableView.insertSections(IndexSet(integer: insertPath.section), with: .fade)
+            } else if let deletePath = indexPath  {
+                tableView.deleteSections(IndexSet(integer: deletePath.section ), with: .fade)
+            }
             tableView.reloadData()
             return
         }
