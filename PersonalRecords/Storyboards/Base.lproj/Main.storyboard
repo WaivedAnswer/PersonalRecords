@@ -49,7 +49,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="3C4-FN-Zex">
-                                        <rect key="frame" x="0.3333333333333286" y="46" width="172.33333333333337" height="30"/>
+                                        <rect key="frame" x="0.6666666666666714" y="46" width="172.33333333333331" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PO8-fP-Kfg">
                                                 <rect key="frame" x="0.0" y="0.0" width="78.666666666666671" height="30"/>
@@ -177,13 +177,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qCO-Ww-kIu">
                             <connections>
                                 <action selector="AddNew:" destination="BYZ-38-t0r" id="qCt-8y-c95"/>
-                                <segue destination="X2Q-Jx-n3B" kind="show" identifier="CreateNew" id="E8A-2u-UWA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Qtc-f7-nHa" id="LDY-6O-yVb"/>
                         <segue destination="NxN-3W-lmy" kind="show" identifier="EditRecord" id="EKF-Ip-qwB"/>
+                        <segue destination="X2Q-Jx-n3B" kind="show" identifier="CreateNew" id="fYs-6c-Kj2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -442,6 +442,6 @@
         <image name="trophy" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ch2-6w-Sdr"/>
+        <segue reference="EKF-Ip-qwB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -45,6 +45,7 @@
 		D4905FCF21607E8200F49653 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4905FCD21607E8200F49653 /* User.xcdatamodeld */; };
 		D4905FD121607EEB00F49653 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FD021607EEB00F49653 /* UserModel.swift */; };
 		D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */; };
+		D4C8C0E92207A19F008D6034 /* ViewControllerSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */; };
 		D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7829213B26E500217819 /* RecordTemplates.swift */; };
 		D4DB782C213B275D00217819 /* DataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB782B213B275D00217819 /* DataServiceTests.swift */; };
 		D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7831213B424E00217819 /* TemplateDataSource.swift */; };
@@ -127,6 +128,7 @@
 		D4905FD021607EEB00F49653 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
+		D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSegues.swift; sourceTree = "<group>"; };
 		D4DB7829213B26E500217819 /* RecordTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTemplates.swift; sourceTree = "<group>"; };
 		D4DB782B213B275D00217819 /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
 		D4DB7831213B424E00217819 /* TemplateDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateDataSource.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
 				D433FA6220F6E08A009C3678 /* LoginViewController.swift */,
 				D4FD032620FEF5230002471B /* MoreOptionsViewController.swift */,
+				D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				D4DB78402140C0AD00217819 /* TransitionDelegate.swift in Sources */,
 				D4DB7836213B924A00217819 /* SubstringFilter.swift in Sources */,
 				D4905FC4215F249200F49653 /* UserManager.swift in Sources */,
+				D4C8C0E92207A19F008D6034 /* ViewControllerSegues.swift in Sources */,
 				D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */,
 				D4223D952120F7C5003A8075 /* JsonTemplateReader.swift in Sources */,
 				D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */,

@@ -41,12 +41,12 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let template = templateDataSource.getTemplate(row: indexPath.row) else {
-            fatalError("SelectedTemplate doesn't exist")
+            fatalError("Selected Template doesn't exist")
         }
         
         self.recordTemplate = template
         self.recordType = RecordType(value: template.type)
-        self.performSegue(withIdentifier: "EditNew", sender: nil)
+        self.performSegue(withIdentifier: ViewControllerSegues.CreateToEdit, sender: nil)
     }
     
     private func setCellValues(template: RecordModel, cell: UITableViewCell) {
@@ -83,7 +83,7 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
             let action = UIAlertAction(title: NSLocalizedString(type.getName(), comment: "\(type.getName()) action"), style: .default) {
                 _ in
                 self.recordType = type
-                self.performSegue(withIdentifier: "EditNew", sender: nil)
+                self.performSegue(withIdentifier: ViewControllerSegues.CreateToEdit, sender: nil)
             }
             actions.addAction(action)
         }
@@ -92,7 +92,7 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier=="EditNew")
+        if(segue.identifier == ViewControllerSegues.CreateToEdit)
         {
             let editVC = segue.destination as! EditRecordViewController
             editVC.currentRecordID = self.recordTemplate?.id

@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, TransitionDelegate {
     
     private func login(session: Session) {
         createAndSeedContext(session: session)
-        performSegue(withIdentifier: "Login", sender: nil)
+        performSegue(withIdentifier: ViewControllerSegues.LoginToMain, sender: nil)
     }
     
     private func onLoginError(errorTitle: String, errorMessage: String) {
@@ -118,7 +118,7 @@ class LoginViewController: UIViewController, TransitionDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if(segue.identifier == "Login")
+        if(segue.identifier == ViewControllerSegues.LoginToMain)
         {
             let tabController = segue.destination as! UITabBarController
 

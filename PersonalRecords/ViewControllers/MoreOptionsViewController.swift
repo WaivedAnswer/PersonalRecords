@@ -14,7 +14,7 @@ class MoreOptionsViewController: UIViewController {
 
     @IBAction func onLogout(_ sender: UIButton) {
         sessionManager.removeCurrentSession()
-        performSegue(withIdentifier: "logout", sender: nil)
+        performSegue(withIdentifier: ViewControllerSegues.LogoutFromMore, sender: nil)
     }
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class MoreOptionsViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "logout")
+        if(segue.identifier == ViewControllerSegues.LogoutFromMore)
         {
             let loginController = segue.destination as! LoginViewController
             loginController.sessionManager = self.sessionManager

@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             tableView.deselectRow(at: selectedRow, animated: false)
         }
         
-        performSegue(withIdentifier: "EditRecord", sender: nil)
+        performSegue(withIdentifier: ViewControllerSegues.MainToCreate, sender: nil)
     }
     
     // MARK: UITableViewDelegates
@@ -118,7 +118,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         lastSelectedIndex = indexPath.row
-        performSegue(withIdentifier: "EditRecord", sender: nil)
+        performSegue(withIdentifier: ViewControllerSegues.MainToEdit, sender: nil)
         
     }
     
@@ -163,7 +163,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //MARK: Segue stuff
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "EditRecord")
+        if(segue.identifier == ViewControllerSegues.MainToEdit)
         {
             let editVC = segue.destination as! EditRecordViewController
             if let index = tableView.indexPathForSelectedRow {
@@ -173,7 +173,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             editVC.context = self.context
         }
         
-        if(segue.identifier == "CreateNew")
+        else if(segue.identifier == ViewControllerSegues.MainToCreate)
         {
             let createVC = segue.destination as! CreateViewController
             createVC.context = self.context
