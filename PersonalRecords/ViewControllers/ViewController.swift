@@ -15,6 +15,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var controller: NSFetchedResultsController<RecordModel>!
     var context: NSManagedObjectContext!
     
+    private var recordManager : RecordModelManager!
+    
     var previousSectionCount : Int = 0
     
     @IBAction func test(_ sender: Any) {
@@ -104,14 +106,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .destructive, title: "Delete", handler: { _,_,success in
-            self.context.delete(self.controller.object(at: indexPath))
-            do {
-                try self.context.save()
-            } catch {
-                print("Save failed rolling back")
-                self.context.rollback()
-            }
-            success(true)
+            
+            let toDelete = self.controller.object(at: indexPath)
+            success(self.recordManager.deleteRecordBy(id: toDelete.id))
         })
         
         let swipeActionConfig = UISwipeActionsConfiguration(actions: [delete])
@@ -191,6 +188,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func setupController() {
+        recordManager = RecordModelManager(mainContext: context)
         
         let filter = NSPredicate(format: "isTemplate == FALSE")
         let fetchRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)

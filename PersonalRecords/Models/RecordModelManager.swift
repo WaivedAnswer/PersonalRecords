@@ -77,11 +77,24 @@ class RecordModelManager : NSManagedObjectContextDependent {
     }
     
     func deleteRecordBy( id: UUID) -> Bool {
-        if let record = getRecordBy(id: id) {
-            context.delete(record)
-            return true
+        do {
+            if let record = getRecordBy(id: id) {
+                for item in record.recordValues {
+                    if let value = item as? RecordValues {
+                        context.delete(value)
+                    }
+                }
+                context.delete(record)
+                try context.save()
+            }
+        } catch {
+            context.rollback()
+            print (error)
+            print("Could not save new record")
+            return false
         }
-        return false
+        
+        return true
     }
     
     func getRecordsWith( predicate: NSPredicate) -> [RecordModel] {

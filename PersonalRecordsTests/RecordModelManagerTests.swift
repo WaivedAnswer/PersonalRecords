@@ -46,6 +46,17 @@ class PersonalRecordsTests: XCTestCase {
         XCTAssertEqual(record?.id, result?.id)
     }
     
+    func testRecordModelManagerGetsRecordValues() {
+        let subject = RecordModelManager(mainContext: context)
+        let expectedType = RecordType.Distance
+        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        
+        let result = subject.getRecordBy(id: record!.id)
+        XCTAssertNotNil(result)
+        XCTAssertEqual(record?.id, result?.id)
+        XCTAssertEqual(record?.recordValues, result?.recordValues)
+    }
+    
     func testManagerOnSameUserContextsReturnsExpectedResults() {
         
         let subject = RecordModelManager(mainContext: context)

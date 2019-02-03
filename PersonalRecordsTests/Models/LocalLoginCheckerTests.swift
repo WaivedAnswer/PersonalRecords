@@ -27,7 +27,7 @@ class LocalLoginCheckerTests: XCTestCase {
     }
     
     func testLoginFailsWhenUserDoesntExist() {
-        let user = subject.login(username: "DoesntExist", password: "TestPassword")
+        let user = subject.login(username: "DoesntExist", password: "Test")
         XCTAssertNil(user)
     }
     
@@ -43,13 +43,13 @@ class LocalLoginCheckerTests: XCTestCase {
     }
     
     func testCreateLoginFailsWhenUserAlreadyExists() {
-        let user = subject.createLogin(username: "Quinn", password: "TestPassword")
+        let user = subject.createLogin(username: "Quinn", password: "Test")
         XCTAssertNil(user)
     }
     
     func testCreateSucceedsWhenUserDoesntAlreadyExist() {
         let username = "TestUser"
-        let user = subject.createLogin(username: username, password: "TestPassword")
+        let user = subject.createLogin(username: username, password: "Test")
         
         XCTAssertNotNil(user)
         XCTAssertEqual(username, user?.userName)
