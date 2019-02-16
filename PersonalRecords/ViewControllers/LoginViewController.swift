@@ -19,7 +19,11 @@ class LoginViewController: UIViewController, TransitionDelegate {
     var sessionManager : SessionManager!
     
     @IBOutlet weak var userNameField: UITextField!
+    private let userNameTextDelegate : UITextFieldDelegate = BasicTextFieldDelegate(transition: nil)
+    private var passwordTextDelegate : UITextFieldDelegate!
     @IBOutlet weak var passwordField: UITextField!
+    
+    
     
     @IBAction func onLogin(_ sender: UIButton) {
         onLoginInternal()
@@ -76,9 +80,9 @@ class LoginViewController: UIViewController, TransitionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        passwordFieldDelegate = BasicTextFieldDelegate(transition: self)
-        userNameField.delegate = BasicTextFieldDelegate(transition: nil)
-        passwordField.delegate = passwordFieldDelegate
+        passwordTextDelegate = BasicTextFieldDelegate(transition: self)
+        userNameField.delegate = userNameTextDelegate
+        passwordField.delegate = passwordTextDelegate
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -93,9 +97,9 @@ class LoginViewController: UIViewController, TransitionDelegate {
      }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
            if self.view.frame.origin.y != 0 {
-               self.view.frame.origin.y += keyboardSize.height/2
+               self.view.frame.origin.y = 0
            }
         }
     }
