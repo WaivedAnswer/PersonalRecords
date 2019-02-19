@@ -10,12 +10,13 @@ import UIKit
 import CoreData
 
 //todo remove context dependent
-class LoginViewController: UIViewController, TransitionDelegate {
+class LoginViewController: UIViewController, TransitionDelegate, Storyboarded {
 
     private var passwordFieldDelegate : BasicTextFieldDelegate!
     
-    private var context: NSManagedObjectContext!
+    private var context: NSManagedObjectContext?
     
+    weak var loginDelegate : LoginDelegate?
     var sessionManager : SessionManager!
     
     @IBOutlet weak var userNameField: UITextField!
@@ -44,7 +45,7 @@ class LoginViewController: UIViewController, TransitionDelegate {
                 return;
         }
         
-        login(session: session)
+        loginDelegate?.onLogin(session: session)
     }
     
     func onCreateLogin() {
@@ -55,20 +56,16 @@ class LoginViewController: UIViewController, TransitionDelegate {
                 return;
         }
     
-        login(session: session)
+        loginDelegate?.onLogin(session: session)
     }
     
-    private func createAndSeedContext(session: Session) {
-        context = createMainContext(session: session)
-        
-        let dataService = DataService(context: context)
-        dataService.seedStandardRecordTemplates()
-    }
-    
-    private func login(session: Session) {
-        createAndSeedContext(session: session)
-        performSegue(withIdentifier: ViewControllerSegues.LoginToMain, sender: nil)
-    }
+//    private func createAndSeedContext(session: Session) {
+//
+//        context = createMainContext(session: session)
+//
+//        let dataService = DataService(context: context!)
+//        dataService.seedStandardRecordTemplates()
+//    }
     
     private func onLoginError(errorTitle: String, errorMessage: String) {
         passwordField.text=""
@@ -106,7 +103,7 @@ class LoginViewController: UIViewController, TransitionDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         if let current = sessionManager.getCurrentSession() {
-            login(session: current)
+            loginDelegate?.onLogin(session: current)
         }
     }
 
@@ -115,25 +112,5 @@ class LoginViewController: UIViewController, TransitionDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if(segue.identifier == ViewControllerSegues.LoginToMain)
-        {
-            let tabController = segue.destination as! UITabBarController
-
-            let navController = tabController.viewControllers?[0] as! UINavigationController
-            let viewController = navController.viewControllers[0] as! ViewController
-            
-            let moreController = tabController.viewControllers?[1] as! MoreOptionsViewController
-            moreController.sessionManager = self.sessionManager
-            
-            viewController.context = self.context
-        }
-    }
 
 }

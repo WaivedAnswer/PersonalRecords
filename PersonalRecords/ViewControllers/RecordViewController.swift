@@ -9,11 +9,12 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSManagedObjectContextDependent, NSFetchedResultsControllerDelegate {
+class RecordViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSManagedObjectContextDependent, NSFetchedResultsControllerDelegate {
     
     
     var controller: NSFetchedResultsController<RecordModel>!
     var context: NSManagedObjectContext!
+    weak var logoutDelegate: LogoutDelegate?
     
     private var recordManager : RecordModelManager!
     
@@ -25,7 +26,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func AddNew(_ sender: Any) {
+    @objc func onLogout() {
+        logoutDelegate?.onLogout()
+    }
+    
+    @objc func AddNew() {
         if let selectedRow = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedRow, animated: false)
         }
@@ -172,7 +177,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             editVC.context = self.context
         }
-        
         else if(segue.identifier == ViewControllerSegues.MainToCreate)
         {
             let createVC = segue.destination as! CreateViewController
@@ -183,6 +187,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //MARK: Initialize
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.AddNew))
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Logout", style: .plain, target: self, action: #selector(self.onLogout))
+        
         setupController()
         // Do any additional setup after loading the view, typically from a nib.
     }
