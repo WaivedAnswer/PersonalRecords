@@ -35,7 +35,7 @@
 		D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D22079BFB4002950A8 /* CreateViewController.swift */; };
 		D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D4207AB9D5002950A8 /* RecordType.swift */; };
 		D45DA1D7207AC28D002950A8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D6207AC28D002950A8 /* DataService.swift */; };
-		D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D8207C6EEC002950A8 /* Extensions.swift */; };
+		D45DA1D9207C6EEC002950A8 /* TimeHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45DA1D8207C6EEC002950A8 /* TimeHelpers.swift */; };
 		D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EB215855AA009D0283 /* RecordValues.swift */; };
 		D46B41EF215883F9009D0283 /* RecordValueMigration3to4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */; };
 		D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */; };
@@ -123,7 +123,7 @@
 		D45DA1D22079BFB4002950A8 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		D45DA1D4207AB9D5002950A8 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		D45DA1D6207AC28D002950A8 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		D45DA1D8207C6EEC002950A8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D45DA1D8207C6EEC002950A8 /* TimeHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeHelpers.swift; sourceTree = "<group>"; };
 		D46B41EA21584CC9009D0283 /* Record 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 4.xcdatamodel"; sourceTree = "<group>"; };
 		D46B41EB215855AA009D0283 /* RecordValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValues.swift; sourceTree = "<group>"; };
 		D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValueMigration3to4.swift; sourceTree = "<group>"; };
@@ -244,6 +244,7 @@
 		D42522CA2352C4C600922830 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
 				D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */,
 				D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */,
 				D42522C82352BF3200922830 /* RecordModel4To5.xcmappingmodel */,
@@ -272,12 +273,51 @@
 		D433FA6420F6E0AC009C3678 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */,
+				D4C0E41A221B78B300D5CFE6 /* LogoutDelegate.swift */,
 				D433FA6520F6E14A009C3678 /* LoginService.swift */,
 				D4FD031D20FC50B20002471B /* SessionWriter.swift */,
 				D4DB7839213B965100217819 /* Filterable.swift */,
 				D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D43F66D6235B8AA600AA1473 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				D4DB7831213B424E00217819 /* TemplateDataSource.swift */,
+				D4223D962120F7ED003A8075 /* TemplateData.swift */,
+				D4223D942120F7C5003A8075 /* JsonTemplateReader.swift */,
+				D4223D9E21210AE0003A8075 /* UnboxableExtensions.swift */,
+				D45DA1D6207AC28D002950A8 /* DataService.swift */,
+				D4DB7829213B26E500217819 /* RecordTemplates.swift */,
+			);
+			path = Templates;
+			sourceTree = "<group>";
+		};
+		D43F66D7235B8AFE00AA1473 /* Records */ = {
+			isa = PBXGroup;
+			children = (
+				D43F4C9A20D341D100470C71 /* RecordModelManager.swift */,
+				D46B41EB215855AA009D0283 /* RecordValues.swift */,
+				D45DA1D020798106002950A8 /* Sport.swift */,
+				D45DA1D4207AB9D5002950A8 /* RecordType.swift */,
+			);
+			path = Records;
+			sourceTree = "<group>";
+		};
+		D43F66D8235B8B2F00AA1473 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				D4905FC1215F060200F49653 /* User.swift */,
+				D4905FC3215F249200F49653 /* UserManager.swift */,
+				D4905FC72160445300F49653 /* LocalLoginChecker.swift */,
+				D4FD031720FAF5E30002471B /* SessionManager.swift */,
+				D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */,
+				D4FD031F20FC54300002471B /* Session.swift */,
+			);
+			path = Users;
 			sourceTree = "<group>";
 		};
 		D44A4C96206F58F400581047 = {
@@ -320,25 +360,11 @@
 		D45DA1C820747BF3002950A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D45DA1D6207AC28D002950A8 /* DataService.swift */,
-				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
+				D43F66D8235B8B2F00AA1473 /* Users */,
+				D43F66D7235B8AFE00AA1473 /* Records */,
+				D43F66D6235B8AA600AA1473 /* Templates */,
 				D42522CA2352C4C600922830 /* CoreData */,
-				D43F4C9A20D341D100470C71 /* RecordModelManager.swift */,
-				D46B41EB215855AA009D0283 /* RecordValues.swift */,
-				D45DA1D020798106002950A8 /* Sport.swift */,
-				D45DA1D4207AB9D5002950A8 /* RecordType.swift */,
-				D4FD031720FAF5E30002471B /* SessionManager.swift */,
-				D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */,
-				D4FD031F20FC54300002471B /* Session.swift */,
-				D4223D942120F7C5003A8075 /* JsonTemplateReader.swift */,
-				D4223D962120F7ED003A8075 /* TemplateData.swift */,
-				D4223D9E21210AE0003A8075 /* UnboxableExtensions.swift */,
-				D4DB7829213B26E500217819 /* RecordTemplates.swift */,
-				D4DB7831213B424E00217819 /* TemplateDataSource.swift */,
 				D4DB7835213B924A00217819 /* SubstringFilter.swift */,
-				D4905FC1215F060200F49653 /* User.swift */,
-				D4905FC3215F249200F49653 /* UserManager.swift */,
-				D4905FC72160445300F49653 /* LocalLoginChecker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -349,8 +375,6 @@
 				D4C0E4102218E4B000D5CFE6 /* StoryBoarded.swift */,
 				D4C0E412221A4EDF00D5CFE6 /* Coordinator.swift */,
 				D4C0E414221A57E100D5CFE6 /* AppCoordinator.swift */,
-				D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */,
-				D4C0E41A221B78B300D5CFE6 /* LogoutDelegate.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -367,7 +391,7 @@
 		D4DB7830213B401600217819 /* ModelHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				D45DA1D8207C6EEC002950A8 /* Extensions.swift */,
+				D45DA1D8207C6EEC002950A8 /* TimeHelpers.swift */,
 			);
 			path = ModelHelpers;
 			sourceTree = "<group>";
@@ -613,7 +637,7 @@
 				D4C0E417221A6FD300D5CFE6 /* MainTabController.swift in Sources */,
 				D4FD032020FC54300002471B /* Session.swift in Sources */,
 				D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */,
-				D45DA1D9207C6EEC002950A8 /* Extensions.swift in Sources */,
+				D45DA1D9207C6EEC002950A8 /* TimeHelpers.swift in Sources */,
 				D433FA6620F6E14A009C3678 /* LoginService.swift in Sources */,
 				D4223D972120F7ED003A8075 /* TemplateData.swift in Sources */,
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
