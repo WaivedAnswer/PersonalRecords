@@ -62,7 +62,6 @@ class AppCoordinator: Coordinator, LoginDelegate, LogoutDelegate {
         let userManager = UserManager(userContext: createUserContext())
         let loginService = LocalLoginChecker(userManager: userManager)
         sessionManager = SessionManager(sessionWriter: BasicSessionWriter(), loginService: loginService)
-        sessionManager.removeCurrentSession()
         
         rootViewController = UINavigationController()
     }
