@@ -17,6 +17,8 @@
 		D4223D9A2120F844003A8075 /* JsonTemplateReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D992120F844003A8075 /* JsonTemplateReaderTests.swift */; };
 		D4223D9D2120F951003A8075 /* SingleTemplate.json in Resources */ = {isa = PBXBuildFile; fileRef = D4223D9C2120F92C003A8075 /* SingleTemplate.json */; };
 		D4223D9F21210AE0003A8075 /* UnboxableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D9E21210AE0003A8075 /* UnboxableExtensions.swift */; };
+		D42522C92352BF3200922830 /* RecordModel4To5.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D42522C82352BF3200922830 /* RecordModel4To5.xcmappingmodel */; };
+		D42522CC2352C54200922830 /* RecordMapping4To5.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42522CB2352C54200922830 /* RecordMapping4To5.swift */; };
 		D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433FA6220F6E08A009C3678 /* LoginViewController.swift */; };
 		D433FA6620F6E14A009C3678 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433FA6520F6E14A009C3678 /* LoginService.swift */; };
 		D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F4C9A20D341D100470C71 /* RecordModelManager.swift */; };
@@ -102,6 +104,8 @@
 		D4223D992120F844003A8075 /* JsonTemplateReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTemplateReaderTests.swift; sourceTree = "<group>"; };
 		D4223D9C2120F92C003A8075 /* SingleTemplate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleTemplate.json; sourceTree = "<group>"; };
 		D4223D9E21210AE0003A8075 /* UnboxableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnboxableExtensions.swift; sourceTree = "<group>"; };
+		D42522C82352BF3200922830 /* RecordModel4To5.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = RecordModel4To5.xcmappingmodel; sourceTree = "<group>"; };
+		D42522CB2352C54200922830 /* RecordMapping4To5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMapping4To5.swift; sourceTree = "<group>"; };
 		D433FA6220F6E08A009C3678 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D433FA6520F6E14A009C3678 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		D43F4C9A20D341D100470C71 /* RecordModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManager.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 		D4C0E416221A6FD300D5CFE6 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabController.swift; path = PersonalRecords/ViewControllers/MainTabController.swift; sourceTree = SOURCE_ROOT; };
 		D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		D4C0E41A221B78B300D5CFE6 /* LogoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutDelegate.swift; sourceTree = "<group>"; };
+		D4C0E41C221E6BA000D5CFE6 /* Record 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 5.xcdatamodel"; sourceTree = "<group>"; };
 		D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSegues.swift; sourceTree = "<group>"; };
 		D4DB7829213B26E500217819 /* RecordTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTemplates.swift; sourceTree = "<group>"; };
 		D4DB782B213B275D00217819 /* DataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServiceTests.swift; sourceTree = "<group>"; };
@@ -238,6 +243,21 @@
 			path = TestFiles;
 			sourceTree = "<group>";
 		};
+		D42522CA2352C4C600922830 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */,
+				D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */,
+				D42522C82352BF3200922830 /* RecordModel4To5.xcmappingmodel */,
+				D42522CB2352C54200922830 /* RecordMapping4To5.swift */,
+				D45DA1C920747C13002950A8 /* Record.xcdatamodeld */,
+				D4905FCD21607E8200F49653 /* User.xcdatamodeld */,
+				D4905FD021607EEB00F49653 /* UserModel.swift */,
+				D45DA1CE20773760002950A8 /* RecordModel.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		D433FA5F20F6E01D009C3678 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,10 +325,8 @@
 			children = (
 				D45DA1D6207AC28D002950A8 /* DataService.swift */,
 				D45DA1CC20747C46002950A8 /* CoreDataStack.swift */,
-				D45DA1C920747C13002950A8 /* Record.xcdatamodeld */,
-				D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */,
+				D42522CA2352C4C600922830 /* CoreData */,
 				D43F4C9A20D341D100470C71 /* RecordModelManager.swift */,
-				D45DA1CE20773760002950A8 /* RecordModel.swift */,
 				D46B41EB215855AA009D0283 /* RecordValues.swift */,
 				D45DA1D020798106002950A8 /* Sport.swift */,
 				D45DA1D4207AB9D5002950A8 /* RecordType.swift */,
@@ -321,12 +339,9 @@
 				D4DB7829213B26E500217819 /* RecordTemplates.swift */,
 				D4DB7831213B424E00217819 /* TemplateDataSource.swift */,
 				D4DB7835213B924A00217819 /* SubstringFilter.swift */,
-				D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */,
 				D4905FC1215F060200F49653 /* User.swift */,
 				D4905FC3215F249200F49653 /* UserManager.swift */,
 				D4905FC72160445300F49653 /* LocalLoginChecker.swift */,
-				D4905FCD21607E8200F49653 /* User.xcdatamodeld */,
-				D4905FD021607EEB00F49653 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -568,6 +583,7 @@
 				D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */,
 				D44A4CA5206F58F400581047 /* RecordViewController.swift in Sources */,
 				D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */,
+				D42522C92352BF3200922830 /* RecordModel4To5.xcmappingmodel in Sources */,
 				D4C0E419221A712900D5CFE6 /* LoginDelegate.swift in Sources */,
 				D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */,
 				D4C0E415221A57E100D5CFE6 /* AppCoordinator.swift in Sources */,
@@ -606,6 +622,7 @@
 				D4FD032720FEF5230002471B /* MoreOptionsViewController.swift in Sources */,
 				D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */,
 				D4905FD121607EEB00F49653 /* UserModel.swift in Sources */,
+				D42522CC2352C54200922830 /* RecordMapping4To5.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
 				D45DA1CB20747C13002950A8 /* Record.xcdatamodeld in Sources */,
@@ -870,12 +887,13 @@
 		D45DA1C920747C13002950A8 /* Record.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D4C0E41C221E6BA000D5CFE6 /* Record 5.xcdatamodel */,
 				D46B41EA21584CC9009D0283 /* Record 4.xcdatamodel */,
 				D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */,
 				D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */,
 				D45DA1CA20747C13002950A8 /* Record.xcdatamodel */,
 			);
-			currentVersion = D46B41EA21584CC9009D0283 /* Record 4.xcdatamodel */;
+			currentVersion = D4C0E41C221E6BA000D5CFE6 /* Record 5.xcdatamodel */;
 			path = Record.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

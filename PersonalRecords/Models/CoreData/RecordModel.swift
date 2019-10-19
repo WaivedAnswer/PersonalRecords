@@ -20,7 +20,6 @@ class RecordModel : NSManagedObject {
     @NSManaged var sport: Int16
     @NSManaged var id: UUID
     @NSManaged var type: Int16
-    @NSManaged var isTemplate: Bool
 }
 
 extension RecordModel : Filterable {
@@ -36,7 +35,10 @@ extension RecordModel : Filterable {
 }
 
 extension RecordModel {
-    func getCurrentValues() -> RecordValues? {
+    func getCurrentValue() -> RecordValues? {
         return recordValues.firstObject as? RecordValues
+    }
+    func isTemplate() -> Bool {
+        return recordValues.count == 0
     }
 }

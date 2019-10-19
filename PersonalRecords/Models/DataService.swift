@@ -56,11 +56,6 @@ struct DataService {
         
         let record = NSEntityDescription.insertNewObject(forEntityName: RecordModel.entityName, into: context) as! RecordModel
         record.id = data.id
-        record.isTemplate = true
-        
-        let values = recordManager.createRecordValues(for: record)
-        
-        record.recordValues = [values]
         
         updateRecordInfo(record, data)
     }

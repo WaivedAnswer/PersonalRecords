@@ -56,7 +56,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     private func updateRecord () {
         currentRecord?.title = recordTitle.text!
         
-        if let recordValues = currentRecord?.getCurrentValues() {
+        if let recordValues = currentRecord?.getCurrentValue() {
             recordValues.date = datePicker.date
             switch(recordType) {
             case .Time?:
@@ -80,7 +80,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         context.rollback()
         if(isNewRecord), let id = currentRecord?.id {
-            _ = recordManager.deleteRecordBy( id: id)
+            _ = recordManager.deleteRecordValues(forID: id)
         }
         goToHomeScreen()
     }
@@ -134,16 +134,15 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     func setupCurrentRecord() {
-        if let recordId = currentRecordID {
-            isNewRecord = false
-            currentRecord = recordManager.getRecordBy(id: recordId)
-            recordType = RecordType(rawValue: Int(currentRecord.type))
-            //todo populate template
-        } else {
-            isNewRecord = true
-            currentRecord = recordManager.createRecordWith(type: recordType!, isTemplate: false)
+        guard let recordId = currentRecordID  else {
+            fatalError("Current Record doesn't exist.")
         }
-        currentRecord?.isTemplate = false
+        currentRecord = recordManager.getRecordBy(id: recordId)
+        recordType = RecordType(rawValue: Int(currentRecord.type))
+        if(currentRecord.isTemplate()) {
+            let newValues = recordManager.createRecordValues(for: currentRecord)
+            currentRecord.recordValues = [newValues]
+        }
     }
     
     fileprivate func updateTimeLabelText() {
@@ -169,7 +168,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         datePicker.date = Date()
         datePicker.maximumDate = Date()
-
+        
         datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -50, to: Date())
         
         datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender: )), for: UIControlEvents.valueChanged)
@@ -194,8 +193,9 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             valueLabel.text = type.getName()
             if(type == .Time) {
                 picker = CustomTimePicker()
-                if let value = currentRecord?.getCurrentValues()?.time, let timePicker = picker {
-                    timePicker.timeInterval = value
+                if let timeValue = currentRecord?.getCurrentValue()?.time,
+                    let timePicker = picker {
+                    timePicker.timeInterval = timeValue
                 }
                 picker?.timeDelegate = self
                 recordValue.inputView = picker
@@ -222,7 +222,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let currRecord = currentRecord, let type = RecordType(rawValue: Int(currRecord.type)) {
             recordTitle.text = currRecord.title
-            if let recordValues = currRecord.getCurrentValues() {
+            if let recordValues = currRecord.getCurrentValue() {
                 if let recordDate = recordValues.date {
                     datePicker.date = recordDate
                     updateDateText(datePicker)

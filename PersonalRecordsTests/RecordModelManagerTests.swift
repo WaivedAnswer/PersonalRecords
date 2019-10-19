@@ -28,18 +28,18 @@ class PersonalRecordsTests: XCTestCase {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Time
         
-        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        let record = subject.createRecordWith(type: expectedType)
         
         XCTAssertNotNil(record)
         XCTAssertEqual(expectedType, RecordType(rawValue: Int(record!.type)))
-        XCTAssertFalse(record!.isTemplate)
+        XCTAssertFalse(record!.isTemplate())
         
     }
     
     func testRecordModelManagerGetRecord() {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Distance
-        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        let record = subject.createRecordWith(type: expectedType)
         
         let result = subject.getRecordBy(id: record!.id)
         XCTAssertNotNil(result)
@@ -49,7 +49,7 @@ class PersonalRecordsTests: XCTestCase {
     func testRecordModelManagerGetsRecordValues() {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Distance
-        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        let record = subject.createRecordWith(type: expectedType)
         
         let result = subject.getRecordBy(id: record!.id)
         XCTAssertNotNil(result)
@@ -62,7 +62,7 @@ class PersonalRecordsTests: XCTestCase {
         let subject = RecordModelManager(mainContext: context)
         
         let expectedType = RecordType.Distance
-        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        let record = subject.createRecordWith(type: expectedType)
         
         let subject2 = RecordModelManager(mainContext: context)
         
@@ -77,7 +77,7 @@ class PersonalRecordsTests: XCTestCase {
         let subject = RecordModelManager(mainContext: context)
         
         let expectedType = RecordType.Distance
-        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
+        let record = subject.createRecordWith(type: expectedType)
         
         let context2 = createMainContext(session: Session(user: User(id: UUID(), userName: "test")), inMemory: true)
         let subject2 = RecordModelManager(mainContext: context2)
@@ -96,7 +96,7 @@ class PersonalRecordsTests: XCTestCase {
     func testRecordModelManagerDeleteRecord() {
         
         let subject = RecordModelManager(mainContext: context)
-        let record = subject.createRecordWith(type: RecordType.Distance, isTemplate: false)
+        let record = subject.createRecordWith(type: RecordType.Distance)
         
         if let recordId = record?.id {
             XCTAssertTrue(subject.deleteRecordBy(id: recordId))
@@ -104,15 +104,26 @@ class PersonalRecordsTests: XCTestCase {
         }
     }
     
+    func testRecordModelManagerDeleteRecordValues() {
+        let subject = RecordModelManager(mainContext: context)
+        let record = subject.createRecordWith(type: RecordType.Distance)
+        XCTAssertNotNil(record)
+        let recordId = record!.id
+        XCTAssertTrue(subject.deleteRecordValues(forID: recordId))
+        let updatedRecord = subject.getRecordBy(id: recordId)
+        XCTAssertNotNil(updatedRecord)
+        XCTAssertTrue(updatedRecord?.recordValues.count == 0)
+    }
+    
     func testRecordModelManagerGetRecordWhenManyRecords() {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Repetition
         
-        let record = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        let record = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
         
         let result = subject.getRecordBy(id: record!.id)
         XCTAssertEqual(record?.id, result?.id)
@@ -122,11 +133,11 @@ class PersonalRecordsTests: XCTestCase {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Weight
         
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
         
         let typePredicate = NSPredicate(format: "%K == %d", "type", Int16(expectedType.rawValue) as CVarArg)
         
@@ -139,11 +150,11 @@ class PersonalRecordsTests: XCTestCase {
         let subject = RecordModelManager(mainContext: context)
         let expectedType = RecordType.Weight
         
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
-        _ = subject.createRecordWith(type: expectedType, isTemplate: false)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
+        _ = subject.createRecordWith(type: expectedType)
         
         let typePredicate = NSPredicate(format: "%K == %d", "type", RecordType.Time.getValue() as CVarArg)
         

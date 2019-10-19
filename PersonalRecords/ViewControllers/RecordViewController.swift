@@ -91,7 +91,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     func setCellValues (record: RecordModel, cell: UITableViewCell ) {
         var valueString: String = ""
         
-        if let type = RecordType(rawValue: Int(record.type)), let recordValues = record.getCurrentValues() {
+        if let type = RecordType(rawValue: Int(record.type)), let recordValues = record.getCurrentValue() {
             switch(type) {
             case .Time:
                 valueString = recordValues.time.timeString
@@ -113,7 +113,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         let delete = UIContextualAction(style: .destructive, title: "Delete", handler: { _,_,success in
             
             let toDelete = self.controller.object(at: indexPath)
-            success(self.recordManager.deleteRecordBy(id: toDelete.id))
+            success(self.recordManager.deleteRecordValues(forID: toDelete.id))
         })
         
         let swipeActionConfig = UISwipeActionsConfiguration(actions: [delete])
@@ -199,7 +199,8 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     func setupController() {
         recordManager = RecordModelManager(mainContext: context)
         
-        let filter = NSPredicate(format: "isTemplate == FALSE")
+        // #TODO change this predicate, is there some way we can get this info through the record manager?
+        let filter = NSPredicate(format: "recordValues.@count != 0")
         let fetchRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
         fetchRequest.predicate = filter
         let sportSort = NSSortDescriptor(key: #keyPath(RecordModel.sport), ascending: true)

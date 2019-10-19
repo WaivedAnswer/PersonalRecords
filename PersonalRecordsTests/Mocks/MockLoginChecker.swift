@@ -13,6 +13,7 @@ class MockLoginChecker : LoginService {
     
     func createLogin(username: String, password: String) -> User? {
         assert(false, "MockLoginChecker cannot support createLogin.")
+        return nil
     }
     
     func login(username: String, password: String) -> User? {

@@ -16,7 +16,7 @@ class RecordModelManager : NSManagedObjectContextDependent {
         context = mainContext
     }
     
-    private func initRecord(type: RecordType, isTemplate: Bool) -> RecordModel
+    private func initRecord(type: RecordType) -> RecordModel
     {
         let record = NSEntityDescription.insertNewObject(
             forEntityName: RecordModel.entityName,
@@ -29,7 +29,6 @@ class RecordModelManager : NSManagedObjectContextDependent {
         
         let recordValues = createRecordValues(for: record)
         record.recordValues = [recordValues]
-        record.isTemplate = isTemplate
         
         return record
     }
@@ -47,10 +46,10 @@ class RecordModelManager : NSManagedObjectContextDependent {
         
         return recordValues
     }
-    func createRecordWith(type: RecordType, isTemplate: Bool) -> RecordModel? {
-
+    
+    func createRecordWith(type: RecordType) -> RecordModel? {
         do {
-            let record = initRecord(type: type, isTemplate: isTemplate)
+            let record = initRecord(type: type)
             
             try context.save()
             
@@ -77,20 +76,39 @@ class RecordModelManager : NSManagedObjectContextDependent {
     }
     
     func deleteRecordBy( id: UUID) -> Bool {
+        if !deleteRecordValues(forID: id) {
+            return false
+        }
+        
         do {
             if let record = getRecordBy(id: id) {
-                for item in record.recordValues {
-                    if let value = item as? RecordValues {
-                        context.delete(value)
-                    }
-                }
                 context.delete(record)
                 try context.save()
             }
         } catch {
             context.rollback()
             print (error)
-            print("Could not save new record")
+            print("Could not delete record")
+            return false
+        }
+        
+        return true
+    }
+    
+    func deleteRecordValues( forID: UUID) -> Bool {
+        do {
+            if let record = getRecordBy(id: forID) {
+                for item in record.recordValues {
+                    if let value = item as? RecordValues {
+                        context.delete(value)
+                    }
+                }
+                try context.save()
+            }
+        } catch {
+            context.rollback()
+            print (error)
+            print("Could not delete record values")
             return false
         }
         

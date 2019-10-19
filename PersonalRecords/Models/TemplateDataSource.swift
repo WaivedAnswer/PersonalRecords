@@ -11,6 +11,8 @@ import CoreData
 
 class TemplateDataSource : NSObject, NSFetchedResultsControllerDelegate {
     
+    static public let TEMPLATE_PREDICATE = NSPredicate(format: "recordValues.@count == 0")
+    
     var templates : [RecordModel] = []
     
     var filters : [SubstringFilter] = []
@@ -40,7 +42,8 @@ class TemplateDataSource : NSObject, NSFetchedResultsControllerDelegate {
     private func getFetchRequest() -> NSFetchRequest<RecordModel> {
         let fetchRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
         
-        fetchRequest.predicate = NSPredicate(format: "isTemplate == TRUE")
+        fetchRequest.predicate = TemplateDataSource.TEMPLATE_PREDICATE
+        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: #keyPath(RecordModel.title), ascending: true)]
         
         return fetchRequest

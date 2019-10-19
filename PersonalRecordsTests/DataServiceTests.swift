@@ -37,7 +37,7 @@ class DataServiceTests: XCTestCase {
         var results : [RecordModel] = []
         do {
             let templateRequest = NSFetchRequest<RecordModel>(entityName: RecordModel.entityName)
-            templateRequest.predicate = NSPredicate(format: "isTemplate == TRUE")
+            templateRequest.predicate = TemplateDataSource.TEMPLATE_PREDICATE
             results = try context.fetch(templateRequest)
         } catch {
             print(error)
