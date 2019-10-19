@@ -59,14 +59,6 @@ class LoginViewController: UIViewController, TransitionDelegate, Storyboarded {
         loginDelegate?.onLogin(session: session)
     }
     
-//    private func createAndSeedContext(session: Session) {
-//
-//        context = createMainContext(session: session)
-//
-//        let dataService = DataService(context: context!)
-//        dataService.seedStandardRecordTemplates()
-//    }
-    
     private func onLoginError(errorTitle: String, errorMessage: String) {
         passwordField.text=""
         let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: UIAlertController.Style.alert)
@@ -98,12 +90,6 @@ class LoginViewController: UIViewController, TransitionDelegate, Storyboarded {
            if self.view.frame.origin.y != 0 {
                self.view.frame.origin.y = 0
            }
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let current = sessionManager.getCurrentSession() {
-            loginDelegate?.onLogin(session: current)
         }
     }
 
