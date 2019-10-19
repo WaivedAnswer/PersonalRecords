@@ -171,7 +171,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         datePicker.minimumDate = Calendar.current.date(byAdding: .year, value: -50, to: Date())
         
-        datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender: )), for: UIControlEvents.valueChanged)
+        datePicker.addTarget(self, action: #selector(self.handleDatePicker(sender: )), for: UIControl.Event.valueChanged)
         updateDateText(datePicker)
         
         recordDate.inputView = datePicker
@@ -181,8 +181,8 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.cancelEdit))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.saveRecord))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.cancelEdit))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.saveRecord))
         
         recordManager = RecordModelManager(mainContext: context)
         allowableCharacters = AllowableStringValues()

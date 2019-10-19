@@ -14,29 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private var appCoordinator: AppCoordinator?
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let window = UIWindow()
         self.window = window
         self.appCoordinator = AppCoordinator(window: window)
         
-        self.appCoordinator?.start() 
-//        let loginController = window?.rootViewController as! LoginViewController
-
-//        let userManager = UserManager(userContext: createUserContext())
-//
-//        let loginService = LocalLoginChecker(userManager: userManager)
-//        let sessionManager = SessionManager(sessionWriter: BasicSessionWriter(), loginService: loginService)
-//
-//        mainCoordinator = MainCoordinator(sessionManager: sessionManager)
-//
-//        loginController.sessionManager = sessionManager
-//        loginController.coordinator = mainCoordinator!
+        self.appCoordinator?.start()
         
         return true
     }
-
-
+    
 }
 

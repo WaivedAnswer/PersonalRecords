@@ -162,6 +162,9 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         case .move:
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
+        @unknown default:
+            // new cases, maybe should do some logging?
+            break
         }
     }
     
