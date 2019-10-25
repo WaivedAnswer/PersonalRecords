@@ -97,6 +97,5 @@ class LoginViewController: UIViewController, TransitionDelegate, Storyboarded {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
 }

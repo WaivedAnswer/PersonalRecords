@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecordViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSManagedObjectContextDependent, NSFetchedResultsControllerDelegate {
+class RecordViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSManagedObjectContextDependent, NSFetchedResultsControllerDelegate, Storyboarded {
     
     
     var controller: NSFetchedResultsController<RecordModel>!

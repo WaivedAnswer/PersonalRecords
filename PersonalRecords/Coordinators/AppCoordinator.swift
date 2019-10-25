@@ -10,65 +10,48 @@ import Foundation
 import UIKit
 import CoreData
 
-class AppCoordinator: Coordinator, LoginDelegate, LogoutDelegate {
+class AppCoordinator: Coordinator, LoginCoordinatorDelegate, MainCoordinatorDelegate {
     private let window: UIWindow
     private let sessionManager : SessionManager
-    private var currentSession : Session?
-    private var mainContext : NSManagedObjectContext?
-    private let rootViewController: UINavigationController
+    private let navController: UINavigationController
+    private var childCoordinators: [Coordinator] = []
     
-    func createMainTab(session: Session) {
-        mainContext = createMainContext(session: session)
-        let dataService = DataService(context: mainContext!)
-        dataService.seedStandardRecordTemplates()
-        
-        let mainTabVC = MainTabController.instantiate()
-        let navController = mainTabVC.viewControllers?[0] as! UINavigationController
-        let recordViewVC = navController.viewControllers[0] as! RecordViewController
-        recordViewVC.context = mainContext
-        recordViewVC.logoutDelegate = self
-        
-        rootViewController.pushViewController(recordViewVC, animated: true)
-        window.rootViewController = rootViewController
+    func showMainTab(for session: Session) {
+        let mainCoordinator = MainCoordinator(navController: navController, session: session, delegate: self)
+         childCoordinators.append(mainCoordinator)
+        mainCoordinator.start()
     }
     
-    func updateRootController() {
-        if let session = currentSession {
-            createMainTab(session: session)
-        } else {
-            let loginVC = LoginViewController.instantiate()
-            loginVC.sessionManager = sessionManager
-            loginVC.loginDelegate = self
-            window.rootViewController = loginVC
-        }
-        
+    fileprivate func showLogin() {
+        let loginCoordinator = LoginCoordinator(navController: navController, sessionManager: sessionManager, delegate: self)
+        childCoordinators.append(loginCoordinator)
+        loginCoordinator.start()
     }
     
-    func onLogin(session: Session) {
-        currentSession = session
-        
-        updateRootController()
+    func didLogin(with session: Session) {
+        childCoordinators.removeAll(where: { $0 is LoginCoordinator })
+        showMainTab(for: session)
     }
     
-    func onLogout() {
-        currentSession = nil
+    func didLogout() {
         sessionManager.removeCurrentSession()
-        updateRootController()
+        childCoordinators.removeAll(where: { $0 is MainCoordinator })
+        showLogin()
     }
     
-    init(window: UIWindow) {
+    init(navController: UINavigationController, window: UIWindow) {
         self.window = window
+        self.navController = navController
         
         let userManager = UserManager(userContext: createUserContext())
         let loginService = LocalLoginChecker(userManager: userManager)
         sessionManager = SessionManager(sessionWriter: BasicSessionWriter(), loginService: loginService)
-        
-        rootViewController = UINavigationController()
     }
     
     func start() {
-        updateRootController()
+        window.rootViewController = navController
         window.makeKeyAndVisible()
+        showLogin()
     }
     
     

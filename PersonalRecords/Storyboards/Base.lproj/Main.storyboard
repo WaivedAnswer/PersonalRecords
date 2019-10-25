@@ -114,18 +114,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Xx-hs-JYY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1628" y="-423"/>
+            <point key="canvasLocation" x="-146" y="-423"/>
         </scene>
         <!--Record View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RecordViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordViewController" id="BYZ-38-t0r" customClass="RecordViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qtc-f7-nHa">
-                                <rect key="frame" x="0.0" y="44" width="414" height="648"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="741"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Testing" textLabel="IwA-aD-b5h" detailTextLabel="NON-H8-naJ" style="IBUITableViewCellStyleSubtitle" id="BeC-9R-1fx">
@@ -178,18 +178,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2135" y="-370"/>
+            <point key="canvasLocation" x="1459" y="-423"/>
         </scene>
         <!--Create View Controller-->
         <scene sceneID="uKy-7I-sAU">
             <objects>
                 <viewController id="X2Q-Jx-n3B" customClass="CreateViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wTm-Fk-m4c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQ1-vo-gaL">
-                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -216,7 +216,7 @@
             <objects>
                 <viewController id="NxN-3W-lmy" customClass="EditRecordViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="648-He-jDM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hze-pU-kwQ">
@@ -232,7 +232,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lb0-EZ-Ytx">
-                                                <rect key="frame" x="0.0" y="22.333333333333329" width="354" height="30"/>
+                                                <rect key="frame" x="0.0" y="22.333333333333336" width="354" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="7Ff-SU-GK8"/>
                                                 </constraints>
@@ -242,7 +242,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="V6f-9a-Nxe">
-                                        <rect key="frame" x="0.0" y="72.333333333333343" width="354" height="50.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="72.333333333333329" width="354" height="50.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD1-0S-sMb">
                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="20.333333333333332"/>
@@ -251,7 +251,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O24-2z-Qtp">
-                                                <rect key="frame" x="0.0" y="20.333333333333314" width="354" height="30"/>
+                                                <rect key="frame" x="0.0" y="20.333333333333343" width="354" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Tom-sX-Vds"/>
                                                 </constraints>
@@ -348,47 +348,7 @@
             </objects>
             <point key="canvasLocation" x="3569.5652173913045" y="-423.09782608695656"/>
         </scene>
-        <!--Records-->
-        <scene sceneID="wxt-IB-AsA">
-            <objects>
-                <navigationController title="Records" automaticallyAdjustsScrollViewInsets="NO" id="lwz-jw-iCB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Record" image="trophy" id="sKu-EY-wHT"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9Ya-7y-J9n">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xGw-SO-ZjA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cFu-4p-qwq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="975" y="-370"/>
-        </scene>
-        <!--Main Tab Controller-->
-        <scene sceneID="d24-3x-YGr">
-            <objects>
-                <tabBarController storyboardIdentifier="MainTabController" automaticallyAdjustsScrollViewInsets="NO" id="TTI-8l-067" customClass="MainTabController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="keX-3h-2Fh">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="lwz-jw-iCB" kind="relationship" relationship="viewControllers" id="1Pu-bm-S2b"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wEX-P0-o5a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-357" y="-423"/>
-        </scene>
     </scenes>
-    <resources>
-        <image name="trophy" width="30" height="30"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EKF-Ip-qwB"/>
     </inferredMetricsTieBreakers>

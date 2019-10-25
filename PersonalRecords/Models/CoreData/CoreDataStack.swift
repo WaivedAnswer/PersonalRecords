@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-func createMainContext (session: Session, inMemory: Bool = false) -> NSManagedObjectContext {
+func createMainContext (for session: Session, inMemory: Bool = false) -> NSManagedObjectContext {
     //initialize NSManagedObjecTModel
     guard let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd") else {
         fatalError("Cannot get record model url")
