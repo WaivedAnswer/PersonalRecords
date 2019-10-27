@@ -12,6 +12,7 @@
 		D408F1C020DB5C3A008A0072 /* AllowableCharactersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408F1BF20DB5C3A008A0072 /* AllowableCharactersTests.swift */; };
 		D408F1C220DC8F12008A0072 /* CustomTimePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408F1C120DC8F12008A0072 /* CustomTimePickerTests.swift */; };
 		D41C7C7E2365301800FBDAD8 /* CreateRecordViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C7D2365301800FBDAD8 /* CreateRecordViewDelegate.swift */; };
+		D41C7C82236607B700FBDAD8 /* EditRecordViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C81236607B700FBDAD8 /* EditRecordViewDelegate.swift */; };
 		D4201D2A20D1FBB20091FA60 /* RecordModelManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */; };
 		D4223D952120F7C5003A8075 /* JsonTemplateReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D942120F7C5003A8075 /* JsonTemplateReader.swift */; };
 		D4223D972120F7ED003A8075 /* TemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D962120F7ED003A8075 /* TemplateData.swift */; };
@@ -100,6 +101,7 @@
 		D408F1C120DC8F12008A0072 /* CustomTimePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePickerTests.swift; sourceTree = "<group>"; };
 		D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 3.xcdatamodel"; sourceTree = "<group>"; };
 		D41C7C7D2365301800FBDAD8 /* CreateRecordViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordViewDelegate.swift; sourceTree = "<group>"; };
+		D41C7C81236607B700FBDAD8 /* EditRecordViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordViewDelegate.swift; sourceTree = "<group>"; };
 		D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalRecordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManagerTests.swift; sourceTree = "<group>"; };
 		D4201D2B20D1FBB20091FA60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -212,6 +214,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D41C7C7F2366074A00FBDAD8 /* ViewControllerDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				D4C0E41A221B78B300D5CFE6 /* RecordViewDelegate.swift */,
+				D41C7C7D2365301800FBDAD8 /* CreateRecordViewDelegate.swift */,
+				D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */,
+				D41C7C81236607B700FBDAD8 /* EditRecordViewDelegate.swift */,
+			);
+			path = ViewControllerDelegates;
+			sourceTree = "<group>";
+		};
+		D41C7C802366077D00FBDAD8 /* CoordinatorDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				D43F66DD235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift */,
+				D43F66E12362966900AA1473 /* MainCoordinatorDelegate.swift */,
+			);
+			path = CoordinatorDelegates;
+			sourceTree = "<group>";
+		};
 		D4201D2820D1FBB20091FA60 /* PersonalRecordsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,15 +300,12 @@
 		D433FA6420F6E0AC009C3678 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */,
-				D4C0E41A221B78B300D5CFE6 /* RecordViewDelegate.swift */,
+				D41C7C802366077D00FBDAD8 /* CoordinatorDelegates */,
+				D41C7C7F2366074A00FBDAD8 /* ViewControllerDelegates */,
 				D433FA6520F6E14A009C3678 /* LoginService.swift */,
 				D4FD031D20FC50B20002471B /* SessionWriter.swift */,
 				D4DB7839213B965100217819 /* Filterable.swift */,
 				D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */,
-				D43F66DD235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift */,
-				D43F66E12362966900AA1473 /* MainCoordinatorDelegate.swift */,
-				D41C7C7D2365301800FBDAD8 /* CreateRecordViewDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -650,6 +669,7 @@
 				D4FD032E2102F4130002471B /* BasicTextFieldDelegate.swift in Sources */,
 				D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
+				D41C7C82236607B700FBDAD8 /* EditRecordViewDelegate.swift in Sources */,
 				D4FD032020FC54300002471B /* Session.swift in Sources */,
 				D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */,
 				D45DA1D9207C6EEC002950A8 /* TimeHelpers.swift in Sources */,

@@ -9,23 +9,20 @@
 import UIKit
 import CoreData
 
-class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, CustomTimeDelegate,Storyboarded {
+class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CustomTimeDelegate,Storyboarded {
     
     
     private let textFieldDelegate = BasicTextFieldDelegate( transition: nil)
     private var timeLabel : UILabel?
-    private var recordManager : RecordModelManager!
     private var allowableCharacters : AllowableStringValues!
     
     private let availableSports: [Sport] = []
     
-    var context: NSManagedObjectContext!
+    var delegate: EditRecordViewDelegate?
     var currentRecord : RecordModel!
     
     private var picker: CustomTimePicker?
     private var datePicker: UIDatePicker!
-    
-    private var isNewRecord : Bool = false
     
     @IBOutlet weak var sportTextField: UITextField!
     @IBOutlet weak var recordTitle: UITextField!
@@ -39,17 +36,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     @objc func saveRecord() {
         updateRecord()
-        
-        do {
-            //todo remove save or move to recordmanager
-            try context.save()
-        } catch {
-            context.rollback()
-            print (error)
-            print("Something went wrong with saving")
-        }
-        goToHomeScreen()
-        
+        delegate?.onSave()
     }
     
     private func updateRecord () {
@@ -73,17 +60,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     @objc func cancelEdit() {
-        //todo remove rollback or move to recordmanager
-        
-        context.rollback()
-        if(isNewRecord), let id = currentRecord?.id {
-            _ = recordManager.deleteRecordValues(forID: id)
-        }
-        goToHomeScreen()
-    }
-    
-    private func goToHomeScreen() {
-        navigationController?.popToRootViewController(animated: true)
+        delegate?.onCancelEdit()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -130,13 +107,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         updateTimeLabelText()
     }
     
-    func setupCurrentRecord() {
-        if(currentRecord.isTemplate()) {
-            let newValues = recordManager.createRecordValues(for: currentRecord)
-            currentRecord.recordValues = [newValues]
-        }
-    }
-    
     fileprivate func updateTimeLabelText() {
         timeLabel?.text = picker?.timeInterval.timeString
     }
@@ -176,10 +146,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.cancelEdit))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.saveRecord))
         
-        recordManager = RecordModelManager(mainContext: context)
         allowableCharacters = AllowableStringValues()
-        
-        setupCurrentRecord()
         
         let type = currentRecord.getType()
         valueLabel.text = type.getName()
@@ -211,14 +178,14 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         recordTitle.delegate = self
         recordDescription.delegate = self
         
-        if let currRecord = currentRecord, let type = RecordType(rawValue: Int(currRecord.type)) {
+        if let currRecord = currentRecord {
             recordTitle.text = currRecord.title
             if let recordValues = currRecord.getCurrentValue() {
                 if let recordDate = recordValues.date {
                     datePicker.date = recordDate
                     updateDateText(datePicker)
                 }
-                switch type {
+                switch currRecord.getType() {
                 case .Time:
                     recordValue.text = recordValues.time.timeString
                 case .Distance:
@@ -234,23 +201,5 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             sportTextField.isEnabled = false
             sportTextField.text = Sport(value: currRecord.sport).getName()
         }
-        // Do any additional setup after loading the view.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegate {
+class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegate, EditRecordViewDelegate {
     private let delegate : MainCoordinatorDelegate
     private let session : Session
     private let navController : UINavigationController
@@ -56,7 +56,7 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
         let editVC = EditRecordViewController.instantiate()
         
         editVC.currentRecord = record
-        editVC.context = self.mainContext
+        editVC.delegate = self
         
         navController.pushViewController(editVC, animated: true)
     }
@@ -73,6 +73,31 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
     }
     
     func onCreateRecord(_ newRecord: RecordModel) {
+        if newRecord.isTemplate() {
+            let recordManager = RecordModelManager(mainContext: mainContext)
+            let newValues = recordManager.createRecordValues(for: newRecord)
+            newRecord.recordValues = [newValues]
+        }
         showEditRecordView(for: newRecord)
+    }
+    
+    func onCancelEdit() {
+        mainContext.rollback()
+        goToHomeScreen()
+    }
+    
+    func onSave() {
+        do {
+            try mainContext.save()
+        } catch {
+            mainContext.rollback()
+            print (error)
+            print("Something went wrong with saving")
+        }
+        goToHomeScreen()
+    }
+    
+    private func goToHomeScreen() {
+        navController.popToRootViewController(animated: true)
     }
 }
