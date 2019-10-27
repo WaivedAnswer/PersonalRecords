@@ -9,10 +9,8 @@
 import UIKit
 import CoreData
 
-class CreateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
+class CreateViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, Storyboarded {
 
-    
-    
     private var templateDataSource : TemplateDataSource!
     
     @IBOutlet weak var SearchResults: UITableView!
@@ -20,9 +18,7 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
     private var searchController : UISearchController!
     
     var context: NSManagedObjectContext!
-    
-    private var recordType : RecordType?
-    private var recordTemplate: RecordModel?
+    var delegate: CreateRecordViewDelegate?
     
     func numberOfComponents(in tableView: UITableView) -> Int {
         return 1
@@ -40,13 +36,11 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let template = templateDataSource.getTemplate(row: indexPath.row) else {
+        guard let recordTemplate = templateDataSource.getTemplate(row: indexPath.row) else {
             fatalError("Selected Template doesn't exist")
         }
         
-        self.recordTemplate = template
-        self.recordType = RecordType(value: template.type)
-        self.performSegue(withIdentifier: ViewControllerSegues.CreateToEdit, sender: nil)
+        delegate?.onCreateRecord(recordTemplate)
     }
     
     private func setCellValues(template: RecordModel, cell: UITableViewCell) {
@@ -70,35 +64,6 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
         let filter = SubstringFilter( text )
         templateDataSource.replaceFilter(filter: filter)
         SearchResults.reloadData()
-    }
-    
-    @IBAction func createFromTemplate(_ sender: Any) {
-    }
-    
-    @IBAction func createNew(_ sender: Any) {
-        let actions = UIAlertController(title: "Create Custom", message: "Choose a record type", preferredStyle: .actionSheet)
-        
-        let types = RecordType.allTypes
-        for type in types {
-            let action = UIAlertAction(title: NSLocalizedString(type.getName(), comment: "\(type.getName()) action"), style: .default) {
-                _ in
-                self.recordType = type
-                self.performSegue(withIdentifier: ViewControllerSegues.CreateToEdit, sender: nil)
-            }
-            actions.addAction(action)
-        }
-        
-        self.present(actions, animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == ViewControllerSegues.CreateToEdit)
-        {
-            let editVC = segue.destination as! EditRecordViewController
-            editVC.currentRecordID = self.recordTemplate?.id
-            editVC.recordType = self.recordType
-            editVC.context = self.context
-        }
     }
     
     override func viewDidLoad() {

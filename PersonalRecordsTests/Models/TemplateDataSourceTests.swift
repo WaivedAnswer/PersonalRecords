@@ -31,7 +31,7 @@ class TemplateDataSourceTests: XCTestCase {
     
     func testGetCountIsCorrectWhenMultipleAreAdded() {
         let subject = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
         dataService.addRecordTemplate(data: RecordTemplates.RunMarathon)
         
@@ -46,7 +46,7 @@ class TemplateDataSourceTests: XCTestCase {
     
     func testGetTemplateWhenSingleTemplatesReturnsNil() {
         let subject = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.Squat)
         
         let template = subject.getTemplate(row: 0)
@@ -57,7 +57,7 @@ class TemplateDataSourceTests: XCTestCase {
     
     func testGetCountIsCorrectWhenMultipleAreAddedWithFilter() {
         let subject = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
         dataService.addRecordTemplate(data: RecordTemplates.PushPress)
         dataService.addRecordTemplate(data: RecordTemplates.StrictPress)
@@ -69,7 +69,7 @@ class TemplateDataSourceTests: XCTestCase {
     
     func testGetCountIsCorrectWhenMultipleAreAddedWhenFiltersAreRemoved() {
         let subject = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
         dataService.addRecordTemplate(data: RecordTemplates.PushPress)
         dataService.addRecordTemplate(data: RecordTemplates.StrictPress)
@@ -82,7 +82,7 @@ class TemplateDataSourceTests: XCTestCase {
     
     func testGetCountIsCorrectWhenMultipleAreAddedWhenFilterIsReplaced() {
         let subject = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.BenchPress)
         dataService.addRecordTemplate(data: RecordTemplates.PushPress)
         dataService.addRecordTemplate(data: RecordTemplates.StrictPress)

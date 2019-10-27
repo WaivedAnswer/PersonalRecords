@@ -9,22 +9,21 @@
 import UIKit
 import CoreData
 
-class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, CustomTimeDelegate {
+class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, NSManagedObjectContextDependent, CustomTimeDelegate,Storyboarded {
+    
+    
     private let textFieldDelegate = BasicTextFieldDelegate( transition: nil)
     private var timeLabel : UILabel?
     private var recordManager : RecordModelManager!
     private var allowableCharacters : AllowableStringValues!
     
     private let availableSports: [Sport] = []
-    public var context: NSManagedObjectContext!
     
-    public var currentRecordID : UUID?
-    private var currentRecord : RecordModel!
+    var context: NSManagedObjectContext!
+    var currentRecord : RecordModel!
     
     private var picker: CustomTimePicker?
     private var datePicker: UIDatePicker!
-    
-    public var recordType : RecordType?
     
     private var isNewRecord : Bool = false
     
@@ -58,17 +57,15 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let recordValues = currentRecord?.getCurrentValue() {
             recordValues.date = datePicker.date
-            switch(recordType) {
-            case .Time?:
+            switch(currentRecord.getType()) {
+            case .Time:
                 recordValues.time = picker?.timeInterval ?? 0.0
-            case .Distance?:
+            case .Distance:
                 recordValues.distance = Double(recordValue.text!) ?? 0.0
-            case .Repetition?:
+            case .Repetition:
                 recordValues.reps = Int32(recordValue.text!) ?? 0
-            case .Weight?:
+            case .Weight:
                 recordValues.weight = Double(recordValue.text!) ?? 0.0
-            default:
-                break
             }
         }
         
@@ -93,7 +90,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     {
         if (textField != recordValue || textField.text == nil) {
             return true
-        } else if recordType == .Time {
+        } else if currentRecord.getType() == .Time {
             return false
         }
         
@@ -134,11 +131,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     }
     
     func setupCurrentRecord() {
-        guard let recordId = currentRecordID  else {
-            fatalError("Current Record doesn't exist.")
-        }
-        currentRecord = recordManager.getRecordBy(id: recordId)
-        recordType = RecordType(rawValue: Int(currentRecord.type))
         if(currentRecord.isTemplate()) {
             let newValues = recordManager.createRecordValues(for: currentRecord)
             currentRecord.recordValues = [newValues]
@@ -189,27 +181,26 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         setupCurrentRecord()
         
-        if let type = recordType {
-            valueLabel.text = type.getName()
-            if(type == .Time) {
-                picker = CustomTimePicker()
-                if let timeValue = currentRecord?.getCurrentValue()?.time,
-                    let timePicker = picker {
-                    timePicker.timeInterval = timeValue
-                }
-                picker?.timeDelegate = self
-                recordValue.inputView = picker
-                timeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80))
-                timeLabel?.textAlignment = .center
-                timeLabel?.font = UIFont.systemFont(ofSize: 28)
-                timeLabel?.textColor = .black
-                timeLabel?.backgroundColor = .lightGray
-                timeLabel?.adjustsFontSizeToFitWidth = true
-                updateTimeLabelText()
-                
-                recordValue.inputAccessoryView = timeLabel
-                
+        let type = currentRecord.getType()
+        valueLabel.text = type.getName()
+        if(type == .Time) {
+            picker = CustomTimePicker()
+            if let timeValue = currentRecord?.getCurrentValue()?.time,
+                let timePicker = picker {
+                timePicker.timeInterval = timeValue
             }
+            picker?.timeDelegate = self
+            recordValue.inputView = picker
+            timeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80))
+            timeLabel?.textAlignment = .center
+            timeLabel?.font = UIFont.systemFont(ofSize: 28)
+            timeLabel?.textColor = .black
+            timeLabel?.backgroundColor = .lightGray
+            timeLabel?.adjustsFontSizeToFitWidth = true
+            updateTimeLabelText()
+            
+            recordValue.inputAccessoryView = timeLabel
+            
         }
         
         setupDatePicker()

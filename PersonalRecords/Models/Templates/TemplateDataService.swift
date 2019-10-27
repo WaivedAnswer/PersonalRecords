@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-struct DataService {
+struct TemplateDataService {
     private var context: NSManagedObjectContext
     private var recordManager: RecordModelManager
     init( context: NSManagedObjectContext) {

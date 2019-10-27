@@ -41,4 +41,10 @@ extension RecordModel {
     func isTemplate() -> Bool {
         return recordValues.count == 0
     }
+    func getType() -> RecordType {
+        return RecordType(value: type)
+    }
+    func getSport() -> Sport {
+        return Sport(value: sport)
+    }
 }

@@ -21,7 +21,7 @@ class FilterableTemplateTests: XCTestCase {
     
     func testTemplateWithBlankSubstringFilter() {
         let templateDataSource = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.Clean)
         
         let subject = templateDataSource.getTemplate(row: 0)!
@@ -33,7 +33,7 @@ class FilterableTemplateTests: XCTestCase {
     
     func testTemplateWithSubstringPartialMatchingTitleFilter() {
         let templateDataSource = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.Clean)
         
         let subject = templateDataSource.getTemplate(row: 0)!
@@ -45,7 +45,7 @@ class FilterableTemplateTests: XCTestCase {
     
     func testTemplateWithSubstringMatchingTitleFilter() {
         let templateDataSource = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.Clean)
         
         let subject = templateDataSource.getTemplate(row: 0)!
@@ -57,7 +57,7 @@ class FilterableTemplateTests: XCTestCase {
     
     func testTemplateWithSubstringNotMatchingTitleFilter() {
         let templateDataSource = TemplateDataSource(context: context)
-        let dataService = DataService(context: context)
+        let dataService = TemplateDataService(context: context)
         dataService.addRecordTemplate(data: RecordTemplates.Clean)
         
         let subject = templateDataSource.getTemplate(row: 0)!

@@ -172,8 +172,6 @@
                     <navigationItem key="navigationItem" id="hrC-bh-RFG"/>
                     <connections>
                         <outlet property="tableView" destination="Qtc-f7-nHa" id="LDY-6O-yVb"/>
-                        <segue destination="NxN-3W-lmy" kind="show" identifier="EditRecord" id="EKF-Ip-qwB"/>
-                        <segue destination="X2Q-Jx-n3B" kind="show" identifier="CreateNew" id="fYs-6c-Kj2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -183,13 +181,13 @@
         <!--Create View Controller-->
         <scene sceneID="uKy-7I-sAU">
             <objects>
-                <viewController id="X2Q-Jx-n3B" customClass="CreateViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateViewController" id="X2Q-Jx-n3B" customClass="CreateViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wTm-Fk-m4c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQ1-vo-gaL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -214,7 +212,7 @@
         <!--Edit Record View Controller-->
         <scene sceneID="3ht-Pw-wXl">
             <objects>
-                <viewController id="NxN-3W-lmy" customClass="EditRecordViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditRecordViewController" id="NxN-3W-lmy" customClass="EditRecordViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="648-He-jDM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,7 +347,4 @@
             <point key="canvasLocation" x="3569.5652173913045" y="-423.09782608695656"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="EKF-Ip-qwB"/>
-    </inferredMetricsTieBreakers>
 </document>

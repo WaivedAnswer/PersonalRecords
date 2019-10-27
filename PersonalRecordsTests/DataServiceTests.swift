@@ -24,14 +24,14 @@ class DataServiceTests: XCTestCase {
     }
     
     func testCanUpdate10KRunTemplateExists() {
-        let subject = DataService( context: context)
+        let subject = TemplateDataService( context: context)
         subject.seedStandardRecordTemplates()
         
         XCTAssertTrue(subject.updateTemplate(data: RecordTemplates.Run10K))
     }
     
     func testTemplateCountIsCorrect() {
-        let subject = DataService( context: context)
+        let subject = TemplateDataService( context: context)
         subject.seedStandardRecordTemplates()
         
         var results : [RecordModel] = []

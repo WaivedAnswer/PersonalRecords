@@ -11,10 +11,9 @@ import CoreData
 
 class RecordViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSManagedObjectContextDependent, NSFetchedResultsControllerDelegate, Storyboarded {
     
-    
     var controller: NSFetchedResultsController<RecordModel>!
     var context: NSManagedObjectContext!
-    weak var logoutDelegate: LogoutDelegate?
+    weak var delegate: RecordViewDelegate?
     
     private var recordManager : RecordModelManager!
     
@@ -22,20 +21,15 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func test(_ sender: Any) {
     }
-    var lastSelectedIndex : Int?
     
     @IBOutlet weak var tableView: UITableView!
     
     @objc func onLogout() {
-        logoutDelegate?.onLogout()
+        delegate?.onLogout()
     }
     
     @objc func AddNew() {
-        if let selectedRow = tableView.indexPathForSelectedRow {
-            tableView.deselectRow(at: selectedRow, animated: false)
-        }
-        
-        performSegue(withIdentifier: ViewControllerSegues.MainToCreate, sender: nil)
+        delegate?.onAddRecord()
     }
     
     // MARK: UITableViewDelegates
@@ -122,9 +116,8 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        lastSelectedIndex = indexPath.row
-        performSegue(withIdentifier: ViewControllerSegues.MainToEdit, sender: nil)
-        
+        let selectedRecord = controller.object(at: indexPath)
+        delegate?.onSelectRecord( selectedRecord )
     }
     
     //MARK: FetchController delegates
@@ -168,25 +161,6 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    //MARK: Segue stuff
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == ViewControllerSegues.MainToEdit)
-        {
-            let editVC = segue.destination as! EditRecordViewController
-            if let index = tableView.indexPathForSelectedRow {
-                editVC.currentRecordID = controller.object(at: index).id
-                tableView.deselectRow(at: index, animated: false)
-            }
-            editVC.context = self.context
-        }
-        else if(segue.identifier == ViewControllerSegues.MainToCreate)
-        {
-            let createVC = segue.destination as! CreateViewController
-            createVC.context = self.context
-        }
-    }
-    
     //MARK: Initialize
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -225,5 +199,10 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let selectedPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedPath, animated: true)
+        }
+    }
     
 }

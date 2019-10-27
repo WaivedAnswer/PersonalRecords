@@ -8,6 +8,8 @@
 
 import Foundation
 
-protocol LogoutDelegate : class {
+protocol RecordViewDelegate : class {
     func onLogout()
+    func onSelectRecord(_ selected: RecordModel)
+    func onAddRecord()
 }
