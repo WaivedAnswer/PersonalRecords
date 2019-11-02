@@ -35,9 +35,38 @@ extension RecordModel : Filterable {
 }
 
 extension RecordModel {
-    func getCurrentValue() -> RecordValues? {
+    func getCurrentValues() -> RecordValues? {
         return recordValues.firstObject as? RecordValues
     }
+    
+    func getCurrentValue() -> Double? {
+        if let currentValues = self.getCurrentValues() {
+            switch getType() {
+            case .Time:
+                return currentValues.time
+            case .Distance:
+                return currentValues.distance
+            case .Repetition:
+                return Double(currentValues.reps)
+            case .Weight:
+                return currentValues.weight
+            }
+        }
+        return nil
+    }
+    
+    func getCurrentValueString() -> String {
+        var valueString = ""
+        if let value = getCurrentValue() {
+            if(getType() == .Time) {
+               valueString = value.timeString
+            } else {
+               valueString = String(value)
+            }
+        }
+        return "\(valueString) \(getType().getDisplayUnit())"
+    }
+    
     func isTemplate() -> Bool {
         return recordValues.count == 0
     }

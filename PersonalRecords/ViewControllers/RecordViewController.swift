@@ -42,8 +42,8 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-            previousSectionCount = getCurrentSectionCount()
-            return getCurrentSectionCount()
+        previousSectionCount = getCurrentSectionCount()
+        return getCurrentSectionCount()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,22 +83,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func setCellValues (record: RecordModel, cell: UITableViewCell ) {
-        var valueString: String = ""
-        
-        if let type = RecordType(rawValue: Int(record.type)), let recordValues = record.getCurrentValue() {
-            switch(type) {
-            case .Time:
-                valueString = recordValues.time.timeString
-            case .Distance:
-                valueString = String(recordValues.distance)
-            case .Repetition:
-                valueString = String(recordValues.reps)
-            case .Weight:
-                valueString = String(recordValues.weight)
-            }
-            valueString = "\(valueString) \(type.getDisplayUnit())"
-        }
-        cell.detailTextLabel?.text = valueString
+        cell.detailTextLabel?.text = record.getCurrentValueString()
         cell.textLabel?.text = "\(record.title)"
     }
     
@@ -166,7 +151,7 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.AddNew))
-
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Logout", style: .plain, target: self, action: #selector(self.onLogout))
         
         setupController()

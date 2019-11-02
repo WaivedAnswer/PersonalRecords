@@ -16,8 +16,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     private var timeLabel : UILabel?
     private var allowableCharacters : AllowableStringValues!
     
-    private let availableSports: [Sport] = []
-    
     var delegate: EditRecordViewDelegate?
     var currentRecord : RecordModel!
     
@@ -34,6 +32,10 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     @IBOutlet weak var recordDescription: UITextView!
     
+    @IBAction func onLeaderboard(_ sender: UIButton) {
+        delegate?.onGoToLeaderboard(for: currentRecord)
+    }
+    
     @objc func saveRecord() {
         updateRecord()
         delegate?.onSave()
@@ -42,7 +44,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     private func updateRecord () {
         currentRecord?.title = recordTitle.text!
         
-        if let recordValues = currentRecord?.getCurrentValue() {
+        if let recordValues = currentRecord?.getCurrentValues() {
             recordValues.date = datePicker.date
             switch(currentRecord.getType()) {
             case .Time:
@@ -152,7 +154,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         valueLabel.text = type.getName()
         if(type == .Time) {
             picker = CustomTimePicker()
-            if let timeValue = currentRecord?.getCurrentValue()?.time,
+            if let timeValue = currentRecord?.getCurrentValues()?.time,
                 let timePicker = picker {
                 timePicker.timeInterval = timeValue
             }
@@ -180,7 +182,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         if let currRecord = currentRecord {
             recordTitle.text = currRecord.title
-            if let recordValues = currRecord.getCurrentValue() {
+            if let recordValues = currRecord.getCurrentValues() {
                 if let recordDate = recordValues.date {
                     datePicker.date = recordDate
                     updateDateText(datePicker)

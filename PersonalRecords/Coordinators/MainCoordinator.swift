@@ -72,6 +72,7 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
         navController.pushViewController(createVC, animated: true)
     }
     
+    //MARK: CreateRecordViewDelegates
     func onCreateRecord(_ newRecord: RecordModel) {
         if newRecord.isTemplate() {
             let recordManager = RecordModelManager(mainContext: mainContext)
@@ -81,6 +82,7 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
         showEditRecordView(for: newRecord)
     }
     
+    //MARK: EditRecordViewDelegates
     func onCancelEdit() {
         mainContext.rollback()
         goToHomeScreen()
@@ -99,5 +101,23 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
     
     private func goToHomeScreen() {
         navController.popToRootViewController(animated: true)
+    }
+    
+    private func addDummyValues(to leaderboardDataSource : LeaderboardDataSource, type: RecordType) {
+        for _ in 0...10 {
+            leaderboardDataSource.add(FakeLeaderboardItem(type: type ))
+        }
+    }
+    func onGoToLeaderboard(for record: RecordModel) {
+        let leaderboardVC = LeaderboardViewController.instantiate()
+        
+        let leaderboardDataSource = LeaderboardDataSource()
+        leaderboardDataSource.add(RecordModelLeaderboardItem(record: record))
+        
+        addDummyValues(to: leaderboardDataSource, type: record.getType())
+        
+        leaderboardVC.leaderboardDataSource = leaderboardDataSource
+        
+        navController.pushViewController(leaderboardVC, animated: true)
     }
 }

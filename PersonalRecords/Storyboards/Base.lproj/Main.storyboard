@@ -202,23 +202,66 @@
                     </view>
                     <connections>
                         <outlet property="SearchResults" destination="RQ1-vo-gaL" id="ayb-yw-qdT"/>
-                        <segue destination="NxN-3W-lmy" kind="show" identifier="EditNew" id="ch2-6w-Sdr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7jS-md-i7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2106" y="588"/>
         </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="dON-0x-onl">
+            <objects>
+                <tableViewController storyboardIdentifier="LeaderboardViewController" id="TJC-GS-Tk5" customClass="LeaderboardViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jrz-Cz-AaO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaderboardCell" textLabel="BhP-mm-ekw" detailTextLabel="6Ve-ID-AGT" style="IBUITableViewCellStyleValue1" id="33q-GR-vMQ" userLabel="LeaderboardCell">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="33q-GR-vMQ" id="Byi-uX-5nT">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BhP-mm-ekw">
+                                            <rect key="frame" x="20.000000000000004" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Ve-ID-AGT">
+                                            <rect key="frame" x="350" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TJC-GS-Tk5" id="ga3-DD-dGq"/>
+                            <outlet property="delegate" destination="TJC-GS-Tk5" id="ApR-3f-p3g"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WEO-tE-7kZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3565" y="-1306"/>
+        </scene>
         <!--Edit Record View Controller-->
         <scene sceneID="3ht-Pw-wXl">
             <objects>
                 <viewController storyboardIdentifier="EditRecordViewController" id="NxN-3W-lmy" customClass="EditRecordViewController" customModule="PersonalRecords" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="648-He-jDM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hze-pU-kwQ">
-                                <rect key="frame" x="30" y="94" width="354" height="313.33333333333331"/>
+                                <rect key="frame" x="30" y="93.999999999999972" width="354" height="363.33333333333331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gic-Fg-X6W">
                                         <rect key="frame" x="0.0" y="0.0" width="354" height="52.333333333333336"/>
@@ -321,6 +364,13 @@
                                             <constraint firstItem="M7p-60-xvC" firstAttribute="height" secondItem="ZhF-bt-3na" secondAttribute="height" id="3qW-FS-0Fx"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZC-85-uWC">
+                                        <rect key="frame" x="0.0" y="333.33333333333331" width="354" height="30"/>
+                                        <state key="normal" title="Leaderboard"/>
+                                        <connections>
+                                            <action selector="onLeaderboard:" destination="NxN-3W-lmy" eventType="touchUpInside" id="l79-88-mFZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
