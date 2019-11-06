@@ -21,6 +21,9 @@
 		D41C7C8F236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C8E236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift */; };
 		D41C7C91236BE38B00FBDAD8 /* CollectionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C90236BE38B00FBDAD8 /* CollectionHelpers.swift */; };
 		D41C7C95236D28FB00FBDAD8 /* TimeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C94236D28FB00FBDAD8 /* TimeValue.swift */; };
+		D41C7C99236DF6BE00FBDAD8 /* ItemComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C98236DF6BE00FBDAD8 /* ItemComparer.swift */; };
+		D41C7C9B236E161300FBDAD8 /* LeaderboardItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C9A236E161300FBDAD8 /* LeaderboardItemService.swift */; };
+		D41C7C9D236E212700FBDAD8 /* LocalLeaderboardItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C9C236E212700FBDAD8 /* LocalLeaderboardItemService.swift */; };
 		D4201D2A20D1FBB20091FA60 /* RecordModelManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */; };
 		D4223D952120F7C5003A8075 /* JsonTemplateReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D942120F7C5003A8075 /* JsonTemplateReader.swift */; };
 		D4223D972120F7ED003A8075 /* TemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D962120F7ED003A8075 /* TemplateData.swift */; };
@@ -118,6 +121,9 @@
 		D41C7C8E236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelLeaderboardItem.swift; sourceTree = "<group>"; };
 		D41C7C90236BE38B00FBDAD8 /* CollectionHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHelpers.swift; sourceTree = "<group>"; };
 		D41C7C94236D28FB00FBDAD8 /* TimeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeValue.swift; sourceTree = "<group>"; };
+		D41C7C98236DF6BE00FBDAD8 /* ItemComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComparer.swift; sourceTree = "<group>"; };
+		D41C7C9A236E161300FBDAD8 /* LeaderboardItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardItemService.swift; sourceTree = "<group>"; };
+		D41C7C9C236E212700FBDAD8 /* LocalLeaderboardItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLeaderboardItemService.swift; sourceTree = "<group>"; };
 		D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalRecordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManagerTests.swift; sourceTree = "<group>"; };
 		D4201D2B20D1FBB20091FA60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -257,6 +263,9 @@
 				D41C7C8A236BDCD900FBDAD8 /* LeaderboardItem.swift */,
 				D41C7C8C236BDEA300FBDAD8 /* FakeLeaderboardItem.swift */,
 				D41C7C8E236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift */,
+				D41C7C98236DF6BE00FBDAD8 /* ItemComparer.swift */,
+				D41C7C9A236E161300FBDAD8 /* LeaderboardItemService.swift */,
+				D41C7C9C236E212700FBDAD8 /* LocalLeaderboardItemService.swift */,
 			);
 			path = Leaderboard;
 			sourceTree = "<group>";
@@ -668,6 +677,7 @@
 				D41C7C95236D28FB00FBDAD8 /* TimeValue.swift in Sources */,
 				D408F1BE20DB5B5D008A0072 /* AllowableStringValues.swift in Sources */,
 				D43F66DE235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift in Sources */,
+				D41C7C9D236E212700FBDAD8 /* LocalLeaderboardItemService.swift in Sources */,
 				D41C7C84236656D600FBDAD8 /* LeaderboardViewController.swift in Sources */,
 				D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */,
 				D44A4CA5206F58F400581047 /* RecordViewController.swift in Sources */,
@@ -689,6 +699,7 @@
 				D4905FC82160445300F49653 /* LocalLoginChecker.swift in Sources */,
 				D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */,
 				D41C7C8D236BDEA300FBDAD8 /* FakeLeaderboardItem.swift in Sources */,
+				D41C7C9B236E161300FBDAD8 /* LeaderboardItemService.swift in Sources */,
 				D4905FC2215F060200F49653 /* User.swift in Sources */,
 				D41C7C87236BD95100FBDAD8 /* LeaderboardDataSource.swift in Sources */,
 				D4223D9F21210AE0003A8075 /* UnboxableExtensions.swift in Sources */,
@@ -705,6 +716,7 @@
 				D45DA1D7207AC28D002950A8 /* TemplateDataService.swift in Sources */,
 				D4FD032E2102F4130002471B /* BasicTextFieldDelegate.swift in Sources */,
 				D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */,
+				D41C7C99236DF6BE00FBDAD8 /* ItemComparer.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
 				D41C7C82236607B700FBDAD8 /* EditRecordViewDelegate.swift in Sources */,
 				D41C7C8B236BDCD900FBDAD8 /* LeaderboardItem.swift in Sources */,

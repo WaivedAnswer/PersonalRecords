@@ -11,9 +11,20 @@ import Foundation
 class LeaderboardDataSource {
     
     private var items : [LeaderboardItem]
+    private let itemComparer : LeaderboardItemComparer
+    private let itemService : LeaderboardItemService
+    private let currentRecord : RecordModel
     
-    init() {
+    init(itemComparer: LeaderboardItemComparer = LargestToSmallestItemComparer(), itemService: LeaderboardItemService,
+        currentRecord: RecordModel) {
         items = []
+        self.itemComparer = itemComparer
+        self.itemService = itemService
+        self.currentRecord = currentRecord
+        let newItems = itemService.getItems(for: currentRecord.id )
+        for item in newItems {
+            add(item)
+        }
     }
     
     func count() -> Int {
@@ -23,7 +34,7 @@ class LeaderboardDataSource {
     fileprivate func findInsertIndex(for item: LeaderboardItem) -> Int {
         var index = 0
         for existingItem in items {
-            if( item.getValue() > existingItem.getValue()) {
+            if( itemComparer.isBefore(item, existingItem)) {
                 return index
             }
             index += 1
@@ -33,7 +44,7 @@ class LeaderboardDataSource {
     }
     
     func add( _ item : LeaderboardItem) {
-        if(items.isEmpty() || item.getValue() < items.last!.getValue()) {
+        if(items.isEmpty() || itemComparer.isAfter(item, items.last!)) {
             items.append(item)
         } else {
             let index = findInsertIndex(for: item)

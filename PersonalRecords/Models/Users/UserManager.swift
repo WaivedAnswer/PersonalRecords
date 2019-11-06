@@ -77,19 +77,24 @@ class UserManager {
         return nil
     }
     
-//    private func getAllUsers() -> [UserModel] {
-//        do {
-//            let request = NSFetchRequest<UserModel>(entityName: UserModel.entityName)
-//
-//            let results = try context.fetch(request)
-//
-//            return results
-//        } catch {
-//            print(error)
-//            print("Could not get users")
-//            return []
-//        }
-//    }
+    // MARK TEMPORARY ONLY FOR USAGE OF LOCAL RECORD VALUES UNTIL THIS IS REPLACED
+    func getAllUsers() -> [User] {
+        do {
+            let request = NSFetchRequest<UserModel>(entityName: UserModel.entityName)
+
+            let results = try context.fetch(request)
+            
+            var users : [User] = []
+            for userModel in results {
+                users.append(translate(userModel: userModel))
+            }
+            return users
+        } catch {
+            print(error)
+            print("Could not get users")
+            return []
+        }
+    }
 //
 //    private func removeAllUsers() {
 //        for user in getAllUsers() {

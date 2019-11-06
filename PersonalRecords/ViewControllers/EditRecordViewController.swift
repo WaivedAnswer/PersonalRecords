@@ -33,6 +33,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     @IBOutlet weak var recordDescription: UITextView!
     
     @IBAction func onLeaderboard(_ sender: UIButton) {
+        updateRecord()
         delegate?.onGoToLeaderboard(for: currentRecord)
     }
     

@@ -11,13 +11,15 @@ import Foundation
 class RecordModelLeaderboardItem : LeaderboardItem {
     
     private let record : RecordModel
+    private let user: User
     
-    init(record : RecordModel) {
+    init(user: User, record : RecordModel) {
         self.record = record
+        self.user = user
     }
     
     func getDisplayName() -> String {
-        return "Me"
+        return user.userName
     }
     
     func getValue() -> Double {

@@ -10,12 +10,16 @@ import Foundation
 import CoreData
 
 func createMainContext (for session: Session, inMemory: Bool = false) -> NSManagedObjectContext {
+    return createMainContext(for: session.user)
+}
+
+func createMainContext (for user: User, inMemory: Bool = false) -> NSManagedObjectContext {
     //initialize NSManagedObjecTModel
     guard let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd") else {
         fatalError("Cannot get record model url")
     }
     
-    let storeURL = URL.mainDocumentsPath.appendingPathComponent(session.user.userId.uuidString + "_Record.sqlite")
+    let storeURL = URL.mainDocumentsPath.appendingPathComponent(user.userId.uuidString + "_Record.sqlite")
     return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
     //Initialize and return
 }

@@ -14,7 +14,7 @@ class LeaderboardViewController: UITableViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Leaderboard"
         self.tableView.allowsSelection = false
     }
     

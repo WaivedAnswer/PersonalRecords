@@ -103,18 +103,27 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
         navController.popToRootViewController(animated: true)
     }
     
-    private func addDummyValues(to leaderboardDataSource : LeaderboardDataSource, type: RecordType) {
-        for _ in 0...10 {
-            leaderboardDataSource.add(FakeLeaderboardItem(type: type ))
+    private func createLeaderboardComparer(for recordType: RecordType) -> LeaderboardItemComparer {
+        switch recordType {
+        case .Time:
+            return SmallestToLargestItemComparer()
+        case .Distance, .Weight, .Repetition:
+            return LargestToSmallestItemComparer()
         }
     }
+    
+    private func createLocalLeaderboardItemService() -> LeaderboardItemService {
+        let userManager = UserManager(userContext: createUserContext())
+        return LocalLeaderboardItemService(userManager: userManager)
+    }
+    
     func onGoToLeaderboard(for record: RecordModel) {
         let leaderboardVC = LeaderboardViewController.instantiate()
         
-        let leaderboardDataSource = LeaderboardDataSource()
-        leaderboardDataSource.add(RecordModelLeaderboardItem(record: record))
-        
-        addDummyValues(to: leaderboardDataSource, type: record.getType())
+        let leaderboardDataSource = LeaderboardDataSource(
+            itemComparer: createLeaderboardComparer(for: record.getType()),
+            itemService: createLocalLeaderboardItemService(),
+            currentRecord: record)
         
         leaderboardVC.leaderboardDataSource = leaderboardDataSource
         
