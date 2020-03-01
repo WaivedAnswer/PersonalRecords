@@ -11,5 +11,4 @@ import Foundation
 protocol EditRecordViewDelegate {
     func onCancelEdit()
     func onSave()
-    func onGoToLeaderboard(for record: RecordModel)
 }

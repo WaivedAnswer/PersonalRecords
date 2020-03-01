@@ -13,17 +13,8 @@
 		D408F1C220DC8F12008A0072 /* CustomTimePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408F1C120DC8F12008A0072 /* CustomTimePickerTests.swift */; };
 		D41C7C7E2365301800FBDAD8 /* CreateRecordViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C7D2365301800FBDAD8 /* CreateRecordViewDelegate.swift */; };
 		D41C7C82236607B700FBDAD8 /* EditRecordViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C81236607B700FBDAD8 /* EditRecordViewDelegate.swift */; };
-		D41C7C84236656D600FBDAD8 /* LeaderboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C83236656D600FBDAD8 /* LeaderboardViewController.swift */; };
-		D41C7C87236BD95100FBDAD8 /* LeaderboardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C86236BD95100FBDAD8 /* LeaderboardDataSource.swift */; };
-		D41C7C89236BD99B00FBDAD8 /* LeaderboardDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C88236BD99B00FBDAD8 /* LeaderboardDataSourceTests.swift */; };
-		D41C7C8B236BDCD900FBDAD8 /* LeaderboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C8A236BDCD900FBDAD8 /* LeaderboardItem.swift */; };
-		D41C7C8D236BDEA300FBDAD8 /* FakeLeaderboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C8C236BDEA300FBDAD8 /* FakeLeaderboardItem.swift */; };
-		D41C7C8F236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C8E236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift */; };
 		D41C7C91236BE38B00FBDAD8 /* CollectionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C90236BE38B00FBDAD8 /* CollectionHelpers.swift */; };
 		D41C7C95236D28FB00FBDAD8 /* TimeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C94236D28FB00FBDAD8 /* TimeValue.swift */; };
-		D41C7C99236DF6BE00FBDAD8 /* ItemComparer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C98236DF6BE00FBDAD8 /* ItemComparer.swift */; };
-		D41C7C9B236E161300FBDAD8 /* LeaderboardItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C9A236E161300FBDAD8 /* LeaderboardItemService.swift */; };
-		D41C7C9D236E212700FBDAD8 /* LocalLeaderboardItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41C7C9C236E212700FBDAD8 /* LocalLeaderboardItemService.swift */; };
 		D4201D2A20D1FBB20091FA60 /* RecordModelManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */; };
 		D4223D952120F7C5003A8075 /* JsonTemplateReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D942120F7C5003A8075 /* JsonTemplateReader.swift */; };
 		D4223D972120F7ED003A8075 /* TemplateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D962120F7ED003A8075 /* TemplateData.swift */; };
@@ -113,17 +104,8 @@
 		D4163EAF20E1F0B300D41DBF /* Record 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 3.xcdatamodel"; sourceTree = "<group>"; };
 		D41C7C7D2365301800FBDAD8 /* CreateRecordViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecordViewDelegate.swift; sourceTree = "<group>"; };
 		D41C7C81236607B700FBDAD8 /* EditRecordViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordViewDelegate.swift; sourceTree = "<group>"; };
-		D41C7C83236656D600FBDAD8 /* LeaderboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardViewController.swift; sourceTree = "<group>"; };
-		D41C7C86236BD95100FBDAD8 /* LeaderboardDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardDataSource.swift; sourceTree = "<group>"; };
-		D41C7C88236BD99B00FBDAD8 /* LeaderboardDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardDataSourceTests.swift; sourceTree = "<group>"; };
-		D41C7C8A236BDCD900FBDAD8 /* LeaderboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardItem.swift; sourceTree = "<group>"; };
-		D41C7C8C236BDEA300FBDAD8 /* FakeLeaderboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeLeaderboardItem.swift; sourceTree = "<group>"; };
-		D41C7C8E236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelLeaderboardItem.swift; sourceTree = "<group>"; };
 		D41C7C90236BE38B00FBDAD8 /* CollectionHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHelpers.swift; sourceTree = "<group>"; };
 		D41C7C94236D28FB00FBDAD8 /* TimeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeValue.swift; sourceTree = "<group>"; };
-		D41C7C98236DF6BE00FBDAD8 /* ItemComparer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComparer.swift; sourceTree = "<group>"; };
-		D41C7C9A236E161300FBDAD8 /* LeaderboardItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardItemService.swift; sourceTree = "<group>"; };
-		D41C7C9C236E212700FBDAD8 /* LocalLeaderboardItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLeaderboardItemService.swift; sourceTree = "<group>"; };
 		D4201D2720D1FBB20091FA60 /* PersonalRecordsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalRecordsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4201D2920D1FBB20091FA60 /* RecordModelManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManagerTests.swift; sourceTree = "<group>"; };
 		D4201D2B20D1FBB20091FA60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -256,20 +238,6 @@
 			path = CoordinatorDelegates;
 			sourceTree = "<group>";
 		};
-		D41C7C85236BD92E00FBDAD8 /* Leaderboard */ = {
-			isa = PBXGroup;
-			children = (
-				D41C7C86236BD95100FBDAD8 /* LeaderboardDataSource.swift */,
-				D41C7C8A236BDCD900FBDAD8 /* LeaderboardItem.swift */,
-				D41C7C8C236BDEA300FBDAD8 /* FakeLeaderboardItem.swift */,
-				D41C7C8E236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift */,
-				D41C7C98236DF6BE00FBDAD8 /* ItemComparer.swift */,
-				D41C7C9A236E161300FBDAD8 /* LeaderboardItemService.swift */,
-				D41C7C9C236E212700FBDAD8 /* LocalLeaderboardItemService.swift */,
-			);
-			path = Leaderboard;
-			sourceTree = "<group>";
-		};
 		D4201D2820D1FBB20091FA60 /* PersonalRecordsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +263,6 @@
 				D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */,
 				D4905FC5216019EA00F49653 /* UserManagerTests.swift */,
 				D4905FC92160523B00F49653 /* LocalLoginCheckerTests.swift */,
-				D41C7C88236BD99B00FBDAD8 /* LeaderboardDataSourceTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -330,7 +297,6 @@
 				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
 				D433FA6220F6E08A009C3678 /* LoginViewController.swift */,
 				D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */,
-				D41C7C83236656D600FBDAD8 /* LeaderboardViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -428,7 +394,6 @@
 		D45DA1C820747BF3002950A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D41C7C85236BD92E00FBDAD8 /* Leaderboard */,
 				D43F66D8235B8B2F00AA1473 /* Users */,
 				D43F66D7235B8AFE00AA1473 /* Records */,
 				D43F66D6235B8AA600AA1473 /* Templates */,
@@ -661,7 +626,6 @@
 				D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */,
 				D4FD032220FC56500002471B /* SessionManagerTests.swift in Sources */,
 				D4905FC6216019EA00F49653 /* UserManagerTests.swift in Sources */,
-				D41C7C89236BD99B00FBDAD8 /* LeaderboardDataSourceTests.swift in Sources */,
 				D4223D9A2120F844003A8075 /* JsonTemplateReaderTests.swift in Sources */,
 				D4DB783E213B97CA00217819 /* FilterableRecordModelTests.swift in Sources */,
 				D4DB7838213B940700217819 /* SubstringFilterTests.swift in Sources */,
@@ -677,8 +641,6 @@
 				D41C7C95236D28FB00FBDAD8 /* TimeValue.swift in Sources */,
 				D408F1BE20DB5B5D008A0072 /* AllowableStringValues.swift in Sources */,
 				D43F66DE235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift in Sources */,
-				D41C7C9D236E212700FBDAD8 /* LocalLeaderboardItemService.swift in Sources */,
-				D41C7C84236656D600FBDAD8 /* LeaderboardViewController.swift in Sources */,
 				D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */,
 				D44A4CA5206F58F400581047 /* RecordViewController.swift in Sources */,
 				D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */,
@@ -698,10 +660,7 @@
 				D4C0E41B221B78B300D5CFE6 /* RecordViewDelegate.swift in Sources */,
 				D4905FC82160445300F49653 /* LocalLoginChecker.swift in Sources */,
 				D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */,
-				D41C7C8D236BDEA300FBDAD8 /* FakeLeaderboardItem.swift in Sources */,
-				D41C7C9B236E161300FBDAD8 /* LeaderboardItemService.swift in Sources */,
 				D4905FC2215F060200F49653 /* User.swift in Sources */,
-				D41C7C87236BD95100FBDAD8 /* LeaderboardDataSource.swift in Sources */,
 				D4223D9F21210AE0003A8075 /* UnboxableExtensions.swift in Sources */,
 				D4C0E4112218E4B000D5CFE6 /* StoryBoarded.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
@@ -716,15 +675,12 @@
 				D45DA1D7207AC28D002950A8 /* TemplateDataService.swift in Sources */,
 				D4FD032E2102F4130002471B /* BasicTextFieldDelegate.swift in Sources */,
 				D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */,
-				D41C7C99236DF6BE00FBDAD8 /* ItemComparer.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
 				D41C7C82236607B700FBDAD8 /* EditRecordViewDelegate.swift in Sources */,
-				D41C7C8B236BDCD900FBDAD8 /* LeaderboardItem.swift in Sources */,
 				D4FD032020FC54300002471B /* Session.swift in Sources */,
 				D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */,
 				D45DA1D9207C6EEC002950A8 /* TimeHelpers.swift in Sources */,
 				D433FA6620F6E14A009C3678 /* LoginService.swift in Sources */,
-				D41C7C8F236BE06200FBDAD8 /* RecordModelLeaderboardItem.swift in Sources */,
 				D4223D972120F7ED003A8075 /* TemplateData.swift in Sources */,
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
 				D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */,

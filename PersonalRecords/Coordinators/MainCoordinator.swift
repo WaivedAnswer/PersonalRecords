@@ -11,6 +11,7 @@ import UIKit
 import CoreData
 
 class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegate, EditRecordViewDelegate {
+    
     private let delegate : MainCoordinatorDelegate
     private let session : Session
     private let navController : UINavigationController
@@ -101,32 +102,5 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
     
     private func goToHomeScreen() {
         navController.popToRootViewController(animated: true)
-    }
-    
-    private func createLeaderboardComparer(for recordType: RecordType) -> LeaderboardItemComparer {
-        switch recordType {
-        case .Time:
-            return SmallestToLargestItemComparer()
-        case .Distance, .Weight, .Repetition:
-            return LargestToSmallestItemComparer()
-        }
-    }
-    
-    private func createLocalLeaderboardItemService() -> LeaderboardItemService {
-        let userManager = UserManager(userContext: createUserContext())
-        return LocalLeaderboardItemService(userManager: userManager)
-    }
-    
-    func onGoToLeaderboard(for record: RecordModel) {
-        let leaderboardVC = LeaderboardViewController.instantiate()
-        
-        let leaderboardDataSource = LeaderboardDataSource(
-            itemComparer: createLeaderboardComparer(for: record.getType()),
-            itemService: createLocalLeaderboardItemService(),
-            currentRecord: record)
-        
-        leaderboardVC.leaderboardDataSource = leaderboardDataSource
-        
-        navController.pushViewController(leaderboardVC, animated: true)
     }
 }
