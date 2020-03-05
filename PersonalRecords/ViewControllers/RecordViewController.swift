@@ -24,10 +24,6 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     
-    @objc func onLogout() {
-        delegate?.onLogout()
-    }
-    
     @objc func AddNew() {
         delegate?.onAddRecord()
     }
@@ -151,8 +147,6 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(self.AddNew))
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "Logout", style: .plain, target: self, action: #selector(self.onLogout))
         
         setupController()
         // Do any additional setup after loading the view, typically from a nib.

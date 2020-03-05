@@ -13,7 +13,6 @@ import CoreData
 class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegate, EditRecordViewDelegate {
     
     private let delegate : MainCoordinatorDelegate
-    private let session : Session
     private let navController : UINavigationController
     private let mainContext : NSManagedObjectContext
     
@@ -37,16 +36,10 @@ class MainCoordinator : Coordinator, RecordViewDelegate, CreateRecordViewDelegat
         showRecordView()
     }
     
-    init(navController: UINavigationController, session: Session, delegate: MainCoordinatorDelegate) {
+    init(navController: UINavigationController, delegate: MainCoordinatorDelegate) {
         self.delegate = delegate
-        self.session = session
         self.navController = navController
-        self.mainContext = createMainContext(for: session)
-    }
-
-    //MARK: RecordViewDelegates
-    func onLogout() {
-        delegate.didLogout()
+        self.mainContext = createMainContext()
     }
     
     func onSelectRecord(_ selected : RecordModel) {

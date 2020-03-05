@@ -15,7 +15,7 @@ class DataServiceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        context = createMainContext(for: Session(user: User(id: UUID(), userName: "test")), inMemory: true)
+        context = createRecordContextForTest()
     }
     
     override func tearDown() {

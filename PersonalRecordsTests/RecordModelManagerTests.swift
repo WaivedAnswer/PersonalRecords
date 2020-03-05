@@ -15,7 +15,7 @@ class PersonalRecordsTests: XCTestCase {
     //var subject : EditRecordViewController!
     override func setUp() {
         super.setUp()
-        context = createMainContext(for: Session(user: User(id: UUID(), userName: "test")), inMemory: true)
+        context = createRecordContextForTest()
     }
     
     override func tearDown() {
@@ -79,7 +79,7 @@ class PersonalRecordsTests: XCTestCase {
         let expectedType = RecordType.Distance
         let record = subject.createRecordWith(type: expectedType)
         
-        let context2 = createMainContext(for: Session(user: User(id: UUID(), userName: "test")), inMemory: true)
+        let context2 = createRecordContextForTest()
         let subject2 = RecordModelManager(mainContext: context2)
     
         let result = subject2.getRecordBy(id: record!.id)

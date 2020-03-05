@@ -9,7 +9,6 @@
 import Foundation
 
 protocol RecordViewDelegate : class {
-    func onLogout()
     func onSelectRecord(_ selected: RecordModel)
     func onAddRecord()
 }

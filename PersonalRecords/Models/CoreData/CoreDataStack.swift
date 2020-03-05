@@ -9,63 +9,79 @@
 import Foundation
 import CoreData
 
-func createMainContext (for session: Session, inMemory: Bool = false) -> NSManagedObjectContext {
-    return createMainContext(for: session.user)
+func createMainContext () -> NSManagedObjectContext {
+    
+    let modelURL = getRecordModelURL()
+    let storeURL = getRecordStoreURL()
+    
+    return createContext(modelURL: modelURL, storeURL: storeURL)
 }
 
-func createMainContext (for user: User, inMemory: Bool = false) -> NSManagedObjectContext {
-    //initialize NSManagedObjecTModel
-    guard let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd") else {
-        fatalError("Cannot get record model url")
-    }
+func createRecordContextForTest () -> NSManagedObjectContext {
+    let modelURL = getRecordModelURL()
+    let storeURL = getRecordStoreURL()
     
-    let storeURL = URL.mainDocumentsPath.appendingPathComponent(user.userId.uuidString + "_Record.sqlite")
-    return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
-    //Initialize and return
+    return createContextForTesting(modelURL: modelURL, storeURL: storeURL)
 }
 
-func createUserContext(inMemory: Bool = false) -> NSManagedObjectContext {
-    guard let modelURL = Bundle.main.url(forResource: "User", withExtension: "momd") else {
-        fatalError("Cannot get user model url")
-    }
-    let storeURL = URL.mainDocumentsPath.appendingPathComponent("LocalUsers.sqlite")
+private func createContext(modelURL: URL, storeURL: URL) -> NSManagedObjectContext {
 
-    return createContext(modelURL: modelURL, storeURL: storeURL, inMemory: inMemory)
-}
-
-private func createContext(modelURL: URL, storeURL: URL, inMemory: Bool) -> NSManagedObjectContext {
-    guard let model = NSManagedObjectModel(contentsOf: modelURL) else {fatalError("model cannot be created")}
+    let psc = createPersistentStoreCoordinator(modelURL: modelURL)
     
-    //Configure NSPersistentStoreCoordinator
-    let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
-    //Add NSPersistenStore to coordinator
-    
-    
-    //try! FileManager.default.removeItem(at: storeURL)
-    if(!inMemory) {
-        let pscOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
-                          NSInferMappingModelAutomaticallyOption: false]
-
-        do {
-            try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: pscOptions)
-
-        } catch {
-            print(error)
-            fatalError("Cannot create persistent store")
-        }
-    }
-    else {
-        do {
-            try psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
-        } catch {
-            print("Adding in-memory persistent store failed")
-        }
-    }
-    
+    configurePersistentStore(psc, storeURL)
     
     let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
     context.persistentStoreCoordinator = psc
     return context
+}
+
+private func createContextForTesting(modelURL: URL, storeURL: URL) -> NSManagedObjectContext {
+
+    let psc = createPersistentStoreCoordinator(modelURL: modelURL)
+    
+    configurePersistentStoreForTesting(psc)
+    
+    let context = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+    context.persistentStoreCoordinator = psc
+    return context
+}
+
+private func createPersistentStoreCoordinator(modelURL: URL) -> NSPersistentStoreCoordinator {
+    guard let model = NSManagedObjectModel(contentsOf: modelURL) else {fatalError("model cannot be created")}
+    
+    return NSPersistentStoreCoordinator(managedObjectModel: model)
+}
+
+fileprivate func configurePersistentStore(_ psc: NSPersistentStoreCoordinator, _ storeURL: URL) {
+    let pscOptions = [NSMigratePersistentStoresAutomaticallyOption: true,
+                      NSInferMappingModelAutomaticallyOption: false]
+    
+    do {
+        try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: pscOptions)
+        
+    } catch {
+        print(error)
+        fatalError("Cannot create persistent store")
+    }
+}
+
+fileprivate func configurePersistentStoreForTesting(_ psc: NSPersistentStoreCoordinator) {
+    do {
+        try psc.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+    } catch {
+        print("Adding in-memory persistent store failed")
+    }
+}
+
+private func getRecordModelURL() -> URL {
+    guard let modelURL = Bundle.main.url(forResource: "Record", withExtension: "momd") else {
+        fatalError("Cannot get record model url")
+    }
+    return modelURL
+}
+
+private func getRecordStoreURL() -> URL {
+    return URL.mainDocumentsPath.appendingPathComponent("Record.sqlite")
 }
 
 extension URL {

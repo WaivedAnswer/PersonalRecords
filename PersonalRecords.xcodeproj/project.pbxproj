@@ -23,11 +23,7 @@
 		D4223D9F21210AE0003A8075 /* UnboxableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4223D9E21210AE0003A8075 /* UnboxableExtensions.swift */; };
 		D42522C92352BF3200922830 /* RecordModel4To5.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D42522C82352BF3200922830 /* RecordModel4To5.xcmappingmodel */; };
 		D42522CC2352C54200922830 /* RecordMapping4To5.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42522CB2352C54200922830 /* RecordMapping4To5.swift */; };
-		D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433FA6220F6E08A009C3678 /* LoginViewController.swift */; };
-		D433FA6620F6E14A009C3678 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433FA6520F6E14A009C3678 /* LoginService.swift */; };
 		D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F4C9A20D341D100470C71 /* RecordModelManager.swift */; };
-		D43F66DC235BDAF400AA1473 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F66DB235BDAF300AA1473 /* LoginCoordinator.swift */; };
-		D43F66DE235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F66DD235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift */; };
 		D43F66E02362958400AA1473 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F66DF2362958400AA1473 /* MainCoordinator.swift */; };
 		D43F66E22362966900AA1473 /* MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43F66E12362966900AA1473 /* MainCoordinatorDelegate.swift */; };
 		D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A4CA2206F58F400581047 /* AppDelegate.swift */; };
@@ -47,18 +43,10 @@
 		D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EB215855AA009D0283 /* RecordValues.swift */; };
 		D46B41EF215883F9009D0283 /* RecordValueMigration3to4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */; };
 		D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */; };
-		D4905FC2215F060200F49653 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC1215F060200F49653 /* User.swift */; };
-		D4905FC4215F249200F49653 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC3215F249200F49653 /* UserManager.swift */; };
-		D4905FC6216019EA00F49653 /* UserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC5216019EA00F49653 /* UserManagerTests.swift */; };
-		D4905FC82160445300F49653 /* LocalLoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC72160445300F49653 /* LocalLoginChecker.swift */; };
-		D4905FCA2160523B00F49653 /* LocalLoginCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FC92160523B00F49653 /* LocalLoginCheckerTests.swift */; };
-		D4905FCF21607E8200F49653 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4905FCD21607E8200F49653 /* User.xcdatamodeld */; };
-		D4905FD121607EEB00F49653 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4905FD021607EEB00F49653 /* UserModel.swift */; };
 		D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */; };
 		D4C0E4112218E4B000D5CFE6 /* StoryBoarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C0E4102218E4B000D5CFE6 /* StoryBoarded.swift */; };
 		D4C0E413221A4EDF00D5CFE6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C0E412221A4EDF00D5CFE6 /* Coordinator.swift */; };
 		D4C0E415221A57E100D5CFE6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C0E414221A57E100D5CFE6 /* AppCoordinator.swift */; };
-		D4C0E419221A712900D5CFE6 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */; };
 		D4C0E41B221B78B300D5CFE6 /* RecordViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C0E41A221B78B300D5CFE6 /* RecordViewDelegate.swift */; };
 		D4C8C0E92207A19F008D6034 /* ViewControllerSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */; };
 		D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7829213B26E500217819 /* RecordTemplates.swift */; };
@@ -70,13 +58,6 @@
 		D4DB783A213B965100217819 /* Filterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB7839213B965100217819 /* Filterable.swift */; };
 		D4DB783E213B97CA00217819 /* FilterableRecordModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */; };
 		D4DB78402140C0AD00217819 /* TransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */; };
-		D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031720FAF5E30002471B /* SessionManager.swift */; };
-		D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */; };
-		D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031D20FC50B20002471B /* SessionWriter.swift */; };
-		D4FD032020FC54300002471B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD031F20FC54300002471B /* Session.swift */; };
-		D4FD032220FC56500002471B /* SessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032120FC56500002471B /* SessionManagerTests.swift */; };
-		D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032420FC575F0002471B /* MockSessionWriter.swift */; };
-		D4FD032920FEFD3C0002471B /* MockLoginChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */; };
 		D4FD032E2102F4130002471B /* BasicTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD032D2102F4130002471B /* BasicTextFieldDelegate.swift */; };
 		F72744D983CFDD0FEECF49A1 /* Pods_PersonalRecords.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3FBAB2C3022C6DF5DC77B10 /* Pods_PersonalRecords.framework */; };
 /* End PBXBuildFile section */
@@ -116,11 +97,7 @@
 		D4223D9E21210AE0003A8075 /* UnboxableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnboxableExtensions.swift; sourceTree = "<group>"; };
 		D42522C82352BF3200922830 /* RecordModel4To5.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = RecordModel4To5.xcmappingmodel; sourceTree = "<group>"; };
 		D42522CB2352C54200922830 /* RecordMapping4To5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMapping4To5.swift; sourceTree = "<group>"; };
-		D433FA6220F6E08A009C3678 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D433FA6520F6E14A009C3678 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		D43F4C9A20D341D100470C71 /* RecordModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModelManager.swift; sourceTree = "<group>"; };
-		D43F66DB235BDAF300AA1473 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
-		D43F66DD235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		D43F66DF2362958400AA1473 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		D43F66E12362966900AA1473 /* MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		D44A4C9F206F58F400581047 /* PersonalRecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalRecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,19 +120,11 @@
 		D46B41EB215855AA009D0283 /* RecordValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValues.swift; sourceTree = "<group>"; };
 		D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValueMigration3to4.swift; sourceTree = "<group>"; };
 		D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = RecordMapping3to4.xcmappingmodel; sourceTree = "<group>"; };
-		D4905FC1215F060200F49653 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D4905FC3215F249200F49653 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		D4905FC5216019EA00F49653 /* UserManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerTests.swift; sourceTree = "<group>"; };
-		D4905FC72160445300F49653 /* LocalLoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoginChecker.swift; sourceTree = "<group>"; };
-		D4905FC92160523B00F49653 /* LocalLoginCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalLoginCheckerTests.swift; sourceTree = "<group>"; };
-		D4905FCE21607E8200F49653 /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
-		D4905FD021607EEB00F49653 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
 		D4C0E4102218E4B000D5CFE6 /* StoryBoarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoarded.swift; sourceTree = "<group>"; };
 		D4C0E412221A4EDF00D5CFE6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D4C0E414221A57E100D5CFE6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		D4C0E41A221B78B300D5CFE6 /* RecordViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewDelegate.swift; sourceTree = "<group>"; };
 		D4C0E41C221E6BA000D5CFE6 /* Record 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 5.xcdatamodel"; sourceTree = "<group>"; };
 		D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSegues.swift; sourceTree = "<group>"; };
@@ -168,13 +137,6 @@
 		D4DB7839213B965100217819 /* Filterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filterable.swift; sourceTree = "<group>"; };
 		D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterableRecordModelTests.swift; sourceTree = "<group>"; };
 		D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDelegate.swift; sourceTree = "<group>"; };
-		D4FD031720FAF5E30002471B /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSessionWriter.swift; sourceTree = "<group>"; };
-		D4FD031D20FC50B20002471B /* SessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionWriter.swift; sourceTree = "<group>"; };
-		D4FD031F20FC54300002471B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		D4FD032120FC56500002471B /* SessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerTests.swift; sourceTree = "<group>"; };
-		D4FD032420FC575F0002471B /* MockSessionWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionWriter.swift; sourceTree = "<group>"; };
-		D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLoginChecker.swift; sourceTree = "<group>"; };
 		D4FD032D2102F4130002471B /* BasicTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,7 +185,6 @@
 			children = (
 				D4C0E41A221B78B300D5CFE6 /* RecordViewDelegate.swift */,
 				D41C7C7D2365301800FBDAD8 /* CreateRecordViewDelegate.swift */,
-				D4C0E418221A712900D5CFE6 /* LoginDelegate.swift */,
 				D41C7C81236607B700FBDAD8 /* EditRecordViewDelegate.swift */,
 			);
 			path = ViewControllerDelegates;
@@ -232,7 +193,6 @@
 		D41C7C802366077D00FBDAD8 /* CoordinatorDelegates */ = {
 			isa = PBXGroup;
 			children = (
-				D43F66DD235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift */,
 				D43F66E12362966900AA1473 /* MainCoordinatorDelegate.swift */,
 			);
 			path = CoordinatorDelegates;
@@ -248,7 +208,6 @@
 				D4201D2B20D1FBB20091FA60 /* Info.plist */,
 				D408F1BF20DB5C3A008A0072 /* AllowableCharactersTests.swift */,
 				D408F1C120DC8F12008A0072 /* CustomTimePickerTests.swift */,
-				D4FD032120FC56500002471B /* SessionManagerTests.swift */,
 				D4DB782B213B275D00217819 /* DataServiceTests.swift */,
 			);
 			path = PersonalRecordsTests;
@@ -261,8 +220,6 @@
 				D4DB7833213B432A00217819 /* TemplateDataSourceTests.swift */,
 				D4DB7837213B940700217819 /* SubstringFilterTests.swift */,
 				D4DB783D213B97CA00217819 /* FilterableRecordModelTests.swift */,
-				D4905FC5216019EA00F49653 /* UserManagerTests.swift */,
-				D4905FC92160523B00F49653 /* LocalLoginCheckerTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,7 +241,6 @@
 				D42522C82352BF3200922830 /* RecordModel4To5.xcmappingmodel */,
 				D42522CB2352C54200922830 /* RecordMapping4To5.swift */,
 				D45DA1C920747C13002950A8 /* Record.xcdatamodeld */,
-				D4905FCD21607E8200F49653 /* User.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -295,7 +251,6 @@
 				D44A4CA4206F58F400581047 /* RecordViewController.swift */,
 				D44A4CB920703B2200581047 /* EditRecordViewController.swift */,
 				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
-				D433FA6220F6E08A009C3678 /* LoginViewController.swift */,
 				D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */,
 			);
 			path = ViewControllers;
@@ -306,8 +261,6 @@
 			children = (
 				D41C7C802366077D00FBDAD8 /* CoordinatorDelegates */,
 				D41C7C7F2366074A00FBDAD8 /* ViewControllerDelegates */,
-				D433FA6520F6E14A009C3678 /* LoginService.swift */,
-				D4FD031D20FC50B20002471B /* SessionWriter.swift */,
 				D4DB7839213B965100217819 /* Filterable.swift */,
 				D4DB783F2140C0AD00217819 /* TransitionDelegate.swift */,
 			);
@@ -338,20 +291,6 @@
 				D41C7C94236D28FB00FBDAD8 /* TimeValue.swift */,
 			);
 			path = Records;
-			sourceTree = "<group>";
-		};
-		D43F66D8235B8B2F00AA1473 /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				D4905FD021607EEB00F49653 /* UserModel.swift */,
-				D4905FC1215F060200F49653 /* User.swift */,
-				D4905FC3215F249200F49653 /* UserManager.swift */,
-				D4905FC72160445300F49653 /* LocalLoginChecker.swift */,
-				D4FD031720FAF5E30002471B /* SessionManager.swift */,
-				D4FD031B20FC4FD10002471B /* BasicSessionWriter.swift */,
-				D4FD031F20FC54300002471B /* Session.swift */,
-			);
-			path = Users;
 			sourceTree = "<group>";
 		};
 		D44A4C96206F58F400581047 = {
@@ -394,11 +333,10 @@
 		D45DA1C820747BF3002950A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D43F66D8235B8B2F00AA1473 /* Users */,
+				D4E7F9EF240F6B1F00E2B069 /* Utility */,
 				D43F66D7235B8AFE00AA1473 /* Records */,
 				D43F66D6235B8AA600AA1473 /* Templates */,
 				D42522CA2352C4C600922830 /* CoreData */,
-				D4DB7835213B924A00217819 /* SubstringFilter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -409,7 +347,6 @@
 				D4C0E4102218E4B000D5CFE6 /* StoryBoarded.swift */,
 				D4C0E412221A4EDF00D5CFE6 /* Coordinator.swift */,
 				D4C0E414221A57E100D5CFE6 /* AppCoordinator.swift */,
-				D43F66DB235BDAF300AA1473 /* LoginCoordinator.swift */,
 				D43F66DF2362958400AA1473 /* MainCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -433,11 +370,17 @@
 			path = ModelHelpers;
 			sourceTree = "<group>";
 		};
+		D4E7F9EF240F6B1F00E2B069 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D4DB7835213B924A00217819 /* SubstringFilter.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		D4FD032320FC57470002471B /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				D4FD032420FC575F0002471B /* MockSessionWriter.swift */,
-				D4FD032820FEFD3C0002471B /* MockLoginChecker.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -618,14 +561,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4FD032920FEFD3C0002471B /* MockLoginChecker.swift in Sources */,
 				D4DB7834213B432A00217819 /* TemplateDataSourceTests.swift in Sources */,
 				D4201D2A20D1FBB20091FA60 /* RecordModelManagerTests.swift in Sources */,
-				D4905FCA2160523B00F49653 /* LocalLoginCheckerTests.swift in Sources */,
 				D408F1C220DC8F12008A0072 /* CustomTimePickerTests.swift in Sources */,
-				D4FD032520FC575F0002471B /* MockSessionWriter.swift in Sources */,
-				D4FD032220FC56500002471B /* SessionManagerTests.swift in Sources */,
-				D4905FC6216019EA00F49653 /* UserManagerTests.swift in Sources */,
 				D4223D9A2120F844003A8075 /* JsonTemplateReaderTests.swift in Sources */,
 				D4DB783E213B97CA00217819 /* FilterableRecordModelTests.swift in Sources */,
 				D4DB7838213B940700217819 /* SubstringFilterTests.swift in Sources */,
@@ -640,27 +578,18 @@
 			files = (
 				D41C7C95236D28FB00FBDAD8 /* TimeValue.swift in Sources */,
 				D408F1BE20DB5B5D008A0072 /* AllowableStringValues.swift in Sources */,
-				D43F66DE235BDFCF00AA1473 /* LoginCoordinatorDelegate.swift in Sources */,
-				D4FD031C20FC4FD10002471B /* BasicSessionWriter.swift in Sources */,
 				D44A4CA5206F58F400581047 /* RecordViewController.swift in Sources */,
-				D4FD031820FAF5E30002471B /* SessionManager.swift in Sources */,
 				D42522C92352BF3200922830 /* RecordModel4To5.xcmappingmodel in Sources */,
-				D4C0E419221A712900D5CFE6 /* LoginDelegate.swift in Sources */,
 				D44A4CBA20703B2200581047 /* EditRecordViewController.swift in Sources */,
 				D4C0E415221A57E100D5CFE6 /* AppCoordinator.swift in Sources */,
 				D46B41EF215883F9009D0283 /* RecordValueMigration3to4.swift in Sources */,
-				D433FA6320F6E08A009C3678 /* LoginViewController.swift in Sources */,
 				D4DB783A213B965100217819 /* Filterable.swift in Sources */,
-				D4FD031E20FC50B20002471B /* SessionWriter.swift in Sources */,
 				D45DA1D32079BFB4002950A8 /* CreateViewController.swift in Sources */,
 				D43F66E22362966900AA1473 /* MainCoordinatorDelegate.swift in Sources */,
-				D4905FCF21607E8200F49653 /* User.xcdatamodeld in Sources */,
 				D41C7C7E2365301800FBDAD8 /* CreateRecordViewDelegate.swift in Sources */,
 				D44A4CA3206F58F400581047 /* AppDelegate.swift in Sources */,
 				D4C0E41B221B78B300D5CFE6 /* RecordViewDelegate.swift in Sources */,
-				D4905FC82160445300F49653 /* LocalLoginChecker.swift in Sources */,
 				D4DB7832213B424E00217819 /* TemplateDataSource.swift in Sources */,
-				D4905FC2215F060200F49653 /* User.swift in Sources */,
 				D4223D9F21210AE0003A8075 /* UnboxableExtensions.swift in Sources */,
 				D4C0E4112218E4B000D5CFE6 /* StoryBoarded.swift in Sources */,
 				D45DA1CD20747C46002950A8 /* CoreDataStack.swift in Sources */,
@@ -668,7 +597,6 @@
 				D4DB7836213B924A00217819 /* SubstringFilter.swift in Sources */,
 				D43F66E02362958400AA1473 /* MainCoordinator.swift in Sources */,
 				D4C0E413221A4EDF00D5CFE6 /* Coordinator.swift in Sources */,
-				D4905FC4215F249200F49653 /* UserManager.swift in Sources */,
 				D4C8C0E92207A19F008D6034 /* ViewControllerSegues.swift in Sources */,
 				D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */,
 				D4223D952120F7C5003A8075 /* JsonTemplateReader.swift in Sources */,
@@ -677,16 +605,12 @@
 				D4DB782A213B26E500217819 /* RecordTemplates.swift in Sources */,
 				D45DA1CF20773760002950A8 /* RecordModel.swift in Sources */,
 				D41C7C82236607B700FBDAD8 /* EditRecordViewDelegate.swift in Sources */,
-				D4FD032020FC54300002471B /* Session.swift in Sources */,
 				D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */,
 				D45DA1D9207C6EEC002950A8 /* TimeHelpers.swift in Sources */,
-				D433FA6620F6E14A009C3678 /* LoginService.swift in Sources */,
 				D4223D972120F7ED003A8075 /* TemplateData.swift in Sources */,
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
 				D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */,
 				D41C7C91236BE38B00FBDAD8 /* CollectionHelpers.swift in Sources */,
-				D43F66DC235BDAF400AA1473 /* LoginCoordinator.swift in Sources */,
-				D4905FD121607EEB00F49653 /* UserModel.swift in Sources */,
 				D42522CC2352C54200922830 /* RecordMapping4To5.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,
@@ -960,16 +884,6 @@
 			);
 			currentVersion = D4C0E41C221E6BA000D5CFE6 /* Record 5.xcdatamodel */;
 			path = Record.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		D4905FCD21607E8200F49653 /* User.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D4905FCE21607E8200F49653 /* User.xcdatamodel */,
-			);
-			currentVersion = D4905FCE21607E8200F49653 /* User.xcdatamodel */;
-			path = User.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
