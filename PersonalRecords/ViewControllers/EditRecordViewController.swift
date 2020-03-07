@@ -71,9 +71,14 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         return allowableCharacters.AreStringCharactersAllowed(input: fullText)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    fileprivate func cancelEdits() {
         recordTitle.endEditing(true)
         recordValue.endEditing(true)
+        recordDate.endEditing(true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        cancelEdits()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
