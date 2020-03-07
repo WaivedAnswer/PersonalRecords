@@ -22,15 +22,12 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     private var picker: CustomTimePicker?
     private var datePicker: UIDatePicker!
     
-    @IBOutlet weak var sportTextField: UITextField!
-    @IBOutlet weak var recordTitle: UITextField!
+    @IBOutlet weak var sportLabel: UILabel!
+    @IBOutlet weak var recordTitle: UILabel!
     
     @IBOutlet weak var recordDate: UITextField!
-    @IBOutlet weak var valueLabel: UILabel!
     
     @IBOutlet weak var recordValue: UITextField!
-    
-    @IBOutlet weak var recordDescription: UITextView!
     
     @objc func saveRecord() {
         updateRecord()
@@ -53,8 +50,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
                 recordValues.weight = Double(recordValue.text!) ?? 0.0
             }
         }
-        
-        currentRecord?.recordDescription = recordDescription.text
     }
     
     @objc func cancelEdit() {
@@ -79,7 +74,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         recordTitle.endEditing(true)
         recordValue.endEditing(true)
-        recordDescription.endEditing(true)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -147,7 +141,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         allowableCharacters = AllowableStringValues()
         
         let type = currentRecord.getType()
-        valueLabel.text = type.getName()
+        recordValue.placeholder = type.getName()
         if(type == .Time) {
             picker = CustomTimePicker()
             if let timeValue = currentRecord?.getCurrentValues()?.time,
@@ -173,8 +167,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         title = currentRecord?.title
         
         recordValue.delegate = self
-        recordTitle.delegate = self
-        recordDescription.delegate = self
         
         if let currRecord = currentRecord {
             recordTitle.text = currRecord.title
@@ -195,9 +187,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
                 }
             }
             
-            recordDescription.text = currRecord.recordDescription
-            sportTextField.isEnabled = false
-            sportTextField.text = Sport(value: currRecord.sport).getName()
+            sportLabel.text = Sport(value: currRecord.sport).getName()
         }
     }
 }
