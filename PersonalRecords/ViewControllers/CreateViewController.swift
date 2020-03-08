@@ -85,5 +85,9 @@ class CreateViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 
 }

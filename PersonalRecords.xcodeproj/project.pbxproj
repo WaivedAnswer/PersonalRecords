@@ -43,6 +43,7 @@
 		D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EB215855AA009D0283 /* RecordValues.swift */; };
 		D46B41EF215883F9009D0283 /* RecordValueMigration3to4.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */; };
 		D46B41F321589AB2009D0283 /* RecordMapping3to4.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */; };
+		D4A153B224146EC100B9C625 /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A153B124146EC100B9C625 /* UINavigationControllerExtensions.swift */; };
 		D4B7BE61207D9BCB00D45F0C /* CustomTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */; };
 		D4C0E4112218E4B000D5CFE6 /* StoryBoarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C0E4102218E4B000D5CFE6 /* StoryBoarded.swift */; };
 		D4C0E413221A4EDF00D5CFE6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C0E412221A4EDF00D5CFE6 /* Coordinator.swift */; };
@@ -120,6 +121,7 @@
 		D46B41EB215855AA009D0283 /* RecordValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValues.swift; sourceTree = "<group>"; };
 		D46B41EE215883F9009D0283 /* RecordValueMigration3to4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordValueMigration3to4.swift; sourceTree = "<group>"; };
 		D46B41F221589AB2009D0283 /* RecordMapping3to4.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = RecordMapping3to4.xcmappingmodel; sourceTree = "<group>"; };
+		D4A153B124146EC100B9C625 /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		D4A5BBA3207F108000077D92 /* Record 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Record 2.xcdatamodel"; sourceTree = "<group>"; };
 		D4B7BE60207D9BCB00D45F0C /* CustomTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTimePicker.swift; sourceTree = "<group>"; };
 		D4C0E4102218E4B000D5CFE6 /* StoryBoarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoarded.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				D44A4CB920703B2200581047 /* EditRecordViewController.swift */,
 				D45DA1D22079BFB4002950A8 /* CreateViewController.swift */,
 				D4C8C0E82207A19F008D6034 /* ViewControllerSegues.swift */,
+				D4A153B124146EC100B9C625 /* UINavigationControllerExtensions.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 				D43F4C9B20D341D100470C71 /* RecordModelManager.swift in Sources */,
 				D46B41EC215855AA009D0283 /* RecordValues.swift in Sources */,
 				D41C7C91236BE38B00FBDAD8 /* CollectionHelpers.swift in Sources */,
+				D4A153B224146EC100B9C625 /* UINavigationControllerExtensions.swift in Sources */,
 				D42522CC2352C54200922830 /* RecordMapping4To5.swift in Sources */,
 				D45DA1D5207AB9D5002950A8 /* RecordType.swift in Sources */,
 				D45DA1D120798106002950A8 /* Sport.swift in Sources */,

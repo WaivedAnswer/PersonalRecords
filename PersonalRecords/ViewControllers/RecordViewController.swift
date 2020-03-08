@@ -184,4 +184,8 @@ class RecordViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
 }

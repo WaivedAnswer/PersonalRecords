@@ -195,4 +195,9 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             sportLabel.text = Sport(value: currRecord.sport).getName()
         }
     }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+
 }
