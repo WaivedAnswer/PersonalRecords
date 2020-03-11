@@ -79,8 +79,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         cancelEdits()
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        DispatchQueue.main.async {
     func isDefaultValue( valueText: String) -> Bool {
         return Double(valueText) == 0.0
     }
