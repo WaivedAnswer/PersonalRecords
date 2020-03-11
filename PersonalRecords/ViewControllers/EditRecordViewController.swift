@@ -11,9 +11,7 @@ import CoreData
 
 class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, CustomTimeDelegate,Storyboarded {
     
-    
     private let textFieldDelegate = BasicTextFieldDelegate( transition: nil)
-    private var timeLabel : UILabel?
     private var allowableCharacters : AllowableStringValues!
     
     var delegate: EditRecordViewDelegate?
@@ -52,7 +50,7 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         }
     }
     
-    @objc func cancelEdit() {
+    @objc func onCancel() {
         delegate?.onCancelEdit()
     }
     
@@ -83,14 +81,15 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         DispatchQueue.main.async {
-            textView.selectAll(nil)
-            
-        }
+    func isDefaultValue( valueText: String) -> Bool {
+        return Double(valueText) == 0.0
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        DispatchQueue.main.async {
-            textField.selectAll(nil)
+        if let text = textField.text {
+            if isDefaultValue(valueText: text) {
+                DispatchQueue.main.async { textField.selectAll(nil) }
+            }
         }
     }
     
@@ -101,11 +100,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
     
     func didUpdateTimeInterval(newtime: TimeInterval) {
         recordValue.text = picker?.timeInterval.timeString
-        updateTimeLabelText()
-    }
-    
-    fileprivate func updateTimeLabelText() {
-        timeLabel?.text = picker?.timeInterval.timeString
     }
     
     fileprivate func updateDateText(_ datePicker: UIDatePicker) {
@@ -136,12 +130,24 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         recordDate.inputView = datePicker
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    fileprivate func registerKeyboardHandlers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(EditRecordViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EditRecordViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    fileprivate func setupNavigationBar() {
         navigationItem.hidesBackButton = true
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.cancelEdit))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.onCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.saveRecord))
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupNavigationBar()
+        registerKeyboardHandlers()
         
         allowableCharacters = AllowableStringValues()
         
@@ -155,16 +161,6 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             }
             picker?.timeDelegate = self
             recordValue.inputView = picker
-            timeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 80))
-            timeLabel?.textAlignment = .center
-            timeLabel?.font = UIFont.systemFont(ofSize: 28)
-            timeLabel?.textColor = .black
-            timeLabel?.backgroundColor = .lightGray
-            timeLabel?.adjustsFontSizeToFitWidth = true
-            updateTimeLabelText()
-            
-            recordValue.inputAccessoryView = timeLabel
-            
         }
         
         setupDatePicker()
@@ -193,6 +189,18 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
             }
             
             sportLabel.text = Sport(value: currRecord.sport).getName()
+        }
+    }
+        
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y = -keyboardSize.height
+         }
+     }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            self.view.frame.origin.y = 0
         }
     }
     

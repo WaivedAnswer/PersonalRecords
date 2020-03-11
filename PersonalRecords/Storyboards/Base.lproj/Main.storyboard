@@ -109,7 +109,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hze-pU-kwQ">
-                                <rect key="frame" x="122" y="99" width="76.5" height="90"/>
+                                <rect key="frame" x="122" y="64" width="76.5" height="90"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOD-eM-TEc">
                                         <rect key="frame" x="0.0" y="0.0" width="76.5" height="41"/>
@@ -126,7 +126,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uYi-q2-x5r">
-                                <rect key="frame" x="103.5" y="346" width="113" height="122"/>
+                                <rect key="frame" x="103.5" y="406" width="113" height="122"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZhF-bt-3na">
                                         <rect key="frame" x="0.0" y="0.0" width="113" height="51"/>
@@ -144,10 +144,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.89674746990203857" green="0.93679410219192505" blue="0.9742773175239563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hze-pU-kwQ" firstAttribute="centerX" secondItem="yEB-Wf-gpN" secondAttribute="centerX" id="Fen-QK-PsX"/>
-                            <constraint firstItem="yEB-Wf-gpN" firstAttribute="bottom" secondItem="uYi-q2-x5r" secondAttribute="bottom" constant="100" id="WTw-2q-p21" userLabel="Safe Area.bottom = Stack View.bottom + 100"/>
-                            <constraint firstItem="hze-pU-kwQ" firstAttribute="top" secondItem="yEB-Wf-gpN" secondAttribute="top" constant="55" id="ZqF-iV-VR8"/>
-                            <constraint firstItem="uYi-q2-x5r" firstAttribute="centerX" secondItem="yEB-Wf-gpN" secondAttribute="centerX" id="ux6-lM-rhW"/>
+                            <constraint firstItem="hze-pU-kwQ" firstAttribute="top" secondItem="yEB-Wf-gpN" secondAttribute="top" constant="20" id="B0R-pC-4Bt"/>
+                            <constraint firstItem="yEB-Wf-gpN" firstAttribute="bottom" secondItem="uYi-q2-x5r" secondAttribute="bottom" constant="40" id="N7b-LC-EJe"/>
+                            <constraint firstItem="uYi-q2-x5r" firstAttribute="centerX" secondItem="yEB-Wf-gpN" secondAttribute="centerX" id="WTS-Au-bPG"/>
+                            <constraint firstItem="hze-pU-kwQ" firstAttribute="centerX" secondItem="yEB-Wf-gpN" secondAttribute="centerX" id="omp-gn-jV6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yEB-Wf-gpN"/>
                     </view>
