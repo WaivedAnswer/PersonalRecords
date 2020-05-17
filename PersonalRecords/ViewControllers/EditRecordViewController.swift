@@ -141,6 +141,36 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.saveRecord))
     }
     
+    fileprivate func setupValueInput(_ type: RecordType) {
+        switch type {
+        case .Time:
+            picker = CustomTimePicker()
+            if let timeValue = currentRecord?.getCurrentValues()?.time,
+                let timePicker = picker {
+                timePicker.timeInterval = timeValue
+            }
+            picker?.timeDelegate = self
+            recordValue.inputView = picker
+        case .Repetition:
+            recordValue.keyboardType = .numberPad
+        default:
+            recordValue.keyboardType = .decimalPad
+        }
+        let displayUnit = type.getDisplayUnit()
+        
+        if !displayUnit.isEmpty() {
+            let unitButtonLabel = UIButton()
+            unitButtonLabel.contentEdgeInsets = UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 5)
+            unitButtonLabel.isUserInteractionEnabled = false
+            unitButtonLabel.setTitle(displayUnit, for: .normal)
+            unitButtonLabel.setTitleColor(.black, for: .normal)
+            unitButtonLabel.backgroundColor = .clear
+            
+            recordValue.rightView = unitButtonLabel
+            recordValue.rightViewMode = .always
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -151,15 +181,8 @@ class EditRecordViewController: UIViewController, UITextFieldDelegate, UITextVie
         
         let type = currentRecord.getType()
         recordValue.placeholder = type.getName()
-        if(type == .Time) {
-            picker = CustomTimePicker()
-            if let timeValue = currentRecord?.getCurrentValues()?.time,
-                let timePicker = picker {
-                timePicker.timeInterval = timeValue
-            }
-            picker?.timeDelegate = self
-            recordValue.inputView = picker
-        }
+        
+        setupValueInput(type)
         
         setupDatePicker()
         

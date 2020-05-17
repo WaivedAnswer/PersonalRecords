@@ -59,9 +59,11 @@ extension RecordModel {
         var valueString = ""
         if let value = getCurrentValue() {
             if(getType() == .Time) {
-               valueString = value.timeString
+                valueString = value.timeString
+            } else if(getType() == .Repetition) {
+                valueString = String(Int(value))
             } else {
-               valueString = String(value)
+                valueString = String(value)
             }
         }
         return "\(valueString) \(getType().getDisplayUnit())"
